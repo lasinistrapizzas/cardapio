@@ -8,7 +8,7 @@ window.CARDAPIO = {
   // WhatsApp que recebe os pedidos (55 + DDD + número, só dígitos)
   whatsapp: "5551999442176",
 
-  // Texto do selo no rodapé
+  // Selo do período, no topo da página
   periodo: "Cardápio de 13 a 15 de novembro",
 
   // Dias de retirada. "aberto: false" mostra o aviso e não deixa escolher.
@@ -24,8 +24,8 @@ window.CARDAPIO = {
   // Horários de retirada oferecidos
   horarios: ["19h00", "19h15", "19h30", "19h45", "20h00", "20h15", "20h30", "20h45", "21h00"],
 
-  // Endereço da planilha de reservas (Apps Script, termina em /exec).
-  // Vazio = a página funciona, mas não bloqueia horários.
+  // Bloqueio automático de horários: desligado (vazio).
+  // Os horários são confirmados manualmente pelo WhatsApp.
   reservas: "",
 
   endereco: {
@@ -45,7 +45,8 @@ window.CARDAPIO = {
     descricao: [
       "Molho de tomate pelati,",
       "mozzarella de búfala,",
-      "tomate confit e molho pesto da casa.",
+      "tomate confitado com alho e alecrim",
+      "e molho pesto da casa.",
       "Finalizada com manjericão fresco."
     ],
     preco: 80

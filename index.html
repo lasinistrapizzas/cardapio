@@ -82,15 +82,21 @@ a{color:inherit}
     radial-gradient(120% 85% at 100% 0%, #fad9bd 0%, rgba(250,217,189,.0) 58%),
     radial-gradient(90% 60% at 0% 100%, #c69c7b 0%, rgba(198,156,123,0) 70%),
     linear-gradient(100deg,#9c724f 0%,#b0855f 32%,#c49877 58%,#dcb394 82%,#efcdb0 100%);
-  padding:calc(26px + env(safe-area-inset-top)) 0 0}
+  padding:calc(48px + env(safe-area-inset-top)) 0 0}
+@media (max-width:959px){
+  .hero{background:
+    radial-gradient(120% 22% at 100% 0%, #f6d3b5 0%, rgba(246,211,181,0) 70%),
+    linear-gradient(172deg,#a47854 0%,#a97d59 35%,#b4886a 60%,#c49877 85%,#d4ab8b 100%)}
+}
 .hero .wrap{position:relative;z-index:4}
-.logo-s{width:clamp(78px,21vw,104px);color:#fff}
-.hero .pill{color:#fff;margin-top:16px}
-.hero-txt{padding-top:clamp(40px,11vw,96px)}
-.titulo{font-weight:700;font-size:clamp(30px,8.6vw,52px);letter-spacing:0;line-height:1;text-transform:uppercase;padding-left:.3em}
-.titulo .script{display:block;font-size:3.55em;line-height:.62;margin:-.04em 0 0 -.12em;color:var(--preto-rico);white-space:nowrap}
-.hero .desc{font-size:clamp(12.5px,3.35vw,16px);margin-top:clamp(16px,4vw,26px);padding-left:.9em;max-width:32em}
-.hero-buy{display:flex;align-items:center;gap:18px;margin-top:clamp(18px,4.6vw,30px);padding-left:.4em}
+.logo-s{width:clamp(106px,27vw,136px);color:#fff}
+.hero .periodo{display:table;color:#fff;margin-top:12px;letter-spacing:.12em}
+.hero-txt{padding-top:clamp(70px,19vw,150px)}
+.tag{color:var(--preto);font-size:clamp(8px,2.2vw,10px);padding:.6em 1.5em .56em 1.8em;margin:0 0 clamp(10px,2.8vw,14px) 0}
+.titulo{font-weight:700;font-size:clamp(30px,8.6vw,52px);letter-spacing:0;line-height:1;text-transform:uppercase}
+.titulo .script{display:block;font-size:3.8em;line-height:.62;margin:-.23em 0 0 .03em;color:var(--preto-rico);white-space:nowrap}
+.hero .desc{color:#fff;font-size:clamp(12.5px,3.35vw,16px);margin-top:clamp(16px,4vw,26px);max-width:32em}
+.hero-buy{display:flex;align-items:center;gap:18px;margin-top:clamp(18px,4.6vw,30px)}
 .hero .preco{font-size:clamp(38px,10.6vw,62px);line-height:1}
 .photo{position:relative;z-index:3;pointer-events:none;background-size:100% 100%;background-repeat:no-repeat}
 .photo img{width:100%;height:auto;opacity:0;transition:opacity .6s ease}
@@ -136,7 +142,7 @@ a{color:inherit}
 .num{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--terracota);color:var(--creme);font-weight:900;font-size:20px;line-height:1;box-shadow:0 0 0 6px var(--creme-q)}
 .num svg{width:22px;height:22px}
 .passo h3{font-weight:700;font-size:clamp(16px,4.4vw,19px);letter-spacing:.05em;line-height:1.15;text-transform:uppercase;padding-top:8px}
-.passo p{margin-top:7px;font-size:clamp(11.5px,3.05vw,13px);letter-spacing:.05em;line-height:1.3;text-transform:uppercase;max-width:24em;opacity:.85}
+.passo p{margin-top:8px;font-weight:700;font-size:clamp(12.5px,3.2vw,13px);letter-spacing:.05em;line-height:1.35;text-transform:uppercase;max-width:24em;color:var(--preto)}
 .fluxo-cta{margin-top:clamp(36px,9vw,56px)}
 .fluxo-cta .cta{height:54px;padding:0 28px;font-size:13px}
 
@@ -201,7 +207,7 @@ dialog.sheet::backdrop{background:rgba(10,5,2,.55);backdrop-filter:blur(3px);-we
 .dica{font-size:11px;letter-spacing:.05em;text-transform:uppercase;opacity:.6;margin-top:8px}
 .cta.busy{opacity:.7;pointer-events:none}
 .feito{padding:10px 0 4px;text-align:center}
-.feito .script{font-size:58px;line-height:.9}
+.feito .script{font-size:58px;line-height:.9;text-transform:none;letter-spacing:0;margin-top:0}
 .feito p{margin-top:14px;font-size:12.5px;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}
 .aviso{display:none;align-items:center;gap:12px;margin-top:10px;padding:12px 14px;border-radius:14px;background:var(--terracota);color:var(--creme);font-weight:700;font-size:12px;letter-spacing:.04em;line-height:1.3;text-transform:uppercase}
 .aviso.show{display:flex;animation:pop .35s var(--ease)}
@@ -210,9 +216,11 @@ input.campo,textarea.campo{width:100%;font:inherit;font-size:16px;letter-spacing
 textarea.campo{min-height:70px;resize:vertical}
 .campo:focus{outline:2px solid var(--terracota);outline-offset:1px;border-color:transparent}
 .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:24px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.total span{font-size:12px;letter-spacing:.3em}
-.total .preco{font-size:34px}
-.nota{margin-top:10px;font-size:11.5px;letter-spacing:.04em;line-height:1.35;text-transform:uppercase;opacity:.75}
+.total>span:first-child{font-size:12px;letter-spacing:.05em}
+.total .preco{font-size:34px;letter-spacing:0}
+.nota{margin-top:18px;padding:14px 16px;border-radius:14px;background:rgba(184,68,42,.09);border-left:3px solid var(--terracota);display:grid;gap:10px}
+.nota p{font-size:12.5px;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}
+.nota strong{font-weight:700;color:var(--terracota-esc)}
 .sh-foot{padding:14px 24px calc(16px + env(safe-area-inset-bottom));border-top:1px solid rgba(23,19,13,.1);background:var(--creme)}
 .sh-foot .cta{width:100%;height:54px;font-size:13px}
 .sh-foot .cta[aria-disabled="true"]{background:rgba(23,19,13,.25)}
@@ -223,9 +231,9 @@ textarea.campo{min-height:70px;resize:vertical}
 
 /* ---------- desktop ---------- */
 @media (min-width:960px){
-  .hero{min-height:600px;padding-top:44px}
-  .hero-txt{padding:92px 0 110px;max-width:520px}
-  .titulo .script{font-size:4.5em;margin-top:-.02em}
+  .hero{min-height:600px;padding-top:64px}
+  .hero-txt{padding:130px 0 110px;max-width:520px}
+  .titulo .script{font-size:4.5em;margin-top:-.275em}
   .hero .photo{position:absolute;margin:0;transform:none;width:min(50vw,660px);left:calc(50% - 30px);top:96px}
   .creme{padding:56px 0 210px}
   .creme .wrap{display:grid;grid-template-columns:1fr 1fr;column-gap:72px}
@@ -255,7 +263,7 @@ textarea.campo{min-height:70px;resize:vertical}
 <header class="hero grain">
   <div class="wrap">
     <svg class="logo-s" viewBox="0 0 39.54 13.9" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M.9,1.84c.08-.05.17-.04.26-.05,0,.27-.1.53-.15.8-.2.93-.31,1.89-.36,2.84-.03.72-.05,1.44.02,2.15.04.4.07.8.19,1.18.04.15.11.3.1.46-.17.11-.36-.02-.46-.17-.28-.41-.37-.92-.43-1.41-.11-1-.08-2,0-3,.06-.73.18-1.47.43-2.16.1-.23.19-.49.4-.64Z"/><path d="M1.96,5.55c.28-.44.71-.84,1.25-.9.22-.02.49-.05.65.13,0,.03-.01.08-.02.11-.23.1-.48.12-.7.25-.48.27-.72.8-.84,1.31-.11.56-.19,1.16,0,1.71.06.16.17.37.36.38.21,0,.35-.2.42-.37.23-.55.32-1.15.39-1.74.04-.3.09-.62.24-.89.08-.15.26-.19.41-.15.11.32,0,.66.01.98-.03.96-.07,2,.48,2.83-.15.04-.32.09-.45,0-.37-.25-.5-.71-.59-1.13-.1.35-.22.72-.51.96-.31.28-.84.26-1.14-.03-.39-.36-.48-.93-.5-1.45,0-.7.14-1.42.52-2.01Z"/><path d="M7.83,3.33c.32-.69.87-1.26,1.27-1.9.13-.21.25-.45.33-.68.15-.43.1-.95-.53-.67-.18.09-.33.2-.49.34-.51.46-.98,1.16-1.36,1.73-.43.67-.8,1.43-.76,2.25.05,1.08.57,2.06.93,3.06.52,1.36.67,2.8.17,4.18-.15.46-.4.97-.54,1.39-.11.3-.16.55-.15.7.05.41.55-.02.73-.22,1.18-1.32,1.5-3.36,1.2-5.07-.11-.6-.3-1.17-.52-1.73-.42-1.1-.84-2.26-.29-3.38h0Z"/><path d="M22.77,3.33c-.32-.69-.87-1.26-1.27-1.9-.13-.21-.25-.45-.33-.68-.15-.43-.1-.95.53-.67.18.09.33.2.49.34.51.46.98,1.16,1.36,1.73.43.67.8,1.43.76,2.25-.05,1.08-.57,2.06-.93,3.06-.52,1.36-.67,2.8-.17,4.18.15.46.4.97.54,1.39.11.3.16.55.15.7-.05.41-.55-.02-.73-.22-1.18-1.32-1.5-3.36-1.2-5.07.11-.6.3-1.17.52-1.73.42-1.1.84-2.26.29-3.38h0Z"/><path d="M12.6,3.16c.25-.17.56-.03.72.19.48.6.57,1.39.68,2.13.25-.7.52-1.44,1.07-1.97.47-.46,1.28-.61,1.82-.2.45.34.64.92.73,1.45.22,1.45-.17,2.91-.02,4.36.05.81.29,1.6.65,2.33.22.29-.23.42-.45.35-.55-.14-.87-.67-1.08-1.15-.54-1.36-.5-2.85-.39-4.28.01-.59.1-1.23-.19-1.77-.16-.29-.59-.24-.79-.02-.38.42-.54.98-.7,1.52-.32,1.29-.57,2.6-.83,3.9-.16.61-.3,1.3-.81,1.72-.19.18-.64.2-.59-.16.03-.77.2-1.54.26-2.31.16-1.5.16-3.02.05-4.53-.04-.52-.17-1.03-.14-1.55Z"/><path d="M11.2,2.07c.23-.09.58,0,.58.24-.02.49-.47.94-1.01,1.1-.18.07-.35-.07-.34-.22-.02-.45.27-.95.78-1.12Z"/><path d="M10.8,4.44c.12-.06.31-.1.43,0,.13.18.07.4.07.61-.15,1.19-.23,2.4-.08,3.59.04.37.31.71.25,1.08-.16.11-.37.01-.5-.08-.29-.22-.43-.53-.55-.83-.29-.81-.31-1.68-.23-2.52.05-.46.07-.93.24-1.37.07-.18.17-.36.37-.46Z"/><path d="M19.47,2.07c-.23-.09-.58,0-.58.24.02.49.47.94,1.01,1.1.18.07.35-.07.34-.22.02-.45-.27-.95-.78-1.12Z"/><path d="M19.86,4.44c-.12-.06-.31-.1-.43,0-.13.18-.07.4-.07.61.15,1.19.23,2.4.08,3.59-.04.37-.31.71-.25,1.08.16.11.37.01.5-.08.29-.22.43-.53.55-.83.29-.81.31-1.68.23-2.52-.05-.46-.07-.93-.24-1.37-.07-.18-.17-.36-.37-.46Z"/><path d="M34.56,4.93c.53-.82,1.32-1.57,2.33-1.68.4-.04.91-.09,1.21.24,0,.05-.02.15-.03.2-.42.18-.9.22-1.3.46-.88.5-1.34,1.49-1.56,2.44-.21,1.04-.35,2.16,0,3.19.12.3.31.68.68.7.4,0,.64-.37.79-.69.44-1.02.6-2.13.73-3.23.08-.56.16-1.15.45-1.65.15-.27.49-.35.77-.27.2.59.01,1.22.02,1.83-.05,1.78-.12,3.71.89,5.27-.28.07-.59.18-.85-.02-.69-.46-.93-1.33-1.11-2.1-.19.65-.41,1.34-.95,1.79-.58.52-1.56.49-2.11-.06-.73-.68-.9-1.74-.93-2.69,0-1.3.27-2.63.96-3.74Z"/><path d="M27.45.79c.17-.28.48-.44.77-.57.07,1.05-.26,2.06-.34,3.1.47-.1.96-.18,1.41-.37.26-.1.51-.24.79-.25.12.38-.13.74-.38,1-.52.52-1.29.61-1.98.77-.08,1.47-.22,2.95-.11,4.43.05.62.14,1.25.37,1.84.14.37.44.66.68.97-.3.1-.63.21-.93.05-.81-.36-1.17-1.27-1.34-2.08-.32-1.65-.16-3.34,0-5-.38.15-.75.3-1.13.46-.06-.21-.09-.45.05-.64.28-.44.78-.65,1.23-.87.18-.97.35-1.99.91-2.83Z"/><path d="M32.85,1.54c.49-.53,1.52-.61,1.93.05.26.47.29,1.12-.06,1.56-.23-.23-.39-.54-.66-.72-.51-.16-.96.29-1.16.71-.91,1.88-.62,4.07-1.37,5.99-.17.41-.56,1-1.07.74-.04-.42.06-.83.12-1.23.23-1.59.37-3.19.27-4.79-.03-.9-.19-1.79-.21-2.69.27.08.6.13.77.38.41.54.49,1.23.58,1.88.21-.66.39-1.36.87-1.88Z"/></svg>
-    <span class="pill">Pizza da semana</span>
+    <span class="pill periodo" id="periodo"></span>
     <div class="hero-txt" id="destaque"></div>
   </div>
   <div class="photo" id="foto-destaque" style="aspect-ratio:1209/1245;background-image:url(data:image/webp;base64,UklGRuACAABXRUJQVlA4WAoAAAAQAAAAFwAAGAAAQUxQSC0BAAABkGttu2k735zz2LZtI7Ztp7Qq4yKSykllV7bT2XYuwFhzzi9YuoSImAC4ConcJes3H9uxrG80JLwVMPc13R/MhPRQyD9M6v8NycVQLhEY/Y7a0l2bz2lCAlAYqenQp+ZhKAEh6z5S07fmBihEJpygQ//WYT9INdQYBnXsLkSk7KcOZPgmPqbuE00gUrcndr0Jw3BSco93YWguTOrxNpz1yR1PwzBcmNRwjToYTf+4yg3WBrL8XKSKhr2yJojmboGU5o10AljzqxmILB96k44v+4sHISGSmqfdIo11M4Z8USYFIDPaxh1wSKO11pb8cq5NCABQaY39Vlz/Ttf7a0cWRCu4yviSloHzNp2+fHzX8qbslFgJ74jkwsq65qaawtT4SAH/MiYpNSUxNgKeAFZQOCCMAQAAUAgAnQEqGAAZAD7tZqpPKaWjoigNUTAdiWwAnTMl+ZfWXWKju3/3xvXHOxT3gxiTNi/EBOjgFFS+vwLBs253Fa/aMW3f1V4LZ04AAPcd34K2oKS1jhXNEF6v4V8D7gWzItTb1+pCNLjx3/tOFwoh++Ioddlj0bnHElJyj8fFv0gwhvq4zbFNf7hiSjcVmxNjSWkj844yAG6h0+1XiNG1XyyGp3y7fVj44pQRuZSRXFM7S7lUVYHqBIOdeGNF/Pb4u+stCaI67mquUUOdYGo3l5aY+RsorVHdJRQ94ap8ppOFqGsAl+L1GtWu8ORsk4/Ez1zoUf7isq21nDdkK+c6ny7lBEbCTfYsbsc79F6EtqDoxhS3N+V7/jxMYYEomuvsLbYv/9nfw0+6h9IqEpU7IB+dVpBPDjOCIlDZdVe7Y8KQdwyoew9iuNQuud/1CxJRGIEGYvFdRX3BhdAr2k8/d7Rb5tCifHTL5ipZ/+iSIoz0G/YgP3OZri//BFb/zZVpBHw3/5cRfbsLHIAA)">
@@ -300,7 +308,7 @@ textarea.campo{min-height:70px;resize:vertical}
       <ol class="passos">
         <li class="passo"><span class="num">1</span><div><h3>Escolhe</h3><p>Toca no + das pizzas que tu quer.</p></div></li>
         <li class="passo"><span class="num">2</span><div><h3>Marca o horário</h3><p id="passo-dias"></p></div></li>
-        <li class="passo"><span class="num"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span class="vh">3</span></span><div><h3>Manda no WhatsApp</h3><p>O pedido sai pronto do teu WhatsApp. A gente confirma e manda o Pix.</p></div></li>
+        <li class="passo"><span class="num"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span class="vh">3</span></span><div><h3>Manda no WhatsApp</h3><p>O pedido sai pronto do teu WhatsApp. A gente confirma o horário e manda o Pix.</p></div></li>
         <li class="passo"><span class="num">4</span><div><h3>Busca</h3><p id="passo-end"></p></div></li>
       </ol>
       <div class="fluxo-cta"><button class="cta" id="cta-fluxo" type="button">Montar meu pedido</button></div>
@@ -333,7 +341,6 @@ textarea.campo{min-height:70px;resize:vertical}
       </div>
     </div>
     <div class="rod-base">
-      <span class="pill" id="periodo"></span>
       <small>© 2026 La Sinistra · Nova Petrópolis/RS</small>
     </div>
   </div>
@@ -363,7 +370,7 @@ textarea.campo{min-height:70px;resize:vertical}
       <div class="aviso" id="aviso" role="status"><svg viewBox="0 0 37.47 71.5" fill="currentColor" aria-hidden="true"><path d="M27.72,8.05c.91-1.47,1.43-3.14,2.15-4.72.31-.78.71-1.56.81-2.41.07-.66-.9-1.02-1.28-.48-.52.68-.74,1.53-1.08,2.3-.62,1.6-1.44,3.13-1.87,4.8-.23.69.98,1.24,1.27.5Z"/><path d="M22.78,7.05c.07-1.26-.23-2.51-.35-3.76-.16-.97-.14-1.99-.5-2.91-.29-.56-1.25-.48-1.4.13-.15.69.08,1.4.14,2.1.23,1.55.17,3.17.69,4.66.32.61,1.34.47,1.43-.22Z"/><path d="M37.16,6.09c-.77-.66-1.51.48-2.15.83-1.29,1.04-2.61,2.03-3.88,3.09-.3.28-.74.62-.59,1.08.11.63.96.85,1.4.4,1.7-1.21,3.26-2.6,4.9-3.89.47-.3.84-1.06.33-1.5Z"/><path d="M25.74,15.2h-.06s-.02-.07-.02-.07c-.34-.96-1-1.52-1.96-1.68-1.78-.3-3.94.86-4.52,1.59l-.1.13-.07-.15c-.62-1.35-1.48-2.09-2.55-2.18-3.89-.33-9.32,7.55-9.55,7.89-3.9,5.62-4.74,9.07-5.91,14.68-.59,2.84-.88,4.25-.96,5.92-.23,4.8.81,7.97,1.73,9.78,1.47,2.9,3.43,4.03,5.91,5.45,1.89,1.08,4.02,2.31,6.45,4.59,2.94,2.76,5.33,6.19,7.08,10.2.14.12.26.17.34.14h0c.11-.04.29-.28.21-1.56-.33-4.96-6.41-10.46-6.47-10.52-3.38-3.03-5.56-4.28-7.16-5.2-1.72-.98-2.75-1.58-3.84-3.53-2.33-4.21-1.72-8.99-1.43-11.29.13-.99.61-3.72,2.32-7.62,3.46-7.86,10.15-15.38,12.25-14.75.52.16,1.06.96,1.16,1.71.07.57-.12,1.02-.55,1.27-3.65,2.16-3.97,4.65-4.34,7.54-.1.79-.21,1.61-.39,2.46-.28,1.31-.65,2.49-1.69,4.28-.26.45-.17,1.24-.07,2.08.1.87.21,1.85-.03,2.68-.12.73-.6,1.59-1.18,2.13-.5.46-1.21,1.18-1.62,1.61l3.3-1.34c1.22-.52,2.07.51,2.57,1.13l.06.07-.06.06s-1.82,1.88-3.39,3.77c3.58-2.1,5.78-3.21,5.8-3.22l.14-.07v.16c.03.84-.15,1.37-.35,1.92-.14.4-.29.82-.36,1.37.44-.43.79-.71,1.09-.95.45-.36.83-.68,1.38-1.34l.11-.13.07.15c.21.48.37.98.53,1.46.17.51.34,1.04.57,1.54h0c1.18-4.29-.37-7.46-2.02-10.83-1.52-3.1-3.09-6.31-2.56-10.59.03-.87.28-2.17,1.34-3.44.4-.47.87-.9,1.42-1.26,1.11-.57,1.85-.68,2.5-.4,1.25.56,2.17,2.67,3.68,8.36.48,1.92.65,2.89.77,3.59.13.75.2,1.13.52,1.98.88,2.28,1.53,3.04,2.95,4.71.53.62,1.19,1.4,2,2.43,2.67,3.37,4.23,7.13,4.62,11.16.09.71.14,1.49.18,2.33.08,1.49.16,3.02.56,4.1.05.1.15.27.26.26.25-.03.6-.9.77-1.68.72-3.33-.06-7.42-.07-7.46-.61-2.57-1.52-5.12-2.7-7.57-1.18-1.85-2.37-3.31-3.41-4.59-2.57-3.17-4.43-5.46-3.51-10.34.86-2.58,1.33-5.14,1.39-7.63.04-3.81-.63-4.95-3.12-5.28ZM16.68,15.8c-4.32,1.65-6.86,5.39-9.32,8.99-.98,1.45-1.91,2.81-2.95,4.05l-.33.4.16-.49c1.16-3.67,2.99-6.99,5.44-9.87,1.7-2.03,3.88-4.34,5.61-4.21.59.04,1.08.38,1.45.98l.06.1-.11.04ZM17.22,40.95v.03s0,.03,0,.03c-.17.39-.47.65-.88.78-.12.04-.25.06-.38.07h-.04s-.03-.03-.03-.03c-.85-.77-1.82-1.48-2.97-2.15l-.05-.03v-.06c.06-.7,0-1.41-.06-2.09-.13-1.54-.26-3.14.94-4.69l.13-.17.05.2c.37,1.44,1.03,2.8,1.67,4.12.62,1.27,1.26,2.59,1.63,3.98ZM20.56,19.46l-.11.21-.1-.07c-.77-.58-1.02-1.48-.7-2.48.39-1.2,1.66-2.43,3.32-2.47.4,0,.78.26.89.58.07.22,0,.43-.19.58-1.67.74-2.44,2.28-3.11,3.64ZM25.22,26.64l-.12.14-.06-.18c-.16-.48-.31-.98-.45-1.46-.53-1.82-1.08-3.7-2.61-5.02l-.07-.06.06-.08c.2-.26.38-.58.57-.92.54-.96,1.16-2.06,2.41-2.24.82-.01,1.41.35,1.77,1.08,1.08,2.23-.37,7.35-1.49,8.73Z"/></svg><span></span></div>
     </div>
     <div class="grupo">
-      <span class="lb" id="lb-hora">Horário</span>
+      <span class="lb" id="lb-hora">Horário preferido</span>
       <div class="chips h" id="horas" role="group" aria-labelledby="lb-hora"></div>
       <p class="dica" id="dica-hora">Escolhe o dia primeiro.</p>
     </div>
@@ -376,7 +383,10 @@ textarea.campo{min-height:70px;resize:vertical}
       <textarea class="campo" id="obs" maxlength="200" placeholder="Opcional"></textarea>
     </div>
     <div class="total"><span>Total</span><span class="preco" id="total"></span></div>
-    <p class="nota">A gente confirma o horário no WhatsApp e manda a chave Pix. O pedido vale depois do Pix.<br>Retirada: <span id="end-nota"></span></p>
+    <div class="nota">
+      <p><strong>O horário é confirmado no WhatsApp</strong>, junto com a chave Pix. O pedido vale depois do Pix.</p>
+      <p><strong>Retirada:</strong> <span id="end-nota"></span></p>
+    </div>
    </div>
   </div>
   <div class="sh-foot">
@@ -430,6 +440,7 @@ textarea.campo{min-height:70px;resize:vertical}
   /* ---------- render do cardápio ---------- */
   var D = C.destaque;
   $('#destaque').innerHTML =
+    '<span class="pill tag">Pizza da semana</span>' +
     '<h1 class="titulo">' + esc(D.nome) + '<span class="script">' + esc(D.script) + '</span></h1>' +
     '<p class="desc">' + descHTML(D.descricao) + '</p>' +
     '<div class="hero-buy"><span class="preco">' + brl(D.preco) + '</span>' + (aberto ? addBtn(D.id, true) : '') + '</div>';
@@ -587,7 +598,8 @@ textarea.campo{min-height:70px;resize:vertical}
     var linhas = Object.keys(cart).map(function(id){ return cart[id] + 'x ' + P[id].nome + ' · ' + brlTxt(cart[id] * P[id].preco); });
     var t = 'Oi, La Sinistra! Quero fazer um pedido:\n\n' + linhas.join('\n') +
       '\n\nTotal: ' + brlTxt(soma()) +
-      '\nRetirada: ' + d.rotulo.toLowerCase() + ', ' + fmtDia(d) + ', às ' + extra.hora +
+      '\nRetirada: ' + d.rotulo.toLowerCase() + ', ' + fmtDia(d) +
+      '\nHorário preferido: ' + extra.hora +
       '\nNome: ' + extra.nome.trim();
     if (extra.obs.trim()) t += '\nObs: ' + extra.obs.trim();
     return t;
@@ -595,8 +607,9 @@ textarea.campo{min-height:70px;resize:vertical}
 
   var concluir = function(url, d, hora){
     urlFeito = url;
-    feito.innerHTML = '<p class="script">reservado</p><p>' + esc(d.rotulo) + ', ' + fmtDia(d) + ', às ' + esc(hora) +
-      '.<br>Agora é só enviar a mensagem que abriu no teu WhatsApp. A gente responde com o Pix.</p>';
+    feito.innerHTML = '<p class="script">quase lá</p><p>Agora é só enviar a mensagem que abriu no teu WhatsApp.<br><br>' +
+      'Teu horário (' + esc(d.rotulo.toLowerCase()) + ', ' + fmtDia(d) + ', às ' + esc(hora) + ') é confirmado por lá, junto com o Pix. ' +
+      'Se esse horário já tiver pedido, a gente combina outro contigo.</p>';
     feito.hidden = false; form.hidden = true;
     cart = {}; extra.hora = null; pintar();
     enviar.innerHTML = enviarHTML.replace('Enviar no WhatsApp', 'Abrir o WhatsApp de novo');
