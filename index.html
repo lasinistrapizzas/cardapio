@@ -22,7 +22,7 @@
 <link rel="preload" href="fonts/playfair-display-sc-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="img/destaque-480.avif 480w, img/destaque-800.avif 800w, img/destaque-1100.avif 1100w"
-      imagesizes="(min-width: 760px) 440px, 110vw">
+      imagesizes="(min-width: 760px) 440px, 125vw">
 <style>
 @font-face{font-family:"DM Mono";src:url(fonts/dm-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"DM Mono";src:url(fonts/dm-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
@@ -85,7 +85,7 @@ section:first-of-type{padding-top:30px}
 
 /* destaque */
 .hero{position:relative;margin-top:22px}
-.hero .foto{width:calc(100vw + 84px);max-width:none;margin-left:calc(50% - 50vw - 48px)}
+.hero .foto{width:calc((100vw + 84px) * 1.15);max-width:none;margin-left:calc((100vw + 84px) * -.0909)}
 .foto{position:relative;width:100%;max-width:420px;margin:0 auto;aspect-ratio:var(--ar);background-size:100% 100%;background-repeat:no-repeat}
 .foto img{width:100%;height:auto;opacity:0;transition:opacity .6s ease}
 .foto img.ok{opacity:1}
@@ -123,9 +123,10 @@ section:first-of-type{padding-top:30px}
 
 .doce{margin-top:6px}
 .doce .foto{width:calc((100vw + 84px) * .85);max-width:none;margin:0 0 0 calc(50% - 50vw - 40px)}
-.doce .nm{font-weight:500;font-size:17px;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;margin-top:14px}
-.doce .desc{font-size:13.5px;line-height:1.6;color:var(--tx);margin-top:6px}
-.doce .rb{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.doce .it{padding-top:14px}
+.doce .row{align-items:flex-end}
+.doce .row .price{margin-bottom:9px}
+.doce .row .dots{margin-bottom:14px}
 
 /* como funciona */
 .passos{list-style:none;display:grid;gap:10px;margin-top:20px;counter-reset:p}
@@ -230,7 +231,7 @@ textarea.campo{min-height:72px;resize:vertical}
   .nav a{font-size:12.5px;flex:1}
   .doce{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:center}
   .doce .foto{width:calc(85% + 40px);margin:0 0 0 -40px}
-  .doce .nm{margin-top:0}
+  .doce .it{padding-top:0}
   .passos{grid-template-columns:1fr 1fr}
   .rod-cols{grid-template-columns:repeat(3,1fr);column-gap:40px}
   dialog.sheet{margin:auto;border-radius:20px}
@@ -261,10 +262,10 @@ textarea.campo{min-height:72px;resize:vertical}
     <section id="semana" aria-labelledby="t-semana">
       <h2 class="sh" id="t-semana"><span>Pizza da semana</span><span class="ln"></span></h2>
       <div class="hero" id="destaque">
-        <div class="foto" id="foto-destaque" style="--ar:1209/1245;background-image:url(data:image/webp;base64,UklGRuACAABXRUJQVlA4WAoAAAAQAAAAFwAAGAAAQUxQSC0BAAABkGttu2k735zz2LZtI7Ztp7Qq4yKSykllV7bT2XYuwFhzzi9YuoSImAC4ConcJes3H9uxrG80JLwVMPc13R/MhPRQyD9M6v8NycVQLhEY/Y7a0l2bz2lCAlAYqenQp+ZhKAEh6z5S07fmBihEJpygQ//WYT9INdQYBnXsLkSk7KcOZPgmPqbuE00gUrcndr0Jw3BSco93YWguTOrxNpz1yR1PwzBcmNRwjToYTf+4yg3WBrL8XKSKhr2yJojmboGU5o10AljzqxmILB96k44v+4sHISGSmqfdIo11M4Z8USYFIDPaxh1wSKO11pb8cq5NCABQaY39Vlz/Ttf7a0cWRCu4yviSloHzNp2+fHzX8qbslFgJ74jkwsq65qaawtT4SAH/MiYpNSUxNgKeAFZQOCCMAQAAUAgAnQEqGAAZAD7tZqpPKaWjoigNUTAdiWwAnTMl+ZfWXWKju3/3xvXHOxT3gxiTNi/EBOjgFFS+vwLBs253Fa/aMW3f1V4LZ04AAPcd34K2oKS1jhXNEF6v4V8D7gWzItTb1+pCNLjx3/tOFwoh++Ioddlj0bnHElJyj8fFv0gwhvq4zbFNf7hiSjcVmxNjSWkj844yAG6h0+1XiNG1XyyGp3y7fVj44pQRuZSRXFM7S7lUVYHqBIOdeGNF/Pb4u+stCaI67mquUUOdYGo3l5aY+RsorVHdJRQ94ap8ppOFqGsAl+L1GtWu8ORsk4/Ez1zoUf7isq21nDdkK+c6ny7lBEbCTfYsbsc79F6EtqDoxhS3N+V7/jxMYYEomuvsLbYv/9nfw0+6h9IqEpU7IB+dVpBPDjOCIlDZdVe7Y8KQdwyoew9iuNQuud/1CxJRGIEGYvFdRX3BhdAr2k8/d7Rb5tCifHTL5ipZ/+iSIoz0G/YgP3OZri//BFb/zZVpBHw3/5cRfbsLHIAA)">
+        <div class="foto" id="foto-destaque" style="--ar:1209/1245;background-image:url(data:image/webp;base64,UklGRtACAABXRUJQVlA4WAoAAAAQAAAAFwAAGAAAQUxQSC0BAAABkGttu2k735zz2LZtI7Ztp7Qq4yKSykllV7bT2XYuwFhzzi9YuoSImAC4ConcJes3H9uxrG80JLwVMPc13R/MhPRQyD9M6v8NycVQLhEY/Y7a0l2bz2lCAlAYqenQp+ZhKAEh6z5S07fmBihEJpygQ//WYT9INdQYBnXsLkSk7KcOZPgmPqbuE00gUrcndr0Jw3BSco93YWguTOrxNpz1yR1PwzBcmNRwjToYTf+4yg3WBrL8XKSKhr2yJojmboGU5o10AljzqxmILB96k44v+4sHISGSmqfdIo11M4Z8USYFIDPaxh1wSKO11pb8cq5NCABQaY39Vlz/Ttf7a0cWRCu4yviSloHzNp2+fHzX8qbslFgJ74jkwsq65qaawtT4SAH/MiYpNSUxNgKeAFZQOCB8AQAAEAgAnQEqGAAZAD7taKpPqaYjoigNUTAdiWwAnTMl+ZfWXWKmfPR2R3XHVcFaCgA9nz4AJ0gMea4DDCzgiy2lohx0liLtbibMAADZn4mLRgdxTuWirjPq8BxhWklrhkny1+pCemu/13dCzmuxOtqvc6bYA1CfSWS6uU7AwD0k8RwAm0ZGRxqYtnodLbeeeVVbAE4+hFJ2twobhVVx4i46/ZwCkW7xp79Pu0cbNYhRL+ljNVMaClxB/59qEeqEW5OhBQ/KAtopeS5YQtVqrPCdBDy9br6Pfb2cVfoh0cvckbUKxBpqVEH0mzqKaTUIPjq4K9XpTwqwVgFrpHMeXmeg6+59VArwj42OULhyqkPs+N1vjj5RlGxsf6RW7XQVfepNF9eUNYy1QjDxLXADpX3CAgc5/vT2agq6p6yvzkmR9fhz/6dKgJn62mIYnk9yDRR1chYddONWOtv73lWsGF+qjCenaQP2ID9zma4v/wUb/NlBULWe7Tpkfd/lcAA=)">
           <picture>
-            <source type="image/avif" srcset="img/destaque-480.avif 480w, img/destaque-800.avif 800w, img/destaque-1100.avif 1100w" sizes="(min-width: 760px) 440px, 110vw">
-            <img src="img/destaque-800.webp" srcset="img/destaque-480.webp 480w, img/destaque-800.webp 800w, img/destaque-1100.webp 1100w" sizes="(min-width: 760px) 440px, 110vw" width="1209" height="1245" alt="" fetchpriority="high" decoding="async">
+            <source type="image/avif" srcset="img/destaque-480.avif 480w, img/destaque-800.avif 800w, img/destaque-1100.avif 1100w" sizes="(min-width: 760px) 440px, 125vw">
+            <img src="img/destaque-800.webp" srcset="img/destaque-480.webp 480w, img/destaque-800.webp 800w, img/destaque-1100.webp 1100w" sizes="(min-width: 760px) 440px, 125vw" width="1209" height="1245" alt="" fetchpriority="high" decoding="async">
           </picture>
         </div>
       </div>
@@ -293,7 +294,7 @@ textarea.campo{min-height:72px;resize:vertical}
 
     <hr class="d" style="margin-top:44px">
     <div class="code" aria-hidden="true"></div>
-    <p class="slogan">Tu pede. A gente assa. Tu busca.</p>
+    <p class="slogan">Tu pede, a gente prepara, tu busca</p>
   </div>
 </main>
 
@@ -400,6 +401,7 @@ textarea.campo{min-height:72px;resize:vertical}
   var aberto = dias.some(function(d){ return d.aberto; });
   var fmtDia = function(d){ var p = d.data.split('-'); return p[2] + '/' + p[1]; };
   var listaDias = function(){
+    if (C.diasTexto) return C.diasTexto;
     var n = C.dias.filter(function(d){ return d.aberto; }).map(function(d){ return d.rotulo.toLowerCase(); });
     return n.length > 1 ? n.slice(0, -1).join(', ') + ' e ' + n[n.length - 1] : (n[0] || '');
   };
@@ -423,11 +425,11 @@ textarea.campo{min-height:72px;resize:vertical}
       '<p class="desc">' + descHTML(p.descricao) + '</p></article>';
   }).join('');
   $('#lista-doces').innerHTML = C.doces.map(function(p){
-    return '<article class="doce"><div class="foto" id="foto-doce" style="--ar:1195/1199;background-image:url(data:image/webp;base64,UklGRpgCAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSCwBAAABkHPbtrG9E9oXn21blY2osm0nleuMVEmVlN/IT0hlO7Xt1Lad596zPz7PGxETgJEaQP3Wgb0ziwGlMLaBXXL0B0m+O7MCUGMYtN4g6Z0TkgezlBrFYNUPBk5IUlzA8xlmhMFm0jHkfw5YCxjMZOAZVpybrzRU7hvxDO/5rNIAexgwquOueB33SHw0uVIWV/iBEkn4aUJCx7+Y/F2YOpvCGLyfk9XrGN3z8aSM/Of0MTjemozDEkSS/zvrLObTRfG8PasAOukcgwjCfW2JULrtNV0ox8vzSxWgE+Z8ppMxxPHR+uZEALApSx+S4kcKeW9HbzpGtRmdB75w9E/HNvVlq9Fg0qoX7j5y/dG1s/t3zGpKVwiZkF3ROH7K5AkdDfnxCK9MUnp2dkaSwZhWUDggRgEAADAHAJ0BKhgAGAA+7WarTymlo6IoDVEwHYlsAJ0zEvensbKqtMA3ktfgaQJl8LfZ4xQKO7+I3HCsxPQY5ioW441OAAD+ZYDhqjeRRu9+HkH2y1HiOW2j4DqAV3sju2RO2C9jBT/FkAFXfHWwzcbZ+zQoWZWVr7SstOWmpV6RzhYCy4Lh6+/ZPhmBhHmQkljtDnwt8W3a/56o+9bg8JJ5ZIO+DFZwwq8x/G1tG498H2AZFx6yiZ5fkjX/MiYwyufrnfZzFSYumlbRWxr0+4Yx0X2qZsxjvBtW1hwTnUUAOcEzSO67gP0eK4N9WptKyymOEafYs598JKGrjg38ILDhkJLGVM+UOusWOiaaDwJa2UydUTMHE5dub175sGNTjRTkpLdjr0wipbyD8IcuHhMo3FtWUOLzhQvORh4JFp8Ik1MJj+rb5AAA)"><picture>' +
+    return '<article class="doce"><div class="foto" id="foto-doce" style="--ar:1195/1199;background-image:url(data:image/webp;base64,UklGRpoCAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSCwBAAABkHPbtrG9E9oXn21blY2osm0nleuMVEmVlN/IT0hlO7Xt1Lad596zPz7PGxETgJEaQP3Wgb0ziwGlMLaBXXL0B0m+O7MCUGMYtN4g6Z0TkgezlBrFYNUPBk5IUlzA8xlmhMFm0jHkfw5YCxjMZOAZVpybrzRU7hvxDO/5rNIAexgwquOueB33SHw0uVIWV/iBEkn4aUJCx7+Y/F2YOpvCGLyfk9XrGN3z8aSM/Of0MTjemozDEkSS/zvrLObTRfG8PasAOukcgwjCfW2JULrtNV0ox8vzSxWgE+Z8ppMxxPHR+uZEALApSx+S4kcKeW9HbzpGtRmdB75w9E/HNvVlq9Fg0qoX7j5y/dG1s/t3zGpKVwiZkF3ROH7K5AkdDfnxCK9MUnp2dkaSwZhWUDggSAEAAPAGAJ0BKhgAGAA+7WarTymlo6IoDVEwHYlsAJ0zaHjQYBvLiNfHASoHtmH/kq51p2ABosG/KpZQ6N2OqFs0xAAA/mXc9FbvsIZU8VW6tDH6PohCIbgzB4dOTE7lOy9c9YggB57jsZkWa7rQ09UBmysrV8n97niu6WJtsn/TiKLDBcH1YRvhqX1+W8R4MnZs8QnyEYV8y5J+9bEdi7hZICtf71HPnOhXE2okO/9/bQt7flzrdtjBk21LJ3xy1z1P6+fD+5QIe5sCkU+4oYCYuWCpZjHUvu4iF9wzebjo88+eRzTntBNNX478pT12JxDOMG26fNWoCwCrEdSD1CvYglRrUymL0OcNBJWEtBxDA+WanGvXq34PaAQ8lErh8cH1rxM78f1A2UYw1DeH4oELOdrIPc7M/h5YdRG89/hTNjfPASd8aAUQgAA=)"><picture>' +
       '<source type="image/avif" srcset="img/doce-480.avif 480w, img/doce-800.avif 800w, img/doce-1100.avif 1100w" sizes="(min-width: 760px) 380px, 94vw">' +
       '<img src="img/doce-800.webp" srcset="img/doce-480.webp 480w, img/doce-800.webp 800w, img/doce-1100.webp 1100w" sizes="(min-width: 760px) 380px, 94vw" width="1195" height="1199" alt="" loading="lazy" decoding="async"></picture></div>' +
-      '<div><h3 class="nm">' + esc(p.pedido || p.nome) + '</h3><p class="desc">' + descHTML(p.descricao) + '</p>' +
-      '<div class="rb">' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div></div></article>';
+      '<div class="it"><div class="row"><h3 class="nm">' + esc(p.pedido || p.nome) + '</h3><span class="dots" aria-hidden="true"></span>' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div>' +
+      '<p class="desc">' + descHTML(p.descricao) + '</p></div></article>';
   }).join('');
 
   /* textos do fluxo e do rodapé */
@@ -439,7 +441,7 @@ textarea.campo{min-height:72px;resize:vertical}
   $('#meta-ret').textContent = 'Retirada ' + faixa.replace(' às ', ' às ');
   $('#mapa').href = C.endereco.mapa;
   $('#rod-end').innerHTML = esc(C.endereco.linha) + '<br>' + esc(C.endereco.cidade);
-  $('#rod-dias').textContent = diasTxt + ', ' + faixa;
+  $('#rod-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa;
   $('#end-nota').textContent = C.endereco.linha + ', ' + C.endereco.cidade;
   var w = C.whatsapp.replace(/^55/, '');
   var wa = $('#wa'); wa.href = 'https://wa.me/' + C.whatsapp; wa.querySelector('span').textContent = '(' + w.slice(0,2) + ') ' + w.slice(2, -4) + '-' + w.slice(-4);

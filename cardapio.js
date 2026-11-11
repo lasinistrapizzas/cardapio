@@ -15,6 +15,8 @@ window.CARDAPIO = {
   // Dias de retirada. "aberto: false" mostra o aviso e não deixa escolher.
   // Pedidos de cada dia fecham no horário de "limite" daquele dia.
   limite: "18:00",
+  // Como os dias aparecem nos textos ("Como funciona" e rodapé)
+  diasTexto: "de sexta a domingo",
   dias: [
     { rotulo: "Sexta",   data: "2026-11-13", aberto: true },
     { rotulo: "Sábado",  data: "2026-11-14", aberto: false,
