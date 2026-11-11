@@ -14,6 +14,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://lasinistrapizzas.github.io/cardapio/">
 <meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/dm-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -59,7 +60,7 @@ a{color:inherit}
 .tk.grain::after{-webkit-mask:radial-gradient(circle at 8px 0,transparent 7px,#000 7.5px) -8px 0/16px 51% repeat-x,radial-gradient(circle at 8px 100%,transparent 7px,#000 7.5px) -8px 100%/16px 51% repeat-x;mask:radial-gradient(circle at 8px 0,transparent 7px,#000 7.5px) -8px 0/16px 51% repeat-x,radial-gradient(circle at 8px 100%,transparent 7px,#000 7.5px) -8px 100%/16px 51% repeat-x}
 .tk>*{position:relative;z-index:1}
 .in{padding:0 var(--pad)}
-.hdr{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:44px var(--pad) 34px}
+.hdr{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;padding:44px var(--pad) 34px}
 .hdr .logo{width:clamp(92px,25vw,124px);flex:none;color:var(--k)}
 .pill{font-weight:500;font-size:12px;letter-spacing:.06em;text-align:center;line-height:1.3;text-transform:uppercase;border:1.5px solid var(--k);border-radius:99px;padding:7px 12px 6px}
 
@@ -77,7 +78,7 @@ section:first-of-type{padding-top:30px}
 .sh{display:flex;align-items:baseline;gap:12px;font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
 .sh .ln{flex:1;border-top:1.5px solid var(--k);transform:translateY(-4px)}
 .sh .ex{letter-spacing:.06em;font-size:12.5px;text-transform:none}
-#t-como{font-size:clamp(50px,13.5vw,80px)}
+#t-como,#t-semana{font-size:clamp(50px,13.5vw,80px)}
 .sh.scr{display:block;white-space:nowrap;font-family:var(--script);font-weight:400;font-size:clamp(66px,19vw,92px);line-height:.8;letter-spacing:0;text-transform:none;color:var(--t);margin-left:-.04em}
 
 .price{font-weight:500;font-size:17px;white-space:nowrap;letter-spacing:.02em}
@@ -89,6 +90,8 @@ section:first-of-type{padding-top:30px}
 .foto{position:relative;width:100%;max-width:420px;margin:0 auto;aspect-ratio:var(--ar);background-size:100% 100%;background-repeat:no-repeat}
 .foto img{width:100%;height:auto;opacity:0;transition:opacity .6s ease}
 .foto img.ok{opacity:1}
+.js .foto{opacity:0;transform:translateY(22px) scale(.985);transition:opacity 1.6s ease,transform 1.8s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+.js .foto.vis{opacity:1;transform:none}
 .x-stamp{position:absolute;right:-4px;top:-6px;z-index:3;border:2.5px solid var(--t);outline:1px solid var(--t);outline-offset:3px;color:var(--t);font-weight:500;font-size:12px;letter-spacing:.16em;padding:7px 10px 6px;transform:rotate(6deg);background:rgba(248,245,238,.88);text-transform:uppercase}
 .hero h1{font-family:var(--sc);font-weight:900;font-size:clamp(34px,9.6vw,46px);line-height:.9;text-transform:uppercase;margin-top:18px}
 .hero h1 .ch{display:block;font-family:var(--script);font-weight:400;text-transform:none;font-size:2.2em;line-height:.62;color:var(--t);margin:-.02em 0 0 .02em;white-space:nowrap}
@@ -124,9 +127,6 @@ section:first-of-type{padding-top:30px}
 .doce{margin-top:6px}
 .doce .foto{width:calc((100vw + 84px) * .85);max-width:none;margin:0 0 0 calc(50% - 50vw - 40px)}
 .doce .it{padding-top:14px}
-.doce .row{align-items:flex-end}
-.doce .row .price{margin-bottom:9px}
-.doce .row .dots{margin-bottom:14px}
 
 /* como funciona */
 .passos{list-style:none;display:grid;gap:10px;margin-top:20px;counter-reset:p}
@@ -142,7 +142,12 @@ section:first-of-type{padding-top:30px}
 
 /* rodapé */
 .rodape{color:var(--c);width:min(100% - 20px, 880px);margin:0 auto;padding:48px var(--pad) calc(130px + env(safe-area-inset-bottom))}
+.sobre{padding-bottom:40px;margin-bottom:40px;border-bottom:1.5px dashed rgba(248,245,238,.3)}
+.sobre .logo-r{width:clamp(130px,36vw,170px);color:#fff;margin-bottom:26px}
+.rodape .sobre p{font-size:15.5px;line-height:1.65;max-width:34em}
+.rodape .sobre p+p{margin-top:12px}
 .rod-cols{display:grid;gap:34px}
+@media (max-width:759px){.rod-cols>div:first-child{padding-bottom:34px;border-bottom:1.5px dashed rgba(248,245,238,.3)}}
 .rodape h4{font-weight:500;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(248,245,238,.55);margin-bottom:12px}
 .rodape p{font-size:14.5px;line-height:1.65}
 .rodape p+p{margin-top:10px}
@@ -260,7 +265,7 @@ textarea.campo{min-height:72px;resize:vertical}
     <hr class="d"><div class="meta"><span id="meta-limite"></span><span id="meta-ret"></span></div><hr class="d">
 
     <section id="semana" aria-labelledby="t-semana">
-      <h2 class="sh" id="t-semana"><span>Pizza da semana</span><span class="ln"></span></h2>
+      <h2 class="sh scr" id="t-semana">Pizza da semana</h2>
       <div class="hero" id="destaque">
         <div class="foto" id="foto-destaque" style="--ar:1209/1245;background-image:url(data:image/webp;base64,UklGRtACAABXRUJQVlA4WAoAAAAQAAAAFwAAGAAAQUxQSC0BAAABkGttu2k735zz2LZtI7Ztp7Qq4yKSykllV7bT2XYuwFhzzi9YuoSImAC4ConcJes3H9uxrG80JLwVMPc13R/MhPRQyD9M6v8NycVQLhEY/Y7a0l2bz2lCAlAYqenQp+ZhKAEh6z5S07fmBihEJpygQ//WYT9INdQYBnXsLkSk7KcOZPgmPqbuE00gUrcndr0Jw3BSco93YWguTOrxNpz1yR1PwzBcmNRwjToYTf+4yg3WBrL8XKSKhr2yJojmboGU5o10AljzqxmILB96k44v+4sHISGSmqfdIo11M4Z8USYFIDPaxh1wSKO11pb8cq5NCABQaY39Vlz/Ttf7a0cWRCu4yviSloHzNp2+fHzX8qbslFgJ74jkwsq65qaawtT4SAH/MiYpNSUxNgKeAFZQOCB8AQAAEAgAnQEqGAAZAD7taKpPqaYjoigNUTAdiWwAnTMl+ZfWXWKmfPR2R3XHVcFaCgA9nz4AJ0gMea4DDCzgiy2lohx0liLtbibMAADZn4mLRgdxTuWirjPq8BxhWklrhkny1+pCemu/13dCzmuxOtqvc6bYA1CfSWS6uU7AwD0k8RwAm0ZGRxqYtnodLbeeeVVbAE4+hFJ2twobhVVx4i46/ZwCkW7xp79Pu0cbNYhRL+ljNVMaClxB/59qEeqEW5OhBQ/KAtopeS5YQtVqrPCdBDy9br6Pfb2cVfoh0cvckbUKxBpqVEH0mzqKaTUIPjq4K9XpTwqwVgFrpHMeXmeg6+59VArwj42OULhyqkPs+N1vjj5RlGxsf6RW7XQVfepNF9eUNYy1QjDxLXADpX3CAgc5/vT2agq6p6yvzkmR9fhz/6dKgJn62mIYnk9yDRR1chYddONWOtv73lWsGF+qjCenaQP2ID9zma4v/wUb/NlBULWe7Tpkfd/lcAA=)">
           <picture>
@@ -299,7 +304,17 @@ textarea.campo{min-height:72px;resize:vertical}
 </main>
 
 <footer class="rodape">
+  <div class="sobre">
+    <svg class="logo-r" viewBox="0 0 91.1 56" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M20.98.13c.21-.14.47-.12.71-.13,0,.75-.27,1.46-.42,2.19-.55,2.56-.85,5.17-.98,7.79-.09,1.96-.15,3.94.05,5.89.11,1.08.19,2.18.52,3.23.11.41.29.82.28,1.26-.47.3-.99-.06-1.25-.46-.77-1.13-1.01-2.53-1.17-3.86-.3-2.73-.21-5.49-.01-8.23.17-2.01.5-4.02,1.18-5.93.27-.63.51-1.35,1.1-1.75Z"/><path d="M23.89,10.3c.78-1.21,1.95-2.31,3.43-2.48.59-.06,1.34-.13,1.77.36-.01.07-.03.22-.05.29-.62.27-1.32.33-1.91.68-1.3.73-1.98,2.2-2.3,3.6-.31,1.53-.51,3.18,0,4.69.17.44.45,1,.99,1.03.59.01.95-.54,1.16-1.01.64-1.5.88-3.14,1.08-4.75.12-.83.24-1.69.66-2.43.22-.4.72-.52,1.13-.4.3.86.02,1.8.03,2.7-.08,2.62-.18,5.47,1.31,7.76-.41.11-.87.26-1.24-.03-1.02-.68-1.37-1.95-1.63-3.09-.28.96-.61,1.97-1.39,2.64-.86.76-2.29.72-3.11-.08-1.08-1-1.32-2.56-1.37-3.96.01-1.91.39-3.88,1.42-5.51Z"/><path d="M4.2,26.9c.87-1.9,2.38-3.45,3.48-5.2.37-.59.7-1.22.91-1.86.41-1.18.27-2.61-1.44-1.83-.49.24-.89.55-1.33.93-1.39,1.25-2.69,3.17-3.72,4.75C.91,25.54-.1,27.61,0,29.85c.12,2.96,1.56,5.63,2.56,8.37,1.43,3.71,1.83,7.66.48,11.46-.42,1.25-1.09,2.67-1.49,3.81-.29.83-.45,1.5-.41,1.91.15,1.12,1.5-.05,1.99-.59,3.23-3.62,4.12-9.2,3.27-13.89-.29-1.63-.82-3.2-1.41-4.74-1.15-3.02-2.29-6.2-.8-9.26h0Z"/><path d="M45.12,26.9c-.87-1.9-2.38-3.45-3.48-5.2-.37-.59-.7-1.22-.91-1.86-.41-1.18-.27-2.61,1.44-1.83.49.24.89.55,1.33.93,1.39,1.25,2.69,3.17,3.72,4.75,1.18,1.85,2.2,3.91,2.09,6.16-.12,2.96-1.56,5.63-2.56,8.37-1.43,3.71-1.83,7.66-.48,11.46.42,1.25,1.09,2.67,1.49,3.81.29.83.45,1.5.41,1.91-.15,1.12-1.5-.05-1.99-.59-3.23-3.62-4.12-9.2-3.27-13.89.29-1.63.82-3.2,1.41-4.74,1.15-3.02,2.29-6.2.8-9.26h0Z"/><path d="M17.29,26.46c.68-.46,1.52-.08,1.97.52,1.31,1.64,1.57,3.81,1.85,5.82.69-1.93,1.42-3.95,2.93-5.41,1.28-1.26,3.51-1.66,5-.54,1.24.94,1.75,2.51,2,3.98.6,3.97-.47,7.96-.06,11.94.13,2.23.8,4.38,1.79,6.37.61.79-.63,1.15-1.22.95-1.5-.38-2.38-1.83-2.95-3.16-1.47-3.72-1.38-7.8-1.07-11.72.03-1.61.27-3.37-.51-4.86-.45-.79-1.62-.67-2.15-.04-1.05,1.14-1.48,2.7-1.9,4.15-.88,3.53-1.56,7.11-2.28,10.68-.43,1.67-.81,3.56-2.22,4.7-.51.49-1.74.54-1.61-.43.09-2.12.56-4.21.71-6.32.43-4.12.44-8.27.12-12.4-.1-1.42-.46-2.82-.38-4.24Z"/><path d="M13.44,23.47c.62-.25,1.6-.02,1.59.66-.06,1.34-1.28,2.59-2.77,3.01-.49.2-.96-.18-.94-.59-.05-1.23.73-2.59,2.12-3.08Z"/><path d="M12.36,29.95c.34-.17.85-.27,1.18,0,.35.5.2,1.11.18,1.66-.4,3.26-.64,6.56-.22,9.83.1,1.01.85,1.93.69,2.96-.43.29-1.01.03-1.37-.22-.78-.6-1.19-1.45-1.5-2.28-.8-2.23-.86-4.6-.63-6.91.13-1.26.2-2.55.67-3.76.19-.48.46-1,1-1.26Z"/><path d="M36.09,23.47c-.62-.25-1.6-.02-1.59.66.06,1.34,1.28,2.59,2.77,3.01.49.2.96-.18.94-.59.05-1.23-.73-2.59-2.12-3.08Z"/><path d="M37.17,29.95c-.34-.17-.85-.27-1.18,0-.35.5-.2,1.11-.18,1.66.4,3.26.64,6.56.22,9.83-.1,1.01-.85,1.93-.69,2.96.43.29,1.01.03,1.37-.22.78-.6,1.19-1.45,1.5-2.28.8-2.23.86-4.6.63-6.91-.13-1.26-.2-2.55-.67-3.76-.19-.48-.46-1-1-1.26Z"/><path d="M77.46,31.28c1.44-2.25,3.62-4.3,6.39-4.61,1.1-.11,2.49-.25,3.3.67-.02.14-.06.41-.08.55-1.16.49-2.46.61-3.55,1.27-2.42,1.36-3.68,4.08-4.27,6.69-.57,2.86-.95,5.91,0,8.73.32.83.84,1.87,1.85,1.92,1.1.03,1.76-1.01,2.16-1.89,1.19-2.8,1.64-5.84,2.01-8.84.22-1.54.44-3.15,1.23-4.52.41-.74,1.33-.97,2.11-.75.56,1.61.03,3.35.05,5.02-.15,4.87-.34,10.17,2.44,14.44-.76.2-1.62.48-2.31-.05-1.9-1.27-2.55-3.64-3.03-5.75-.51,1.78-1.13,3.67-2.59,4.91-1.6,1.42-4.26,1.34-5.79-.15-2-1.86-2.46-4.76-2.55-7.37.03-3.55.73-7.21,2.63-10.26Z"/><path d="M57.99,19.95c.48-.78,1.3-1.21,2.11-1.57.18,2.87-.72,5.66-.93,8.5,1.3-.28,2.62-.5,3.85-1,.71-.27,1.4-.66,2.17-.69.32,1.04-.36,2.03-1.03,2.75-1.43,1.44-3.54,1.66-5.41,2.1-.23,4.04-.59,8.09-.31,12.13.14,1.71.38,3.43,1,5.03.39,1.03,1.19,1.81,1.87,2.65-.82.26-1.72.58-2.55.15-2.22-.98-3.21-3.48-3.67-5.7-.88-4.53-.43-9.16,0-13.71-1.03.42-2.06.83-3.09,1.27-.17-.58-.24-1.23.13-1.75.78-1.19,2.13-1.78,3.36-2.39.5-2.67.97-5.45,2.49-7.76Z"/><path d="M72.77,22c1.34-1.45,4.16-1.68,5.28.15.72,1.29.81,3.08-.16,4.27-.63-.64-1.06-1.47-1.81-1.97-1.4-.45-2.62.78-3.18,1.94-2.48,5.15-1.7,11.14-3.77,16.4-.46,1.12-1.52,2.73-2.93,2.04-.12-1.14.17-2.26.32-3.38.64-4.34,1.01-8.74.75-13.13-.07-2.46-.51-4.9-.59-7.36.75.22,1.64.35,2.11,1.05,1.13,1.47,1.33,3.38,1.59,5.15.56-1.8,1.08-3.73,2.38-5.16Z"/></svg>
+    <p>Pizza também é comida de verdade. A nossa massa leva farinha, água, sal, fermento e 48 horas de descanso.</p>
+    <p>Em cima, ingredientes que tu reconhece pelo nome. Sem atalho.</p>
+  </div>
   <div class="rod-cols">
+    <div>
+      <h4>A pizza</h4>
+      <p>Estilo napoletana<br>Tamanho único 30 cm</p>
+      <p class="fraco">Todas contêm glúten e lactose</p>
+    </div>
     <div>
       <h4>Retirada</h4>
       <p id="rod-end"></p>
@@ -310,11 +325,6 @@ textarea.campo{min-height:72px;resize:vertical}
       <h4>Contato</h4>
       <p><a id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span></span></a></p>
       <p><a id="ig" target="_blank" rel="noopener"><svg viewBox="4.2 72.1 8.3 8.4" fill="currentColor" aria-hidden="true"><path d="M10.52,73.68c-.27,0-.48.22-.48.48s.22.48.48.48.48-.22.48-.48-.22-.48-.48-.48Z"/><path d="M8.39,74.3c-1.11,0-2.02.91-2.02,2.02s.91,2.02,2.02,2.02,2.02-.91,2.02-2.02-.91-2.02-2.02-2.02ZM8.39,77.61c-.71,0-1.29-.58-1.29-1.29s.58-1.29,1.29-1.29,1.29.58,1.29,1.29-.58,1.29-1.29,1.29Z"/><path d="M9.99,80.42h-3.28c-1.36,0-2.46-1.11-2.46-2.46v-3.28c0-1.36,1.11-2.46,2.46-2.46h3.28c1.36,0,2.46,1.11,2.46,2.46v3.28c0,1.36-1.11,2.46-2.46,2.46ZM6.71,72.99c-.93,0-1.69.76-1.69,1.69v3.28c0,.93.76,1.69,1.69,1.69h3.28c.93,0,1.69-.76,1.69-1.69v-3.28c0-.93-.76-1.69-1.69-1.69h-3.28Z"/></svg><span></span></a></p>
-    </div>
-    <div>
-      <h4>A pizza</h4>
-      <p>Estilo napoletana<br>Tamanho único 30 cm<br>Longa fermentação</p>
-      <p class="fraco">Todas contêm glúten e lactose</p>
     </div>
   </div>
   <div class="rod-base"><span>© 2026 La Sinistra · Pizza Fatta in Casa</span></div>
@@ -448,6 +458,15 @@ textarea.campo{min-height:72px;resize:vertical}
   var ig = $('#ig'); ig.href = 'https://instagram.com/' + C.instagram; ig.querySelector('span').textContent = '@' + C.instagram;
 
   /* fotos: aparecem quando carregam */
+  /* entrada suave das fotos na primeira vez que aparecem na tela */
+  var fotos = $$('.foto');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    fotos.forEach(function(f){ io.observe(f); });
+  } else fotos.forEach(function(f){ f.classList.add('vis'); });
+
   $$('.foto').forEach(function(ph){
     var img = ph.querySelector('img');
     var ok = function(){ img.classList.add('ok'); setTimeout(function(){ ph.style.backgroundImage = 'none'; }, 700); };
