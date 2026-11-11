@@ -8,8 +8,9 @@ window.CARDAPIO = {
   // WhatsApp que recebe os pedidos (55 + DDD + número, só dígitos)
   whatsapp: "5551999442176",
 
-  // Selo do período, no topo da página
+  // Período: texto completo (rodapé) e curto (selo do topo)
   periodo: "Cardápio de 13 a 15 de novembro",
+  periodoCurto: "Cardápio de 13 a 15 nov",
 
   // Dias de retirada. "aberto: false" mostra o aviso e não deixa escolher.
   // Pedidos de cada dia fecham no horário de "limite" daquele dia.
@@ -17,12 +18,12 @@ window.CARDAPIO = {
   dias: [
     { rotulo: "Sexta",   data: "2026-11-13", aberto: true },
     { rotulo: "Sábado",  data: "2026-11-14", aberto: false,
-      aviso: "Sábado não rola. Acabou a massa, acabou a noite. Sexta ou domingo?" },
+      aviso: "Sábado não rola. Acabou a massa. Sexta ou domingo?" },
     { rotulo: "Domingo", data: "2026-11-15", aberto: true }
   ],
 
   // Horários de retirada oferecidos
-  horarios: ["19h00", "19h15", "19h30", "19h45", "20h00", "20h15", "20h30", "20h45", "21h00"],
+  horarios: ["19h", "19h15", "19h30", "19h45", "20h", "20h15", "20h30", "20h45", "21h"],
 
   // Bloqueio automático de horários: desligado (vazio).
   // Os horários são confirmados manualmente pelo WhatsApp.

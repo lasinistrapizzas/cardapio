@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La Sinistra · Pizza da semana</title>
 <meta name="description" content="Pizza napoletana de longa fermentação, feita à mão em Nova Petrópolis. Monta teu pedido e retira com hora marcada.">
-<meta name="theme-color" content="#a07552">
+<meta name="theme-color" content="#050302">
 <meta property="og:type" content="website">
 <meta property="og:title" content="La Sinistra · Pizza da semana">
 <meta property="og:description" content="Tomate confit com pesto e o cardápio de 13 a 15/11. Pede aqui, busca com hora marcada.">
@@ -16,336 +16,309 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/dm-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dm-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/cherolina.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/playfair-display-sc-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/playfair-display-sc-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playfair-display-sc-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
       imagesrcset="img/destaque-480.avif 480w, img/destaque-800.avif 800w, img/destaque-1100.avif 1100w"
-      imagesizes="(min-width: 960px) min(48vw, 640px), 112vw">
+      imagesizes="(min-width: 760px) 440px, 110vw">
 <style>
+@font-face{font-family:"DM Mono";src:url(fonts/dm-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"DM Mono";src:url(fonts/dm-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Cherolina";src:url(fonts/cherolina.woff2) format("woff2");font-display:swap}
-@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-700-normal.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-700-italic.woff2) format("woff2");font-weight:700;font-style:italic;font-display:swap}
-@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-900-normal.woff2) format("woff2");font-weight:900;font-style:normal;font-display:swap}
-@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-900-italic.woff2) format("woff2");font-weight:900;font-style:italic;font-display:swap}
+@font-face{font-family:"Playfair SC";src:url(fonts/playfair-display-sc-latin-900-normal.woff2) format("woff2");font-weight:900;font-display:swap}
 
 :root{
-  --preto:#17130D; --preto-rico:#010203; --creme:#F8F5EE; --creme-q:#F3ECDD; --terracota:#B8442A; --terracota-esc:#9c3720;
-  --wrap:min(100% - 48px, 1120px);
-  --sc:"Playfair SC", "Playfair Display SC", Georgia, serif;
-  --script:"Cherolina", "Segoe Script", cursive;
+  --k:#17130D; --kk:#050302; --c:#F8F5EE; --cq:#F3ECDD; --t:#B8442A; --te:#9c3720; --tx:#3d362c;
+  --mono:"DM Mono", ui-monospace, Menlo, monospace;
+  --script:"Cherolina", cursive;
+  --sc:"Playfair SC", Georgia, serif;
   --ease:cubic-bezier(.2,.8,.2,1);
+  --pad:clamp(20px,5.6vw,44px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{font-family:var(--sc);color:var(--preto);background:#050201;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.hero,.creme,.escuro{overflow-x:clip}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--mono);font-weight:400;color:var(--k);background:var(--kk);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,svg{display:block}
+.page{overflow-x:hidden}
+@supports (overflow:clip){.page{overflow-x:clip}}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 a{color:inherit}
-.wrap{width:var(--wrap);margin-inline:auto}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.up{text-transform:uppercase}
+:focus-visible{outline:2px solid var(--t);outline-offset:3px}
 
-/* grão tátil */
-.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.09;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.grain{position:relative}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:11;opacity:.13;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* ---------- tipografia ---------- */
-.pill{display:inline-block;font-weight:700;font-size:clamp(9.5px,2.55vw,12px);letter-spacing:.3em;line-height:1;padding:.62em 1.7em .58em 2em;border:1px solid currentColor;border-radius:99px;text-transform:uppercase}
-.script{font-family:var(--script);font-weight:400;text-transform:none;letter-spacing:0;line-height:.8}
-.preco{white-space:nowrap;font-weight:700}
-.preco small{font-size:.5em;letter-spacing:.05em;margin-right:.18em;vertical-align:.28em}
-.desc{font-weight:400;letter-spacing:.05em;line-height:1.2;text-transform:uppercase}
-.desc span{display:block}
+/* ---------- comanda ---------- */
+.tk{position:relative;width:min(100% - 20px, 880px);margin:14px auto 0;padding:10px 0 34px}
+.tk::before{content:"";position:absolute;inset:0;background:var(--c);z-index:0;-webkit-mask:radial-gradient(circle at 8px 0,transparent 7px,#000 7.5px) -8px 0/16px 51% repeat-x,radial-gradient(circle at 8px 100%,transparent 7px,#000 7.5px) -8px 100%/16px 51% repeat-x;mask:radial-gradient(circle at 8px 0,transparent 7px,#000 7.5px) -8px 0/16px 51% repeat-x,radial-gradient(circle at 8px 100%,transparent 7px,#000 7.5px) -8px 100%/16px 51% repeat-x}
+.tk.grain::after{-webkit-mask:radial-gradient(circle at 8px 0,transparent 7px,#000 7.5px) -8px 0/16px 51% repeat-x,radial-gradient(circle at 8px 100%,transparent 7px,#000 7.5px) -8px 100%/16px 51% repeat-x;mask:radial-gradient(circle at 8px 0,transparent 7px,#000 7.5px) -8px 0/16px 51% repeat-x,radial-gradient(circle at 8px 100%,transparent 7px,#000 7.5px) -8px 100%/16px 51% repeat-x}
+.tk>*{position:relative;z-index:1}
+.in{padding:0 var(--pad)}
+.hdr{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:44px var(--pad) 34px}
+.hdr .logo{width:clamp(92px,25vw,124px);flex:none;color:var(--k)}
+.pill{font-weight:500;font-size:12px;letter-spacing:.06em;text-align:center;line-height:1.3;text-transform:uppercase;border:1.5px solid var(--k);border-radius:99px;padding:7px 12px 6px}
 
-/* ---------- botões + ---------- */
-.add{--s:44px;position:relative;flex:none;display:inline-flex;align-items:center;height:var(--s);min-width:var(--s);border-radius:99px;background:var(--terracota);color:var(--creme);transition:background .2s,transform .15s var(--ease),box-shadow .2s}
-.add:active{transform:scale(.94)}
-.add:focus-visible,.chip:focus-visible,.cta:focus-visible,.x:focus-visible{outline:2px solid var(--terracota);outline-offset:3px}
-.add .plus,.add .minus{width:var(--s);height:var(--s);display:grid;place-items:center}
-.add svg{width:16px;height:16px}
+.tk>.nav{position:sticky}
+.nav{position:sticky;top:0;z-index:10;background:var(--c);padding:10px var(--pad);display:flex;gap:6px;border-bottom:1.5px dashed transparent;transition:border-color .2s}
+.nav.stuck{border-bottom-color:var(--k)}
+.nav a{flex:1 1 auto;text-align:center;white-space:nowrap;text-decoration:none;font-weight:500;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:11px 8px 10px;border:1.5px solid var(--k);transition:background .2s,color .2s}
+.nav a.on{background:var(--k);color:var(--c)}
+
+hr.d{border:0;border-top:1.5px dashed var(--k);margin:22px 0}
+.meta{display:flex;justify-content:space-between;gap:10px;font-weight:500;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase}
+
+section{padding-top:52px}
+section:first-of-type{padding-top:30px}
+.sh{display:flex;align-items:baseline;gap:12px;font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.sh .ln{flex:1;border-top:1.5px solid var(--k);transform:translateY(-4px)}
+.sh .ex{letter-spacing:.06em;font-size:12.5px;text-transform:none}
+#t-como{font-size:clamp(50px,13.5vw,80px)}
+.sh.scr{display:block;white-space:nowrap;font-family:var(--script);font-weight:400;font-size:clamp(66px,19vw,92px);line-height:.8;letter-spacing:0;text-transform:none;color:var(--t);margin-left:-.04em}
+
+.price{font-weight:500;font-size:17px;white-space:nowrap;letter-spacing:.02em}
+.price small{font-size:.74em;margin-right:4px;letter-spacing:.04em}
+
+/* destaque */
+.hero{position:relative;margin-top:22px}
+.hero .foto{width:calc(100vw + 84px);max-width:none;margin-left:calc(50% - 50vw - 48px)}
+.foto{position:relative;width:100%;max-width:420px;margin:0 auto;aspect-ratio:var(--ar);background-size:100% 100%;background-repeat:no-repeat}
+.foto img{width:100%;height:auto;opacity:0;transition:opacity .6s ease}
+.foto img.ok{opacity:1}
+.x-stamp{position:absolute;right:-4px;top:-6px;z-index:3;border:2.5px solid var(--t);outline:1px solid var(--t);outline-offset:3px;color:var(--t);font-weight:500;font-size:12px;letter-spacing:.16em;padding:7px 10px 6px;transform:rotate(6deg);background:rgba(248,245,238,.88);text-transform:uppercase}
+.hero h1{font-family:var(--sc);font-weight:900;font-size:clamp(34px,9.6vw,46px);line-height:.9;text-transform:uppercase;margin-top:18px}
+.hero h1 .ch{display:block;font-family:var(--script);font-weight:400;text-transform:none;font-size:2.2em;line-height:.62;color:var(--t);margin:-.02em 0 0 .02em;white-space:nowrap}
+.hero .desc{font-size:14px;line-height:1.6;margin-top:22px;color:var(--k)}
+.buy{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;padding:14px 0;border-top:1.5px solid var(--k);border-bottom:1.5px solid var(--k)}
+.buy .price{font-size:28px}
+
+/* botões */
+.add{position:relative;flex:none;display:inline-flex;align-items:center;height:40px;min-width:40px;background:var(--t);color:var(--c);transition:background .2s,transform .15s var(--ease)}
+.add:active{transform:scale(.95)}
+.add .plus,.add .minus{width:40px;height:40px;display:grid;place-items:center}
+.add svg{width:14px;height:14px}
 .add .minus,.add .qty{display:none}
-.add .qty{font-weight:700;font-size:15px;min-width:18px;text-align:center;font-variant-numeric:tabular-nums}
-.add.on{background:var(--preto)}
+.add .qty{font-weight:500;font-size:15px;min-width:18px;text-align:center}
+.add .txt{display:none}
+.add.on{background:var(--k)}
 .add.on .minus{display:grid}.add.on .qty{display:block}
-.on-dark .add.on{background:var(--creme);color:var(--preto)}
 .add.pop{animation:pop .35s var(--ease)}
-@keyframes pop{40%{transform:scale(1.12)}}
-.add.big{--s:52px}
-.add.big svg{width:19px;height:19px}
+@keyframes pop{40%{transform:scale(1.1)}}
+.add.wide:not(.on){background:var(--k);padding-right:16px}
+.add.wide:not(.on) .plus{background:var(--t);width:26px;height:26px;margin:0 12px 0 8px}
+.add.wide:not(.on) .txt{display:block;font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.add.wide.on{height:46px}
+.add.wide.on .plus,.add.wide.on .minus{width:46px;height:46px}
 
-/* ---------- HERO ---------- */
-.hero{position:relative;color:var(--preto);
-  background:
-    radial-gradient(120% 85% at 100% 0%, #fad9bd 0%, rgba(250,217,189,.0) 58%),
-    radial-gradient(90% 60% at 0% 100%, #c69c7b 0%, rgba(198,156,123,0) 70%),
-    linear-gradient(100deg,#9c724f 0%,#b0855f 32%,#c49877 58%,#dcb394 82%,#efcdb0 100%);
-  padding:calc(48px + env(safe-area-inset-top)) 0 0}
-@media (max-width:959px){
-  .hero{background:
-    radial-gradient(120% 22% at 100% 0%, #f6d3b5 0%, rgba(246,211,181,0) 70%),
-    linear-gradient(172deg,#a47854 0%,#a97d59 35%,#b4886a 60%,#c49877 85%,#d4ab8b 100%)}
-}
-.hero .wrap{position:relative;z-index:4}
-.logo-s{width:clamp(106px,27vw,136px);color:#fff}
-.hero .periodo{display:table;color:#fff;margin-top:12px;letter-spacing:.12em}
-.hero-txt{padding-top:clamp(70px,19vw,150px)}
-.tag{color:var(--preto);font-size:clamp(8px,2.2vw,10px);padding:.6em 1.5em .56em 1.8em;margin:0 0 clamp(10px,2.8vw,14px) 0}
-.titulo{font-weight:700;font-size:clamp(30px,8.6vw,52px);letter-spacing:0;line-height:1;text-transform:uppercase}
-.titulo .script{display:block;font-size:3.8em;line-height:.62;margin:-.23em 0 0 .03em;color:var(--preto-rico);white-space:nowrap}
-.hero .desc{color:#fff;font-size:clamp(12.5px,3.35vw,16px);margin-top:clamp(16px,4vw,26px);max-width:32em}
-.hero-buy{display:flex;align-items:center;gap:18px;margin-top:clamp(18px,4.6vw,30px)}
-.hero .preco{font-size:clamp(38px,10.6vw,62px);line-height:1}
-.photo{position:relative;z-index:3;pointer-events:none;background-size:100% 100%;background-repeat:no-repeat}
-.photo img{width:100%;height:auto;opacity:0;transition:opacity .6s ease}
-.photo img.ok{opacity:1}
-.photo .brilho{position:absolute;color:var(--terracota);opacity:0;transform:scale(.6) rotate(-8deg);transform-origin:85% 95%;transition:opacity .5s .35s,transform .7s .35s var(--ease)}
-.photo.ok .brilho{opacity:1;transform:none}
-.hero .photo{width:112vw;max-width:640px;margin:52px 0 -40vw auto;transform:translateX(13%)}
-.hero .photo .brilho{left:19.6%;top:-7.2%;width:16.3%}
+/* lista */
+.it{padding:22px 0 0}
+.row{display:flex;align-items:center;gap:10px}
+.row .nm{font-weight:500;font-size:16px;letter-spacing:.04em;text-transform:uppercase}
+.row .dots{flex:1;min-width:16px;border-bottom:1.5px dotted var(--k);align-self:flex-end;margin-bottom:12px}
+.it .desc{font-size:13.5px;line-height:1.6;color:var(--tx);margin-top:6px;padding-right:52px}
 
-/* ---------- SALGADAS ---------- */
-.creme{position:relative;background:var(--creme);padding:calc(40vw + 20px) 0 calc(30vw + 30px)}
-.sec-script{font-size:clamp(64px,20vw,112px);margin-left:-.06em;color:var(--preto)}
-.lista{display:grid;gap:clamp(30px,8vw,46px);margin-top:clamp(26px,7vw,44px)}
-.item-top{display:flex;align-items:center;gap:12px}
-.item h3{font-weight:700;font-size:clamp(22px,6vw,30px);letter-spacing:.025em;line-height:1.05;text-transform:uppercase;display:flex;align-items:center;flex-wrap:wrap;column-gap:.45em;row-gap:.1em;flex:1}
-.item h3 .dot{font-size:.42em;line-height:1}
-.item h3 .preco{font-size:1em}
-.item .desc{font-size:clamp(11.5px,3.05vw,13.2px);margin-top:9px;max-width:31em;padding-right:56px}
+.doce{margin-top:6px}
+.doce .foto{width:calc((100vw + 84px) * .85);max-width:none;margin:0 0 0 calc(50% - 50vw - 40px)}
+.doce .nm{font-weight:500;font-size:17px;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;margin-top:14px}
+.doce .desc{font-size:13.5px;line-height:1.6;color:var(--tx);margin-top:6px}
+.doce .rb{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 
-/* ---------- DOCES ---------- */
-.escuro{position:relative;display:flow-root;color:var(--creme);
-  background:
-    radial-gradient(70% 45% at 70% 0%, #3a1e10 0%, rgba(58,30,16,0) 75%),
-    linear-gradient(180deg,#221008 0%,#120804 55%,#070302 100%);
-  padding-bottom:clamp(64px,16vw,110px)}
-.escuro .photo{width:100vw;max-width:620px;margin:-30vw 0 0 -21vw}
-.escuro .photo .brilho{left:64.2%;top:-7.3%;width:16%;transform:scale(.6) rotate(8deg) scaleX(-1);transform-origin:15% 95%}
-.escuro .photo.ok .brilho{transform:scaleX(-1)}
-.doces{position:relative;z-index:1;margin-top:clamp(18px,5vw,30px)}
-.doces .sec-script{color:var(--creme);font-size:clamp(56px,15vw,96px)}
-.doces .lista{margin-top:clamp(18px,5vw,30px)}
-.on-dark .item h3{color:#fff}
+/* como funciona */
+.passos{list-style:none;display:grid;gap:10px;margin-top:20px;counter-reset:p}
+.passo{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;border:1.5px dashed var(--k);padding:14px 14px 15px}
+.passo::before{content:counter(p);width:40px;height:40px;display:grid;place-items:center;background:var(--t);color:var(--c);font-weight:500;font-size:17px}
+.passo h3{font-weight:500;font-size:14.5px;letter-spacing:.08em;text-transform:uppercase;line-height:1.3}
+.passo p{font-size:13.5px;line-height:1.55;margin-top:5px;color:var(--tx)}
+.passo.wa::before{content:"";background:var(--t) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F8F5EE'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E") center/18px no-repeat}
+.cta-in{display:flex;margin-top:18px}
 
-/* ---------- COMO FUNCIONA ---------- */
-.fluxo{position:relative;background:var(--creme-q);color:var(--preto);padding:clamp(56px,14vw,96px) 0 clamp(60px,15vw,100px)}
-.fluxo .wrap{position:relative;z-index:1}
-.fluxo .sec-script{font-size:clamp(54px,15vw,96px)}
-.passos{list-style:none;display:grid;margin-top:clamp(30px,8vw,52px)}
-.passo{position:relative;display:grid;grid-template-columns:52px 1fr;column-gap:18px;padding-bottom:30px}
-.passo:last-child{padding-bottom:0}
-.passo::before{content:"";position:absolute;left:25px;top:52px;bottom:0;border-left:1.5px dashed rgba(184,68,42,.55)}
-.passo:last-child::before{display:none}
-.num{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--terracota);color:var(--creme);font-weight:900;font-size:20px;line-height:1;box-shadow:0 0 0 6px var(--creme-q)}
-.num svg{width:22px;height:22px}
-.passo h3{font-weight:700;font-size:clamp(16px,4.4vw,19px);letter-spacing:.05em;line-height:1.15;text-transform:uppercase;padding-top:8px}
-.passo p{margin-top:8px;font-weight:700;font-size:clamp(12.5px,3.2vw,13px);letter-spacing:.05em;line-height:1.35;text-transform:uppercase;max-width:24em;color:var(--preto)}
-.fluxo-cta{margin-top:clamp(36px,9vw,56px)}
-.fluxo-cta .cta{height:54px;padding:0 28px;font-size:13px}
+.code{height:46px;margin:30px auto 10px;width:230px;background:repeating-linear-gradient(90deg,var(--k) 0 2px,transparent 2px 4px,var(--k) 4px 5px,transparent 5px 9px,var(--k) 9px 12px,transparent 12px 14px)}
+.slogan{text-align:center;font-weight:500;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
 
-/* ---------- RODAPÉ ---------- */
-.rodape{background:#000;color:var(--creme);padding:clamp(48px,12vw,72px) 0 calc(118px + env(safe-area-inset-bottom))}
-.rod-top{display:grid;gap:12px;justify-items:start}
-.logo-g{width:clamp(130px,36vw,170px);color:#fff}
-.assina{font-weight:700;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,245,238,.6)}
-.rod-cols{display:grid;gap:30px;margin-top:40px}
-.rod-cols h4{font-weight:700;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,245,238,.55);margin-bottom:10px}
-.rod-cols p{font-weight:700;font-size:12px;letter-spacing:.05em;line-height:1.55;text-transform:uppercase}
-.rod-cols a{text-decoration:none;display:inline-flex;align-items:center;gap:9px;border-bottom:1px solid rgba(248,245,238,.3);padding-bottom:1px}
-.rod-cols a:hover{border-color:var(--terracota)}
-.rod-cols a svg{width:15px;height:15px;flex:none}
-.rod-cols .fraco{font-weight:400;opacity:.75}
-.rod-base{margin-top:44px;padding-top:22px;border-top:1px solid rgba(248,245,238,.14);display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
-.rod-base .pill{font-size:10px;letter-spacing:.12em;padding:.75em 1.6em .7em;color:var(--creme);border-color:rgba(248,245,238,.5)}
-.rod-base small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(248,245,238,.45)}
+/* rodapé */
+.rodape{color:var(--c);width:min(100% - 20px, 880px);margin:0 auto;padding:48px var(--pad) calc(130px + env(safe-area-inset-bottom))}
+.rod-cols{display:grid;gap:34px}
+.rodape h4{font-weight:500;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(248,245,238,.55);margin-bottom:12px}
+.rodape p{font-size:14.5px;line-height:1.65}
+.rodape p+p{margin-top:10px}
+.rodape .fraco{color:rgba(248,245,238,.72)}
+.rodape a{text-decoration:none;display:inline-flex;align-items:center;gap:10px;border-bottom:1.5px solid rgba(248,245,238,.35);padding-bottom:2px}
+.rodape a:hover{border-color:var(--t)}
+.rodape a svg{width:16px;height:16px;flex:none}
+.rod-base{margin-top:44px;padding-top:22px;border-top:1.5px dashed rgba(248,245,238,.3);display:flex;justify-content:center;text-align:center;align-items:center;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,245,238,.55)}
+.rod-base .mao{width:16px;color:var(--t)}
 
-/* ---------- barra do pedido ---------- */
+/* barra do pedido */
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 12px calc(12px + env(safe-area-inset-bottom));transform:translateY(130%);transition:transform .45s var(--ease);pointer-events:none}
+.bar:not(.show){visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s}
 .bar.show{transform:none}
-.bar-in{pointer-events:auto;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--preto);color:var(--creme);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 0 1px rgba(248,245,238,.08)}
-.bar .mao{width:18px;flex:none;color:var(--creme)}
+.bar-in{pointer-events:auto;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--k);color:var(--c);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:0 14px 40px rgba(0,0,0,.45),0 0 0 1px rgba(248,245,238,.12)}
+.bar .mao{width:18px;flex:none;color:var(--c)}
 .bar .mao.wig{animation:wig .6s var(--ease)}
 @keyframes wig{25%{transform:rotate(-14deg)}60%{transform:rotate(10deg)}}
-.bar .resumo{flex:1;min-width:0;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;line-height:1.15}
-.bar .resumo small{display:block;font-weight:400;font-size:10px;letter-spacing:.08em;opacity:.7}
-.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 22px;border-radius:99px;background:var(--terracota);color:var(--creme);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s,transform .15s}
-.cta:hover{background:var(--terracota-esc)}
+.bar .resumo{flex:1;min-width:0;font-weight:500;font-size:14px;letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
+.bar .resumo small{display:block;font-weight:400;font-size:13px;letter-spacing:.04em;opacity:.75;text-transform:none}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:50px;padding:0 22px;border-radius:99px;background:var(--t);color:var(--c);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;transition:background .2s,transform .15s}
+.cta:hover{background:var(--te)}
 .cta:active{transform:scale(.97)}
 .cta svg{width:18px;height:18px}
+.cta.sq{border-radius:0}
 .bar.fechado .bar-in{justify-content:center;text-align:center;padding:16px 22px}
 
-/* ---------- folha do pedido ---------- */
-dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;max-height:min(92dvh,900px);background:var(--creme);color:var(--preto);border-radius:22px 22px 0 0;overflow:hidden}
+/* folha do pedido */
+dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;max-height:min(92dvh,920px);background:var(--c);color:var(--k);border-radius:20px 20px 0 0;overflow:hidden}
 dialog.sheet[open]{display:flex;flex-direction:column;animation:up .45s var(--ease)}
-dialog.sheet::backdrop{background:rgba(10,5,2,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+dialog.sheet::backdrop{background:rgba(5,3,2,.6);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 @keyframes up{from{transform:translateY(40%);opacity:.4}}
-.sh-head{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 6px 24px}
-.sh-head h2{font-family:var(--script);font-weight:400;font-size:52px;line-height:.9}
-.x{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--creme-q)}
+.sh-head{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 4px 24px}
+.sh-head h2{font-family:var(--script);font-weight:400;font-size:56px;line-height:.9;color:var(--t)}
+.x{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--cq)}
 .x svg{width:14px;height:14px}
-.sh-body{overflow:auto;padding:4px 24px 20px;-webkit-overflow-scrolling:touch}
-.linhas{list-style:none;border-top:1px solid rgba(23,19,13,.12)}
-.linhas li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(23,19,13,.12)}
-.linhas .n{flex:1;font-weight:700;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;line-height:1.15}
-.linhas .n small{display:block;font-weight:400;font-size:11px;letter-spacing:.05em;opacity:.65;margin-top:3px}
-.linhas .add{--s:38px}
-.linhas .add svg{width:13px;height:13px}
-.grupo{margin-top:24px}
-.grupo>label,.grupo>.lb{display:block;font-weight:700;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px}
+.sh-body{overflow:auto;padding:4px 24px 22px;-webkit-overflow-scrolling:touch}
+.linhas{list-style:none;border-top:1.5px dashed var(--k)}
+.linhas li{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1.5px dashed var(--k)}
+.linhas .n{flex:1;font-weight:500;font-size:15px;letter-spacing:.04em;text-transform:uppercase;line-height:1.25}
+.linhas .n small{display:block;font-weight:400;font-size:14px;letter-spacing:.02em;text-transform:none;color:var(--tx);margin-top:4px}
+.vazio{padding:22px 0;font-size:14px;text-align:center;color:var(--tx)}
+.grupo{margin-top:26px}
+.grupo>label,.grupo>.lb{display:block;font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
 .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.chips.h{grid-template-columns:repeat(3,1fr)}
-.chip{min-height:48px;border-radius:14px;border:1px solid rgba(23,19,13,.22);background:#fff;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.1;padding:6px 4px;transition:background .15s,border-color .15s,color .15s}
-.chip small{display:block;font-weight:400;font-size:10.5px;opacity:.7;margin-top:2px}
-.chip[aria-pressed="true"]{background:var(--preto);border-color:var(--preto);color:var(--creme)}
-.chip.off{background:transparent;color:rgba(23,19,13,.42);border-style:dashed}
-.chip.lot{background:transparent;color:rgba(23,19,13,.35);border-style:dashed;text-decoration:line-through}
-.chip.lot small{text-decoration:none}
+.chip{min-height:54px;border:1.5px solid var(--k);background:#fff;font-weight:500;font-size:15.5px;letter-spacing:.02em;line-height:1.15;padding:7px 4px;transition:background .15s,color .15s}
+.chip small{display:block;font-weight:400;font-size:14px;margin-top:3px;color:var(--tx)}
+.chip[aria-pressed="true"]{background:var(--k);color:var(--c)}
+.chip[aria-pressed="true"] small{color:rgba(248,245,238,.8)}
+.chip.off{background:transparent;color:rgba(23,19,13,.45);border-style:dashed}
+.chip.off small{color:rgba(23,19,13,.45)}
 .chips.espera .chip{opacity:.45}
-.dica{font-size:11px;letter-spacing:.05em;text-transform:uppercase;opacity:.6;margin-top:8px}
-.cta.busy{opacity:.7;pointer-events:none}
-.feito{padding:10px 0 4px;text-align:center}
-.feito .script{font-size:58px;line-height:.9;text-transform:none;letter-spacing:0;margin-top:0}
-.feito p{margin-top:14px;font-size:12.5px;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}
-.aviso{display:none;align-items:center;gap:12px;margin-top:10px;padding:12px 14px;border-radius:14px;background:var(--terracota);color:var(--creme);font-weight:700;font-size:12px;letter-spacing:.04em;line-height:1.3;text-transform:uppercase}
+.dica{font-size:13px;color:var(--tx);margin-top:10px}
+.aviso{display:none;align-items:center;gap:12px;margin-top:10px;padding:13px 14px;background:var(--t);color:var(--c);font-weight:500;font-size:13.5px;line-height:1.4}
 .aviso.show{display:flex;animation:pop .35s var(--ease)}
 .aviso svg{width:18px;flex:none}
-input.campo,textarea.campo{width:100%;font:inherit;font-size:16px;letter-spacing:.02em;color:var(--preto);background:#fff;border:1px solid rgba(23,19,13,.22);border-radius:14px;padding:13px 14px;text-transform:none}
-textarea.campo{min-height:70px;resize:vertical}
-.campo:focus{outline:2px solid var(--terracota);outline-offset:1px;border-color:transparent}
-.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:24px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.total>span:first-child{font-size:12px;letter-spacing:.05em}
-.total .preco{font-size:34px;letter-spacing:0}
-.nota{margin-top:18px;padding:14px 16px;border-radius:14px;background:rgba(184,68,42,.09);border-left:3px solid var(--terracota);display:grid;gap:10px}
-.nota p{font-size:12.5px;letter-spacing:.05em;line-height:1.4;text-transform:uppercase}
-.nota strong{font-weight:700;color:var(--terracota-esc)}
-.sh-foot{padding:14px 24px calc(16px + env(safe-area-inset-bottom));border-top:1px solid rgba(23,19,13,.1);background:var(--creme)}
-.sh-foot .cta{width:100%;height:54px;font-size:13px}
-.sh-foot .cta[aria-disabled="true"]{background:rgba(23,19,13,.25)}
-.falta{min-height:16px;margin-bottom:8px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;text-align:center;color:var(--terracota)}
-.vazio{padding:26px 0;font-size:13px;letter-spacing:.05em;text-transform:uppercase;text-align:center;opacity:.6}
+input.campo,textarea.campo{width:100%;font:inherit;font-size:16px;color:var(--k);background:#fff;border:1.5px solid var(--k);border-radius:0;padding:13px 14px}
+textarea.campo{min-height:72px;resize:vertical}
+.campo:focus{outline:2px solid var(--t);outline-offset:1px}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:26px;padding-top:16px;border-top:1.5px dashed var(--k)}
+.total>span:first-child{font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.total .price{font-size:28px}
+.nota{margin-top:18px;padding:16px 16px 16px 18px;background:rgba(184,68,42,.09);border-left:3px solid var(--t);display:grid;gap:14px}
+.nota p{font-size:14px;line-height:1.55}
+.nota strong{font-weight:500;color:var(--te)}
+.sh-foot{padding:14px 24px calc(16px + env(safe-area-inset-bottom));border-top:1.5px dashed var(--k);background:var(--c)}
+.sh-foot .cta{width:100%;height:56px;font-size:13.5px}
+.sh-foot .cta[aria-disabled="true"]{background:rgba(23,19,13,.28)}
+.falta{min-height:18px;margin-bottom:8px;font-weight:500;font-size:13px;text-align:center;color:var(--te)}
+.feito{padding:6px 0 4px;text-align:center}
+.feito .ch{font-family:var(--script);font-size:68px;line-height:.9}
+.feito p{margin-top:18px;font-size:15px;line-height:1.6;color:var(--k)}
+.feito p+p{margin-top:12px}
+.cta.busy{opacity:.7;pointer-events:none}
 
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
-/* ---------- desktop ---------- */
-@media (min-width:960px){
-  .hero{min-height:600px;padding-top:64px}
-  .hero-txt{padding:130px 0 110px;max-width:520px}
-  .titulo .script{font-size:4.5em;margin-top:-.275em}
-  .hero .photo{position:absolute;margin:0;transform:none;width:min(50vw,660px);left:calc(50% - 30px);top:96px}
-  .creme{padding:56px 0 210px}
-  .creme .wrap{display:grid;grid-template-columns:1fr 1fr;column-gap:72px}
-  .creme .lista{margin-top:30px}
-  .creme .col2{padding-top:150px}
-  .creme .col2 .lista{margin-top:0}
-  .escuro .wrap.top{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;min-height:520px}
-  .escuro .photo{position:absolute;margin:0;width:min(46vw,600px);left:calc(50% - 560px - 70px);top:-170px}
-  .doces{grid-column:2;padding-top:150px;margin:0}
-  .passos{grid-template-columns:repeat(4,1fr);column-gap:28px}
-  .passo{grid-template-columns:1fr;row-gap:20px;padding:0;align-content:start}
-  .passo::before{left:62px;right:-28px;top:26px;bottom:auto;border-left:0;border-top:1.5px dashed rgba(184,68,42,.55)}
-  .passo h3{padding-top:0}
-  .fluxo-cta{display:flex}
-  .rod-top{grid-template-columns:auto 1fr;align-items:end;column-gap:28px}
-  .rod-cols{grid-template-columns:repeat(3,1fr);column-gap:48px;margin-top:52px}
-  dialog.sheet{margin:auto;border-radius:22px}
+/* ---------- desktop / tablet ---------- */
+@media (min-width:760px){
+  .tk{margin-top:34px}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:34px;align-items:start}
+  .hero .foto{grid-row:1/5;width:calc(100% + 40px);max-width:none;margin:4px 0 0 -40px}
+  .hero>:not(.foto){grid-column:2}
+  .hero h1{margin-top:6px}
+  .hero h1 .ch{font-size:1.9em}
+  .nav a{font-size:12.5px;flex:1}
+  .doce{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:center}
+  .doce .foto{width:calc(85% + 40px);margin:0 0 0 -40px}
+  .doce .nm{margin-top:0}
+  .passos{grid-template-columns:1fr 1fr}
+  .rod-cols{grid-template-columns:repeat(3,1fr);column-gap:40px}
+  dialog.sheet{margin:auto;border-radius:20px}
 }
-@media (min-width:1300px){
-  .escuro .photo{left:calc(50% - 560px - 120px)}
+@media (min-width:1000px){
+  #lista-salgadas{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+  .hero{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:48px}
 }
 </style>
 </head>
 <body>
-<noscript><p style="padding:24px;background:#F8F5EE;font-family:Georgia,serif">Para montar o pedido aqui, ativa o JavaScript. Ou chama a gente direto no <a href="https://wa.me/5551999442176">WhatsApp</a>.</p></noscript>
+<noscript><p style="padding:24px;background:#F8F5EE;font-family:monospace">Para montar o pedido aqui, ativa o JavaScript. Ou chama a gente direto no <a href="https://wa.me/5551999442176">WhatsApp</a>.</p></noscript>
 
-<header class="hero grain">
-  <div class="wrap">
-    <svg class="logo-s" viewBox="0 0 39.54 13.9" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M.9,1.84c.08-.05.17-.04.26-.05,0,.27-.1.53-.15.8-.2.93-.31,1.89-.36,2.84-.03.72-.05,1.44.02,2.15.04.4.07.8.19,1.18.04.15.11.3.1.46-.17.11-.36-.02-.46-.17-.28-.41-.37-.92-.43-1.41-.11-1-.08-2,0-3,.06-.73.18-1.47.43-2.16.1-.23.19-.49.4-.64Z"/><path d="M1.96,5.55c.28-.44.71-.84,1.25-.9.22-.02.49-.05.65.13,0,.03-.01.08-.02.11-.23.1-.48.12-.7.25-.48.27-.72.8-.84,1.31-.11.56-.19,1.16,0,1.71.06.16.17.37.36.38.21,0,.35-.2.42-.37.23-.55.32-1.15.39-1.74.04-.3.09-.62.24-.89.08-.15.26-.19.41-.15.11.32,0,.66.01.98-.03.96-.07,2,.48,2.83-.15.04-.32.09-.45,0-.37-.25-.5-.71-.59-1.13-.1.35-.22.72-.51.96-.31.28-.84.26-1.14-.03-.39-.36-.48-.93-.5-1.45,0-.7.14-1.42.52-2.01Z"/><path d="M7.83,3.33c.32-.69.87-1.26,1.27-1.9.13-.21.25-.45.33-.68.15-.43.1-.95-.53-.67-.18.09-.33.2-.49.34-.51.46-.98,1.16-1.36,1.73-.43.67-.8,1.43-.76,2.25.05,1.08.57,2.06.93,3.06.52,1.36.67,2.8.17,4.18-.15.46-.4.97-.54,1.39-.11.3-.16.55-.15.7.05.41.55-.02.73-.22,1.18-1.32,1.5-3.36,1.2-5.07-.11-.6-.3-1.17-.52-1.73-.42-1.1-.84-2.26-.29-3.38h0Z"/><path d="M22.77,3.33c-.32-.69-.87-1.26-1.27-1.9-.13-.21-.25-.45-.33-.68-.15-.43-.1-.95.53-.67.18.09.33.2.49.34.51.46.98,1.16,1.36,1.73.43.67.8,1.43.76,2.25-.05,1.08-.57,2.06-.93,3.06-.52,1.36-.67,2.8-.17,4.18.15.46.4.97.54,1.39.11.3.16.55.15.7-.05.41-.55-.02-.73-.22-1.18-1.32-1.5-3.36-1.2-5.07.11-.6.3-1.17.52-1.73.42-1.1.84-2.26.29-3.38h0Z"/><path d="M12.6,3.16c.25-.17.56-.03.72.19.48.6.57,1.39.68,2.13.25-.7.52-1.44,1.07-1.97.47-.46,1.28-.61,1.82-.2.45.34.64.92.73,1.45.22,1.45-.17,2.91-.02,4.36.05.81.29,1.6.65,2.33.22.29-.23.42-.45.35-.55-.14-.87-.67-1.08-1.15-.54-1.36-.5-2.85-.39-4.28.01-.59.1-1.23-.19-1.77-.16-.29-.59-.24-.79-.02-.38.42-.54.98-.7,1.52-.32,1.29-.57,2.6-.83,3.9-.16.61-.3,1.3-.81,1.72-.19.18-.64.2-.59-.16.03-.77.2-1.54.26-2.31.16-1.5.16-3.02.05-4.53-.04-.52-.17-1.03-.14-1.55Z"/><path d="M11.2,2.07c.23-.09.58,0,.58.24-.02.49-.47.94-1.01,1.1-.18.07-.35-.07-.34-.22-.02-.45.27-.95.78-1.12Z"/><path d="M10.8,4.44c.12-.06.31-.1.43,0,.13.18.07.4.07.61-.15,1.19-.23,2.4-.08,3.59.04.37.31.71.25,1.08-.16.11-.37.01-.5-.08-.29-.22-.43-.53-.55-.83-.29-.81-.31-1.68-.23-2.52.05-.46.07-.93.24-1.37.07-.18.17-.36.37-.46Z"/><path d="M19.47,2.07c-.23-.09-.58,0-.58.24.02.49.47.94,1.01,1.1.18.07.35-.07.34-.22.02-.45-.27-.95-.78-1.12Z"/><path d="M19.86,4.44c-.12-.06-.31-.1-.43,0-.13.18-.07.4-.07.61.15,1.19.23,2.4.08,3.59-.04.37-.31.71-.25,1.08.16.11.37.01.5-.08.29-.22.43-.53.55-.83.29-.81.31-1.68.23-2.52-.05-.46-.07-.93-.24-1.37-.07-.18-.17-.36-.37-.46Z"/><path d="M34.56,4.93c.53-.82,1.32-1.57,2.33-1.68.4-.04.91-.09,1.21.24,0,.05-.02.15-.03.2-.42.18-.9.22-1.3.46-.88.5-1.34,1.49-1.56,2.44-.21,1.04-.35,2.16,0,3.19.12.3.31.68.68.7.4,0,.64-.37.79-.69.44-1.02.6-2.13.73-3.23.08-.56.16-1.15.45-1.65.15-.27.49-.35.77-.27.2.59.01,1.22.02,1.83-.05,1.78-.12,3.71.89,5.27-.28.07-.59.18-.85-.02-.69-.46-.93-1.33-1.11-2.1-.19.65-.41,1.34-.95,1.79-.58.52-1.56.49-2.11-.06-.73-.68-.9-1.74-.93-2.69,0-1.3.27-2.63.96-3.74Z"/><path d="M27.45.79c.17-.28.48-.44.77-.57.07,1.05-.26,2.06-.34,3.1.47-.1.96-.18,1.41-.37.26-.1.51-.24.79-.25.12.38-.13.74-.38,1-.52.52-1.29.61-1.98.77-.08,1.47-.22,2.95-.11,4.43.05.62.14,1.25.37,1.84.14.37.44.66.68.97-.3.1-.63.21-.93.05-.81-.36-1.17-1.27-1.34-2.08-.32-1.65-.16-3.34,0-5-.38.15-.75.3-1.13.46-.06-.21-.09-.45.05-.64.28-.44.78-.65,1.23-.87.18-.97.35-1.99.91-2.83Z"/><path d="M32.85,1.54c.49-.53,1.52-.61,1.93.05.26.47.29,1.12-.06,1.56-.23-.23-.39-.54-.66-.72-.51-.16-.96.29-1.16.71-.91,1.88-.62,4.07-1.37,5.99-.17.41-.56,1-1.07.74-.04-.42.06-.83.12-1.23.23-1.59.37-3.19.27-4.79-.03-.9-.19-1.79-.21-2.69.27.08.6.13.77.38.41.54.49,1.23.58,1.88.21-.66.39-1.36.87-1.88Z"/></svg>
-    <span class="pill periodo" id="periodo"></span>
-    <div class="hero-txt" id="destaque"></div>
-  </div>
-  <div class="photo" id="foto-destaque" style="aspect-ratio:1209/1245;background-image:url(data:image/webp;base64,UklGRuACAABXRUJQVlA4WAoAAAAQAAAAFwAAGAAAQUxQSC0BAAABkGttu2k735zz2LZtI7Ztp7Qq4yKSykllV7bT2XYuwFhzzi9YuoSImAC4ConcJes3H9uxrG80JLwVMPc13R/MhPRQyD9M6v8NycVQLhEY/Y7a0l2bz2lCAlAYqenQp+ZhKAEh6z5S07fmBihEJpygQ//WYT9INdQYBnXsLkSk7KcOZPgmPqbuE00gUrcndr0Jw3BSco93YWguTOrxNpz1yR1PwzBcmNRwjToYTf+4yg3WBrL8XKSKhr2yJojmboGU5o10AljzqxmILB96k44v+4sHISGSmqfdIo11M4Z8USYFIDPaxh1wSKO11pb8cq5NCABQaY39Vlz/Ttf7a0cWRCu4yviSloHzNp2+fHzX8qbslFgJ74jkwsq65qaawtT4SAH/MiYpNSUxNgKeAFZQOCCMAQAAUAgAnQEqGAAZAD7tZqpPKaWjoigNUTAdiWwAnTMl+ZfWXWKju3/3xvXHOxT3gxiTNi/EBOjgFFS+vwLBs253Fa/aMW3f1V4LZ04AAPcd34K2oKS1jhXNEF6v4V8D7gWzItTb1+pCNLjx3/tOFwoh++Ioddlj0bnHElJyj8fFv0gwhvq4zbFNf7hiSjcVmxNjSWkj844yAG6h0+1XiNG1XyyGp3y7fVj44pQRuZSRXFM7S7lUVYHqBIOdeGNF/Pb4u+stCaI67mquUUOdYGo3l5aY+RsorVHdJRQ94ap8ppOFqGsAl+L1GtWu8ORsk4/Ez1zoUf7isq21nDdkK+c6ny7lBEbCTfYsbsc79F6EtqDoxhS3N+V7/jxMYYEomuvsLbYv/9nfw0+6h9IqEpU7IB+dVpBPDjOCIlDZdVe7Y8KQdwyoew9iuNQuud/1CxJRGIEGYvFdRX3BhdAr2k8/d7Rb5tCifHTL5ipZ/+iSIoz0G/YgP3OZri//BFb/zZVpBHw3/5cRfbsLHIAA)">
-    <svg class="brilho" viewBox="0 0 46.23 37.84" fill="currentColor" aria-hidden="true"><path d="M30.51,24.89c-1.65-4.75-4.46-8.99-6.68-13.49-1.2-2.13-2.2-4.46-3.94-6.24-1.36-1.37-3.95.17-3.43,2.01.59,2.42,2.09,4.47,3.2,6.66,2.45,4.34,4.4,8.99,7.39,13.01,1.13,1.8,4.58.07,3.46-1.94Z"/><path d="M19.23,34.17c-2.72-2.47-6.07-4.09-9.11-6.12-2.48-1.41-4.72-3.34-7.47-4.21-1.79-.39-3.38,1.92-2.28,3.4,1.29,1.61,3.3,2.4,4.98,3.55,3.92,2.32,7.44,5.42,11.76,7.01,1.95.4,3.52-2.16,2.12-3.62Z"/><path d="M43.43.04c-2.9.51-1.69,4.27-2.09,6.37-.02,4.8-.21,9.61-.18,14.41.08,1.17.03,2.8,1.35,3.32,1.61.91,3.67-.62,3.46-2.42.4-6.04.12-12.12.24-18.17.17-1.6-.85-3.85-2.78-3.5Z"/></svg>
-    <picture>
-      <source type="image/avif" srcset="img/destaque-480.avif 480w, img/destaque-800.avif 800w, img/destaque-1100.avif 1100w" sizes="(min-width: 960px) min(50vw, 660px), 112vw">
-      <img src="img/destaque-800.webp" srcset="img/destaque-480.webp 480w, img/destaque-800.webp 800w, img/destaque-1100.webp 1100w" sizes="(min-width: 960px) min(50vw, 660px), 112vw" width="1209" height="1245" alt="" fetchpriority="high" decoding="async">
-    </picture>
-  </div>
-</header>
+<div class="page">
+<main class="tk grain">
+  <header class="hdr">
+    <svg class="logo" viewBox="0 0 91.1 56" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M20.98.13c.21-.14.47-.12.71-.13,0,.75-.27,1.46-.42,2.19-.55,2.56-.85,5.17-.98,7.79-.09,1.96-.15,3.94.05,5.89.11,1.08.19,2.18.52,3.23.11.41.29.82.28,1.26-.47.3-.99-.06-1.25-.46-.77-1.13-1.01-2.53-1.17-3.86-.3-2.73-.21-5.49-.01-8.23.17-2.01.5-4.02,1.18-5.93.27-.63.51-1.35,1.1-1.75Z"/><path d="M23.89,10.3c.78-1.21,1.95-2.31,3.43-2.48.59-.06,1.34-.13,1.77.36-.01.07-.03.22-.05.29-.62.27-1.32.33-1.91.68-1.3.73-1.98,2.2-2.3,3.6-.31,1.53-.51,3.18,0,4.69.17.44.45,1,.99,1.03.59.01.95-.54,1.16-1.01.64-1.5.88-3.14,1.08-4.75.12-.83.24-1.69.66-2.43.22-.4.72-.52,1.13-.4.3.86.02,1.8.03,2.7-.08,2.62-.18,5.47,1.31,7.76-.41.11-.87.26-1.24-.03-1.02-.68-1.37-1.95-1.63-3.09-.28.96-.61,1.97-1.39,2.64-.86.76-2.29.72-3.11-.08-1.08-1-1.32-2.56-1.37-3.96.01-1.91.39-3.88,1.42-5.51Z"/><path d="M4.2,26.9c.87-1.9,2.38-3.45,3.48-5.2.37-.59.7-1.22.91-1.86.41-1.18.27-2.61-1.44-1.83-.49.24-.89.55-1.33.93-1.39,1.25-2.69,3.17-3.72,4.75C.91,25.54-.1,27.61,0,29.85c.12,2.96,1.56,5.63,2.56,8.37,1.43,3.71,1.83,7.66.48,11.46-.42,1.25-1.09,2.67-1.49,3.81-.29.83-.45,1.5-.41,1.91.15,1.12,1.5-.05,1.99-.59,3.23-3.62,4.12-9.2,3.27-13.89-.29-1.63-.82-3.2-1.41-4.74-1.15-3.02-2.29-6.2-.8-9.26h0Z"/><path d="M45.12,26.9c-.87-1.9-2.38-3.45-3.48-5.2-.37-.59-.7-1.22-.91-1.86-.41-1.18-.27-2.61,1.44-1.83.49.24.89.55,1.33.93,1.39,1.25,2.69,3.17,3.72,4.75,1.18,1.85,2.2,3.91,2.09,6.16-.12,2.96-1.56,5.63-2.56,8.37-1.43,3.71-1.83,7.66-.48,11.46.42,1.25,1.09,2.67,1.49,3.81.29.83.45,1.5.41,1.91-.15,1.12-1.5-.05-1.99-.59-3.23-3.62-4.12-9.2-3.27-13.89.29-1.63.82-3.2,1.41-4.74,1.15-3.02,2.29-6.2.8-9.26h0Z"/><path d="M17.29,26.46c.68-.46,1.52-.08,1.97.52,1.31,1.64,1.57,3.81,1.85,5.82.69-1.93,1.42-3.95,2.93-5.41,1.28-1.26,3.51-1.66,5-.54,1.24.94,1.75,2.51,2,3.98.6,3.97-.47,7.96-.06,11.94.13,2.23.8,4.38,1.79,6.37.61.79-.63,1.15-1.22.95-1.5-.38-2.38-1.83-2.95-3.16-1.47-3.72-1.38-7.8-1.07-11.72.03-1.61.27-3.37-.51-4.86-.45-.79-1.62-.67-2.15-.04-1.05,1.14-1.48,2.7-1.9,4.15-.88,3.53-1.56,7.11-2.28,10.68-.43,1.67-.81,3.56-2.22,4.7-.51.49-1.74.54-1.61-.43.09-2.12.56-4.21.71-6.32.43-4.12.44-8.27.12-12.4-.1-1.42-.46-2.82-.38-4.24Z"/><path d="M13.44,23.47c.62-.25,1.6-.02,1.59.66-.06,1.34-1.28,2.59-2.77,3.01-.49.2-.96-.18-.94-.59-.05-1.23.73-2.59,2.12-3.08Z"/><path d="M12.36,29.95c.34-.17.85-.27,1.18,0,.35.5.2,1.11.18,1.66-.4,3.26-.64,6.56-.22,9.83.1,1.01.85,1.93.69,2.96-.43.29-1.01.03-1.37-.22-.78-.6-1.19-1.45-1.5-2.28-.8-2.23-.86-4.6-.63-6.91.13-1.26.2-2.55.67-3.76.19-.48.46-1,1-1.26Z"/><path d="M36.09,23.47c-.62-.25-1.6-.02-1.59.66.06,1.34,1.28,2.59,2.77,3.01.49.2.96-.18.94-.59.05-1.23-.73-2.59-2.12-3.08Z"/><path d="M37.17,29.95c-.34-.17-.85-.27-1.18,0-.35.5-.2,1.11-.18,1.66.4,3.26.64,6.56.22,9.83-.1,1.01-.85,1.93-.69,2.96.43.29,1.01.03,1.37-.22.78-.6,1.19-1.45,1.5-2.28.8-2.23.86-4.6.63-6.91-.13-1.26-.2-2.55-.67-3.76-.19-.48-.46-1-1-1.26Z"/><path d="M77.46,31.28c1.44-2.25,3.62-4.3,6.39-4.61,1.1-.11,2.49-.25,3.3.67-.02.14-.06.41-.08.55-1.16.49-2.46.61-3.55,1.27-2.42,1.36-3.68,4.08-4.27,6.69-.57,2.86-.95,5.91,0,8.73.32.83.84,1.87,1.85,1.92,1.1.03,1.76-1.01,2.16-1.89,1.19-2.8,1.64-5.84,2.01-8.84.22-1.54.44-3.15,1.23-4.52.41-.74,1.33-.97,2.11-.75.56,1.61.03,3.35.05,5.02-.15,4.87-.34,10.17,2.44,14.44-.76.2-1.62.48-2.31-.05-1.9-1.27-2.55-3.64-3.03-5.75-.51,1.78-1.13,3.67-2.59,4.91-1.6,1.42-4.26,1.34-5.79-.15-2-1.86-2.46-4.76-2.55-7.37.03-3.55.73-7.21,2.63-10.26Z"/><path d="M57.99,19.95c.48-.78,1.3-1.21,2.11-1.57.18,2.87-.72,5.66-.93,8.5,1.3-.28,2.62-.5,3.85-1,.71-.27,1.4-.66,2.17-.69.32,1.04-.36,2.03-1.03,2.75-1.43,1.44-3.54,1.66-5.41,2.1-.23,4.04-.59,8.09-.31,12.13.14,1.71.38,3.43,1,5.03.39,1.03,1.19,1.81,1.87,2.65-.82.26-1.72.58-2.55.15-2.22-.98-3.21-3.48-3.67-5.7-.88-4.53-.43-9.16,0-13.71-1.03.42-2.06.83-3.09,1.27-.17-.58-.24-1.23.13-1.75.78-1.19,2.13-1.78,3.36-2.39.5-2.67.97-5.45,2.49-7.76Z"/><path d="M72.77,22c1.34-1.45,4.16-1.68,5.28.15.72,1.29.81,3.08-.16,4.27-.63-.64-1.06-1.47-1.81-1.97-1.4-.45-2.62.78-3.18,1.94-2.48,5.15-1.7,11.14-3.77,16.4-.46,1.12-1.52,2.73-2.93,2.04-.12-1.14.17-2.26.32-3.38.64-4.34,1.01-8.74.75-13.13-.07-2.46-.51-4.9-.59-7.36.75.22,1.64.35,2.11,1.05,1.13,1.47,1.33,3.38,1.59,5.15.56-1.8,1.08-3.73,2.38-5.16Z"/></svg>
+    <span class="pill" id="periodo-curto"></span>
+  </header>
 
-<main>
-  <section class="creme" aria-labelledby="t-salgadas">
-    <div class="wrap">
-      <div class="col1">
-        <h2 class="script sec-script" id="t-salgadas">Salgadas</h2>
-        <div class="lista" id="salgadas-1"></div>
+  <nav class="nav" id="nav" aria-label="Seções do cardápio">
+    <a href="#semana" class="on">Pizza da semana</a><a href="#salgadas">Salgadas</a><a href="#doce">Doce</a>
+  </nav>
+
+  <div class="in">
+    <hr class="d"><div class="meta"><span id="meta-limite"></span><span id="meta-ret"></span></div><hr class="d">
+
+    <section id="semana" aria-labelledby="t-semana">
+      <h2 class="sh" id="t-semana"><span>Pizza da semana</span><span class="ln"></span></h2>
+      <div class="hero" id="destaque">
+        <div class="foto" id="foto-destaque" style="--ar:1209/1245;background-image:url(data:image/webp;base64,UklGRuACAABXRUJQVlA4WAoAAAAQAAAAFwAAGAAAQUxQSC0BAAABkGttu2k735zz2LZtI7Ztp7Qq4yKSykllV7bT2XYuwFhzzi9YuoSImAC4ConcJes3H9uxrG80JLwVMPc13R/MhPRQyD9M6v8NycVQLhEY/Y7a0l2bz2lCAlAYqenQp+ZhKAEh6z5S07fmBihEJpygQ//WYT9INdQYBnXsLkSk7KcOZPgmPqbuE00gUrcndr0Jw3BSco93YWguTOrxNpz1yR1PwzBcmNRwjToYTf+4yg3WBrL8XKSKhr2yJojmboGU5o10AljzqxmILB96k44v+4sHISGSmqfdIo11M4Z8USYFIDPaxh1wSKO11pb8cq5NCABQaY39Vlz/Ttf7a0cWRCu4yviSloHzNp2+fHzX8qbslFgJ74jkwsq65qaawtT4SAH/MiYpNSUxNgKeAFZQOCCMAQAAUAgAnQEqGAAZAD7tZqpPKaWjoigNUTAdiWwAnTMl+ZfWXWKju3/3xvXHOxT3gxiTNi/EBOjgFFS+vwLBs253Fa/aMW3f1V4LZ04AAPcd34K2oKS1jhXNEF6v4V8D7gWzItTb1+pCNLjx3/tOFwoh++Ioddlj0bnHElJyj8fFv0gwhvq4zbFNf7hiSjcVmxNjSWkj844yAG6h0+1XiNG1XyyGp3y7fVj44pQRuZSRXFM7S7lUVYHqBIOdeGNF/Pb4u+stCaI67mquUUOdYGo3l5aY+RsorVHdJRQ94ap8ppOFqGsAl+L1GtWu8ORsk4/Ez1zoUf7isq21nDdkK+c6ny7lBEbCTfYsbsc79F6EtqDoxhS3N+V7/jxMYYEomuvsLbYv/9nfw0+6h9IqEpU7IB+dVpBPDjOCIlDZdVe7Y8KQdwyoew9iuNQuud/1CxJRGIEGYvFdRX3BhdAr2k8/d7Rb5tCifHTL5ipZ/+iSIoz0G/YgP3OZri//BFb/zZVpBHw3/5cRfbsLHIAA)">
+          <picture>
+            <source type="image/avif" srcset="img/destaque-480.avif 480w, img/destaque-800.avif 800w, img/destaque-1100.avif 1100w" sizes="(min-width: 760px) 440px, 110vw">
+            <img src="img/destaque-800.webp" srcset="img/destaque-480.webp 480w, img/destaque-800.webp 800w, img/destaque-1100.webp 1100w" sizes="(min-width: 760px) 440px, 110vw" width="1209" height="1245" alt="" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
       </div>
-      <div class="col2"><div class="lista" id="salgadas-2"></div></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="escuro on-dark grain" aria-labelledby="t-doces">
-    <div class="wrap top">
-      <div class="photo" id="foto-doce" style="aspect-ratio:1195/1199;background-image:url(data:image/webp;base64,UklGRpgCAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSCwBAAABkHPbtrG9E9oXn21blY2osm0nleuMVEmVlN/IT0hlO7Xt1Lad596zPz7PGxETgJEaQP3Wgb0ziwGlMLaBXXL0B0m+O7MCUGMYtN4g6Z0TkgezlBrFYNUPBk5IUlzA8xlmhMFm0jHkfw5YCxjMZOAZVpybrzRU7hvxDO/5rNIAexgwquOueB33SHw0uVIWV/iBEkn4aUJCx7+Y/F2YOpvCGLyfk9XrGN3z8aSM/Of0MTjemozDEkSS/zvrLObTRfG8PasAOukcgwjCfW2JULrtNV0ox8vzSxWgE+Z8ppMxxPHR+uZEALApSx+S4kcKeW9HbzpGtRmdB75w9E/HNvVlq9Fg0qoX7j5y/dG1s/t3zGpKVwiZkF3ROH7K5AkdDfnxCK9MUnp2dkaSwZhWUDggRgEAADAHAJ0BKhgAGAA+7WarTymlo6IoDVEwHYlsAJ0zEvensbKqtMA3ktfgaQJl8LfZ4xQKO7+I3HCsxPQY5ioW441OAAD+ZYDhqjeRRu9+HkH2y1HiOW2j4DqAV3sju2RO2C9jBT/FkAFXfHWwzcbZ+zQoWZWVr7SstOWmpV6RzhYCy4Lh6+/ZPhmBhHmQkljtDnwt8W3a/56o+9bg8JJ5ZIO+DFZwwq8x/G1tG498H2AZFx6yiZ5fkjX/MiYwyufrnfZzFSYumlbRWxr0+4Yx0X2qZsxjvBtW1hwTnUUAOcEzSO67gP0eK4N9WptKyymOEafYs598JKGrjg38ILDhkJLGVM+UOusWOiaaDwJa2UydUTMHE5dub175sGNTjRTkpLdjr0wipbyD8IcuHhMo3FtWUOLzhQvORh4JFp8Ik1MJj+rb5AAA)">
-        <svg class="brilho" viewBox="0 0 46.23 37.84" fill="currentColor" aria-hidden="true"><path d="M30.51,24.89c-1.65-4.75-4.46-8.99-6.68-13.49-1.2-2.13-2.2-4.46-3.94-6.24-1.36-1.37-3.95.17-3.43,2.01.59,2.42,2.09,4.47,3.2,6.66,2.45,4.34,4.4,8.99,7.39,13.01,1.13,1.8,4.58.07,3.46-1.94Z"/><path d="M19.23,34.17c-2.72-2.47-6.07-4.09-9.11-6.12-2.48-1.41-4.72-3.34-7.47-4.21-1.79-.39-3.38,1.92-2.28,3.4,1.29,1.61,3.3,2.4,4.98,3.55,3.92,2.32,7.44,5.42,11.76,7.01,1.95.4,3.52-2.16,2.12-3.62Z"/><path d="M43.43.04c-2.9.51-1.69,4.27-2.09,6.37-.02,4.8-.21,9.61-.18,14.41.08,1.17.03,2.8,1.35,3.32,1.61.91,3.67-.62,3.46-2.42.4-6.04.12-12.12.24-18.17.17-1.6-.85-3.85-2.78-3.5Z"/></svg>
-        <picture>
-          <source type="image/avif" srcset="img/doce-480.avif 480w, img/doce-800.avif 800w, img/doce-1100.avif 1100w" sizes="(min-width: 960px) min(46vw, 600px), 100vw">
-          <img src="img/doce-800.webp" srcset="img/doce-480.webp 480w, img/doce-800.webp 800w, img/doce-1100.webp 1100w" sizes="(min-width: 960px) min(46vw, 600px), 100vw" width="1195" height="1199" alt="" decoding="async">
-        </picture>
-      </div>
-      <div class="doces">
-        <h2 class="script sec-script" id="t-doces">Doces</h2>
-        <div class="lista" id="doces"></div>
-      </div>
-    </div>
-  </section>
+    <section id="salgadas" aria-labelledby="t-salgadas">
+      <h2 class="sh scr" id="t-salgadas">Salgadas</h2>
+      <div id="lista-salgadas"></div>
+    </section>
 
-  <section class="fluxo grain" aria-labelledby="t-como">
-    <div class="wrap">
-      <h2 class="script sec-script" id="t-como">Como funciona</h2>
+    <section id="doce" aria-labelledby="t-doce">
+      <h2 class="sh scr" id="t-doce">Doce</h2>
+      <div id="lista-doces"></div>
+    </section>
+
+    <section id="como" aria-labelledby="t-como">
+      <h2 class="sh scr" id="t-como">Como funciona</h2>
       <ol class="passos">
-        <li class="passo"><span class="num">1</span><div><h3>Escolhe</h3><p>Toca no + das pizzas que tu quer.</p></div></li>
-        <li class="passo"><span class="num">2</span><div><h3>Marca o horário</h3><p id="passo-dias"></p></div></li>
-        <li class="passo"><span class="num"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span class="vh">3</span></span><div><h3>Manda no WhatsApp</h3><p>O pedido sai pronto do teu WhatsApp. A gente confirma o horário e manda o Pix.</p></div></li>
-        <li class="passo"><span class="num">4</span><div><h3>Busca</h3><p id="passo-end"></p></div></li>
+        <li class="passo"><div><h3>Escolhe</h3><p>Toca no + das pizzas que tu quer.</p></div></li>
+        <li class="passo"><div><h3>Marca o horário</h3><p id="passo-dias"></p></div></li>
+        <li class="passo wa"><div><h3>Manda no WhatsApp</h3><p>O pedido sai pronto do teu WhatsApp. A gente confirma o horário e manda o Pix.</p></div></li>
+        <li class="passo"><div><h3>Busca</h3><p id="passo-end"></p></div></li>
       </ol>
-      <div class="fluxo-cta"><button class="cta" id="cta-fluxo" type="button">Montar meu pedido</button></div>
-    </div>
-  </section>
+      <div class="cta-in"><button class="cta sq" id="cta-fluxo" type="button">Montar meu pedido</button></div>
+    </section>
+
+    <hr class="d" style="margin-top:44px">
+    <div class="code" aria-hidden="true"></div>
+    <p class="slogan">Tu pede. A gente assa. Tu busca.</p>
+  </div>
 </main>
 
 <footer class="rodape">
-  <div class="wrap">
-    <div class="rod-top">
-      <svg class="logo-g" viewBox="0 0 91.1 56" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M20.98.13c.21-.14.47-.12.71-.13,0,.75-.27,1.46-.42,2.19-.55,2.56-.85,5.17-.98,7.79-.09,1.96-.15,3.94.05,5.89.11,1.08.19,2.18.52,3.23.11.41.29.82.28,1.26-.47.3-.99-.06-1.25-.46-.77-1.13-1.01-2.53-1.17-3.86-.3-2.73-.21-5.49-.01-8.23.17-2.01.5-4.02,1.18-5.93.27-.63.51-1.35,1.1-1.75Z"/><path d="M23.89,10.3c.78-1.21,1.95-2.31,3.43-2.48.59-.06,1.34-.13,1.77.36-.01.07-.03.22-.05.29-.62.27-1.32.33-1.91.68-1.3.73-1.98,2.2-2.3,3.6-.31,1.53-.51,3.18,0,4.69.17.44.45,1,.99,1.03.59.01.95-.54,1.16-1.01.64-1.5.88-3.14,1.08-4.75.12-.83.24-1.69.66-2.43.22-.4.72-.52,1.13-.4.3.86.02,1.8.03,2.7-.08,2.62-.18,5.47,1.31,7.76-.41.11-.87.26-1.24-.03-1.02-.68-1.37-1.95-1.63-3.09-.28.96-.61,1.97-1.39,2.64-.86.76-2.29.72-3.11-.08-1.08-1-1.32-2.56-1.37-3.96.01-1.91.39-3.88,1.42-5.51Z"/><path d="M4.2,26.9c.87-1.9,2.38-3.45,3.48-5.2.37-.59.7-1.22.91-1.86.41-1.18.27-2.61-1.44-1.83-.49.24-.89.55-1.33.93-1.39,1.25-2.69,3.17-3.72,4.75C.91,25.54-.1,27.61,0,29.85c.12,2.96,1.56,5.63,2.56,8.37,1.43,3.71,1.83,7.66.48,11.46-.42,1.25-1.09,2.67-1.49,3.81-.29.83-.45,1.5-.41,1.91.15,1.12,1.5-.05,1.99-.59,3.23-3.62,4.12-9.2,3.27-13.89-.29-1.63-.82-3.2-1.41-4.74-1.15-3.02-2.29-6.2-.8-9.26h0Z"/><path d="M45.12,26.9c-.87-1.9-2.38-3.45-3.48-5.2-.37-.59-.7-1.22-.91-1.86-.41-1.18-.27-2.61,1.44-1.83.49.24.89.55,1.33.93,1.39,1.25,2.69,3.17,3.72,4.75,1.18,1.85,2.2,3.91,2.09,6.16-.12,2.96-1.56,5.63-2.56,8.37-1.43,3.71-1.83,7.66-.48,11.46.42,1.25,1.09,2.67,1.49,3.81.29.83.45,1.5.41,1.91-.15,1.12-1.5-.05-1.99-.59-3.23-3.62-4.12-9.2-3.27-13.89.29-1.63.82-3.2,1.41-4.74,1.15-3.02,2.29-6.2.8-9.26h0Z"/><path d="M17.29,26.46c.68-.46,1.52-.08,1.97.52,1.31,1.64,1.57,3.81,1.85,5.82.69-1.93,1.42-3.95,2.93-5.41,1.28-1.26,3.51-1.66,5-.54,1.24.94,1.75,2.51,2,3.98.6,3.97-.47,7.96-.06,11.94.13,2.23.8,4.38,1.79,6.37.61.79-.63,1.15-1.22.95-1.5-.38-2.38-1.83-2.95-3.16-1.47-3.72-1.38-7.8-1.07-11.72.03-1.61.27-3.37-.51-4.86-.45-.79-1.62-.67-2.15-.04-1.05,1.14-1.48,2.7-1.9,4.15-.88,3.53-1.56,7.11-2.28,10.68-.43,1.67-.81,3.56-2.22,4.7-.51.49-1.74.54-1.61-.43.09-2.12.56-4.21.71-6.32.43-4.12.44-8.27.12-12.4-.1-1.42-.46-2.82-.38-4.24Z"/><path d="M13.44,23.47c.62-.25,1.6-.02,1.59.66-.06,1.34-1.28,2.59-2.77,3.01-.49.2-.96-.18-.94-.59-.05-1.23.73-2.59,2.12-3.08Z"/><path d="M12.36,29.95c.34-.17.85-.27,1.18,0,.35.5.2,1.11.18,1.66-.4,3.26-.64,6.56-.22,9.83.1,1.01.85,1.93.69,2.96-.43.29-1.01.03-1.37-.22-.78-.6-1.19-1.45-1.5-2.28-.8-2.23-.86-4.6-.63-6.91.13-1.26.2-2.55.67-3.76.19-.48.46-1,1-1.26Z"/><path d="M36.09,23.47c-.62-.25-1.6-.02-1.59.66.06,1.34,1.28,2.59,2.77,3.01.49.2.96-.18.94-.59.05-1.23-.73-2.59-2.12-3.08Z"/><path d="M37.17,29.95c-.34-.17-.85-.27-1.18,0-.35.5-.2,1.11-.18,1.66.4,3.26.64,6.56.22,9.83-.1,1.01-.85,1.93-.69,2.96.43.29,1.01.03,1.37-.22.78-.6,1.19-1.45,1.5-2.28.8-2.23.86-4.6.63-6.91-.13-1.26-.2-2.55-.67-3.76-.19-.48-.46-1-1-1.26Z"/><path d="M77.46,31.28c1.44-2.25,3.62-4.3,6.39-4.61,1.1-.11,2.49-.25,3.3.67-.02.14-.06.41-.08.55-1.16.49-2.46.61-3.55,1.27-2.42,1.36-3.68,4.08-4.27,6.69-.57,2.86-.95,5.91,0,8.73.32.83.84,1.87,1.85,1.92,1.1.03,1.76-1.01,2.16-1.89,1.19-2.8,1.64-5.84,2.01-8.84.22-1.54.44-3.15,1.23-4.52.41-.74,1.33-.97,2.11-.75.56,1.61.03,3.35.05,5.02-.15,4.87-.34,10.17,2.44,14.44-.76.2-1.62.48-2.31-.05-1.9-1.27-2.55-3.64-3.03-5.75-.51,1.78-1.13,3.67-2.59,4.91-1.6,1.42-4.26,1.34-5.79-.15-2-1.86-2.46-4.76-2.55-7.37.03-3.55.73-7.21,2.63-10.26Z"/><path d="M57.99,19.95c.48-.78,1.3-1.21,2.11-1.57.18,2.87-.72,5.66-.93,8.5,1.3-.28,2.62-.5,3.85-1,.71-.27,1.4-.66,2.17-.69.32,1.04-.36,2.03-1.03,2.75-1.43,1.44-3.54,1.66-5.41,2.1-.23,4.04-.59,8.09-.31,12.13.14,1.71.38,3.43,1,5.03.39,1.03,1.19,1.81,1.87,2.65-.82.26-1.72.58-2.55.15-2.22-.98-3.21-3.48-3.67-5.7-.88-4.53-.43-9.16,0-13.71-1.03.42-2.06.83-3.09,1.27-.17-.58-.24-1.23.13-1.75.78-1.19,2.13-1.78,3.36-2.39.5-2.67.97-5.45,2.49-7.76Z"/><path d="M72.77,22c1.34-1.45,4.16-1.68,5.28.15.72,1.29.81,3.08-.16,4.27-.63-.64-1.06-1.47-1.81-1.97-1.4-.45-2.62.78-3.18,1.94-2.48,5.15-1.7,11.14-3.77,16.4-.46,1.12-1.52,2.73-2.93,2.04-.12-1.14.17-2.26.32-3.38.64-4.34,1.01-8.74.75-13.13-.07-2.46-.51-4.9-.59-7.36.75.22,1.64.35,2.11,1.05,1.13,1.47,1.33,3.38,1.59,5.15.56-1.8,1.08-3.73,2.38-5.16Z"/></svg>
-      <span class="assina">Pizza Fatta in Casa</span>
+  <div class="rod-cols">
+    <div>
+      <h4>Retirada</h4>
+      <p id="rod-end"></p>
+      <p class="fraco" id="rod-dias"></p>
+      <p><a id="mapa" target="_blank" rel="noopener">Abrir no mapa</a></p>
     </div>
-    <div class="rod-cols">
-      <div>
-        <h4>Retirada</h4>
-        <p id="rod-end"></p>
-        <p class="fraco" id="rod-dias"></p>
-        <p style="margin-top:8px"><a id="mapa" target="_blank" rel="noopener">Abrir no mapa</a></p>
-      </div>
-      <div>
-        <h4>Contato</h4>
-        <p><a id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span></span></a></p>
-        <p style="margin-top:8px"><a id="ig" target="_blank" rel="noopener"><svg viewBox="4.2 72.1 8.3 8.4" fill="currentColor" aria-hidden="true"><path d="M10.52,73.68c-.27,0-.48.22-.48.48s.22.48.48.48.48-.22.48-.48-.22-.48-.48-.48Z"/><path d="M8.39,74.3c-1.11,0-2.02.91-2.02,2.02s.91,2.02,2.02,2.02,2.02-.91,2.02-2.02-.91-2.02-2.02-2.02ZM8.39,77.61c-.71,0-1.29-.58-1.29-1.29s.58-1.29,1.29-1.29,1.29.58,1.29,1.29-.58,1.29-1.29,1.29Z"/><path d="M9.99,80.42h-3.28c-1.36,0-2.46-1.11-2.46-2.46v-3.28c0-1.36,1.11-2.46,2.46-2.46h3.28c1.36,0,2.46,1.11,2.46,2.46v3.28c0,1.36-1.11,2.46-2.46,2.46ZM6.71,72.99c-.93,0-1.69.76-1.69,1.69v3.28c0,.93.76,1.69,1.69,1.69h3.28c.93,0,1.69-.76,1.69-1.69v-3.28c0-.93-.76-1.69-1.69-1.69h-3.28Z"/></svg><span></span></a></p>
-      </div>
-      <div>
-        <h4>A pizza</h4>
-        <p>Estilo napoletana<br>Tamanho único 30 cm<br>Longa fermentação</p>
-        <p class="fraco">Todas contêm glúten e lactose</p>
-      </div>
+    <div>
+      <h4>Contato</h4>
+      <p><a id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span></span></a></p>
+      <p><a id="ig" target="_blank" rel="noopener"><svg viewBox="4.2 72.1 8.3 8.4" fill="currentColor" aria-hidden="true"><path d="M10.52,73.68c-.27,0-.48.22-.48.48s.22.48.48.48.48-.22.48-.48-.22-.48-.48-.48Z"/><path d="M8.39,74.3c-1.11,0-2.02.91-2.02,2.02s.91,2.02,2.02,2.02,2.02-.91,2.02-2.02-.91-2.02-2.02-2.02ZM8.39,77.61c-.71,0-1.29-.58-1.29-1.29s.58-1.29,1.29-1.29,1.29.58,1.29,1.29-.58,1.29-1.29,1.29Z"/><path d="M9.99,80.42h-3.28c-1.36,0-2.46-1.11-2.46-2.46v-3.28c0-1.36,1.11-2.46,2.46-2.46h3.28c1.36,0,2.46,1.11,2.46,2.46v3.28c0,1.36-1.11,2.46-2.46,2.46ZM6.71,72.99c-.93,0-1.69.76-1.69,1.69v3.28c0,.93.76,1.69,1.69,1.69h3.28c.93,0,1.69-.76,1.69-1.69v-3.28c0-.93-.76-1.69-1.69-1.69h-3.28Z"/></svg><span></span></a></p>
     </div>
-    <div class="rod-base">
-      <small>© 2026 La Sinistra · Nova Petrópolis/RS</small>
+    <div>
+      <h4>A pizza</h4>
+      <p>Estilo napoletana<br>Tamanho único 30 cm<br>Longa fermentação</p>
+      <p class="fraco">Todas contêm glúten e lactose</p>
     </div>
   </div>
+  <div class="rod-base"><span>© 2026 La Sinistra · Pizza Fatta in Casa</span></div>
 </footer>
-
+</div>
 
 <div class="bar" id="bar" aria-live="polite">
   <div class="bar-in">
@@ -371,7 +344,7 @@ textarea.campo{min-height:70px;resize:vertical}
     </div>
     <div class="grupo">
       <span class="lb" id="lb-hora">Horário preferido</span>
-      <div class="chips h" id="horas" role="group" aria-labelledby="lb-hora"></div>
+      <div class="chips" id="horas" role="group" aria-labelledby="lb-hora"></div>
       <p class="dica" id="dica-hora">Escolhe o dia primeiro.</p>
     </div>
     <div class="grupo">
@@ -382,7 +355,7 @@ textarea.campo{min-height:70px;resize:vertical}
       <label for="obs">Observação</label>
       <textarea class="campo" id="obs" maxlength="200" placeholder="Opcional"></textarea>
     </div>
-    <div class="total"><span>Total</span><span class="preco" id="total"></span></div>
+    <div class="total"><span>Total</span><span class="price" id="total"></span></div>
     <div class="nota">
       <p><strong>O horário é confirmado no WhatsApp</strong>, junto com a chave Pix. O pedido vale depois do Pix.</p>
       <p><strong>Retirada:</strong> <span id="end-nota"></span></p>
@@ -406,6 +379,7 @@ textarea.campo{min-height:70px;resize:vertical}
   var $$ = function(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
   var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
   var brl = function(n){ return '<small>R$</small>' + n; };
+  var preco = function(n){ return '<span class="price">' + brl(n) + '</span>'; };
   var brlTxt = function(n){ return 'R$ ' + n; };
 
   /* ---------- produtos ---------- */
@@ -431,34 +405,38 @@ textarea.campo{min-height:70px;resize:vertical}
   };
   var faixa = C.horarios[0] + ' às ' + C.horarios[C.horarios.length - 1];
 
-  var addBtn = function(id, big){
-    return '<button class="add' + (big ? ' big' : '') + '" type="button" data-id="' + id + '" aria-label="Adicionar ' + esc(P[id].nome) + '">' +
-      '<span class="minus" data-d="-1">' + MINUS + '</span><span class="qty"></span><span class="plus" data-d="1">' + PLUS + '</span></button>';
+  var addBtn = function(id, wide){
+    return '<button class="add' + (wide ? ' wide' : '') + '" type="button" data-id="' + id + '" aria-label="Adicionar ' + esc(P[id].nome) + '">' +
+      '<span class="minus" data-d="-1">' + MINUS + '</span><span class="qty"></span><span class="plus" data-d="1">' + PLUS + '</span>' + (wide ? '<span class="txt">Adicionar</span>' : '') + '</button>';
   };
-  var descHTML = function(arr){ return arr.map(function(l){ return '<span>' + esc(l) + '</span>'; }).join(''); };
+  var descHTML = function(arr){ return arr.map(esc).join(' '); };
 
   /* ---------- render do cardápio ---------- */
   var D = C.destaque;
-  $('#destaque').innerHTML =
-    '<span class="pill tag">Pizza da semana</span>' +
-    '<h1 class="titulo">' + esc(D.nome) + '<span class="script">' + esc(D.script) + '</span></h1>' +
+  $('#destaque').insertAdjacentHTML('beforeend',
+    '<h1>' + esc(D.nome) + '<span class="ch">' + esc(D.script) + '</span></h1>' +
     '<p class="desc">' + descHTML(D.descricao) + '</p>' +
-    '<div class="hero-buy"><span class="preco">' + brl(D.preco) + '</span>' + (aberto ? addBtn(D.id, true) : '') + '</div>';
+    '<div class="buy">' + preco(D.preco) + (aberto ? addBtn(D.id, true) : '') + '</div>');
 
-  var itemHTML = function(p, nome){
-    return '<article class="item"><div class="item-top"><h3>' + nome + '<span class="dot" aria-hidden="true">●</span><span class="preco">' + brl(p.preco) + '</span></h3>' +
-      (aberto ? addBtn(p.id) : '') + '</div><p class="desc">' + descHTML(p.descricao) + '</p></article>';
-  };
-  var meio = Math.ceil(C.salgadas.length / 2);
-  $('#salgadas-1').innerHTML = C.salgadas.slice(0, meio).map(function(p){ return itemHTML(p, esc(p.nome)); }).join('');
-  $('#salgadas-2').innerHTML = C.salgadas.slice(meio).map(function(p){ return itemHTML(p, esc(p.nome)); }).join('');
-  $('#doces').innerHTML = C.doces.map(function(p){ return itemHTML(p, esc(p.nome) + (p.nome2 ? '<br>' + esc(p.nome2) : '')); }).join('');
+  $('#lista-salgadas').innerHTML = C.salgadas.map(function(p){
+    return '<article class="it"><div class="row"><h3 class="nm">' + esc(p.nome) + '</h3><span class="dots" aria-hidden="true"></span>' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div>' +
+      '<p class="desc">' + descHTML(p.descricao) + '</p></article>';
+  }).join('');
+  $('#lista-doces').innerHTML = C.doces.map(function(p){
+    return '<article class="doce"><div class="foto" id="foto-doce" style="--ar:1195/1199;background-image:url(data:image/webp;base64,UklGRpgCAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSCwBAAABkHPbtrG9E9oXn21blY2osm0nleuMVEmVlN/IT0hlO7Xt1Lad596zPz7PGxETgJEaQP3Wgb0ziwGlMLaBXXL0B0m+O7MCUGMYtN4g6Z0TkgezlBrFYNUPBk5IUlzA8xlmhMFm0jHkfw5YCxjMZOAZVpybrzRU7hvxDO/5rNIAexgwquOueB33SHw0uVIWV/iBEkn4aUJCx7+Y/F2YOpvCGLyfk9XrGN3z8aSM/Of0MTjemozDEkSS/zvrLObTRfG8PasAOukcgwjCfW2JULrtNV0ox8vzSxWgE+Z8ppMxxPHR+uZEALApSx+S4kcKeW9HbzpGtRmdB75w9E/HNvVlq9Fg0qoX7j5y/dG1s/t3zGpKVwiZkF3ROH7K5AkdDfnxCK9MUnp2dkaSwZhWUDggRgEAADAHAJ0BKhgAGAA+7WarTymlo6IoDVEwHYlsAJ0zEvensbKqtMA3ktfgaQJl8LfZ4xQKO7+I3HCsxPQY5ioW441OAAD+ZYDhqjeRRu9+HkH2y1HiOW2j4DqAV3sju2RO2C9jBT/FkAFXfHWwzcbZ+zQoWZWVr7SstOWmpV6RzhYCy4Lh6+/ZPhmBhHmQkljtDnwt8W3a/56o+9bg8JJ5ZIO+DFZwwq8x/G1tG498H2AZFx6yiZ5fkjX/MiYwyufrnfZzFSYumlbRWxr0+4Yx0X2qZsxjvBtW1hwTnUUAOcEzSO67gP0eK4N9WptKyymOEafYs598JKGrjg38ILDhkJLGVM+UOusWOiaaDwJa2UydUTMHE5dub175sGNTjRTkpLdjr0wipbyD8IcuHhMo3FtWUOLzhQvORh4JFp8Ik1MJj+rb5AAA)"><picture>' +
+      '<source type="image/avif" srcset="img/doce-480.avif 480w, img/doce-800.avif 800w, img/doce-1100.avif 1100w" sizes="(min-width: 760px) 380px, 94vw">' +
+      '<img src="img/doce-800.webp" srcset="img/doce-480.webp 480w, img/doce-800.webp 800w, img/doce-1100.webp 1100w" sizes="(min-width: 760px) 380px, 94vw" width="1195" height="1199" alt="" loading="lazy" decoding="async"></picture></div>' +
+      '<div><h3 class="nm">' + esc(p.pedido || p.nome) + '</h3><p class="desc">' + descHTML(p.descricao) + '</p>' +
+      '<div class="rb">' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div></div></article>';
+  }).join('');
 
   /* textos do fluxo e do rodapé */
   var diasTxt = listaDias();
   $('#passo-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa + '. Pedidos até as ' + C.limite.replace(':00','h') + ' do dia.';
   $('#passo-end').textContent = C.endereco.linha + '. Na hora marcada, saindo do forno.';
-  $('#periodo').textContent = C.periodo;
+  $('#periodo-curto').textContent = C.periodoCurto || C.periodo;
+  $('#meta-limite').textContent = 'Pedidos até ' + C.limite.replace(':00','h');
+  $('#meta-ret').textContent = 'Retirada ' + faixa.replace(' às ', ' às ');
   $('#mapa').href = C.endereco.mapa;
   $('#rod-end').innerHTML = esc(C.endereco.linha) + '<br>' + esc(C.endereco.cidade);
   $('#rod-dias').textContent = diasTxt + ', ' + faixa;
@@ -468,9 +446,9 @@ textarea.campo{min-height:70px;resize:vertical}
   var ig = $('#ig'); ig.href = 'https://instagram.com/' + C.instagram; ig.querySelector('span').textContent = '@' + C.instagram;
 
   /* fotos: aparecem quando carregam */
-  $$('.photo').forEach(function(ph){
+  $$('.foto').forEach(function(ph){
     var img = ph.querySelector('img');
-    var ok = function(){ img.classList.add('ok'); ph.classList.add('ok'); setTimeout(function(){ ph.style.backgroundImage = 'none'; }, 700); };
+    var ok = function(){ img.classList.add('ok'); setTimeout(function(){ ph.style.backgroundImage = 'none'; }, 700); };
     if (img.complete && img.naturalWidth) ok(); else img.addEventListener('load', ok);
   });
 
@@ -607,8 +585,8 @@ textarea.campo{min-height:70px;resize:vertical}
 
   var concluir = function(url, d, hora){
     urlFeito = url;
-    feito.innerHTML = '<p class="script">quase lá</p><p>Agora é só enviar a mensagem que abriu no teu WhatsApp.<br><br>' +
-      'Teu horário (' + esc(d.rotulo.toLowerCase()) + ', ' + fmtDia(d) + ', às ' + esc(hora) + ') é confirmado por lá, junto com o Pix. ' +
+    feito.innerHTML = '<p class="ch">quase lá</p><p>Agora é só enviar a mensagem que abriu no teu WhatsApp.</p>' +
+      '<p>Teu horário (' + esc(d.rotulo.toLowerCase()) + ', ' + fmtDia(d) + ', às ' + esc(hora) + ') é confirmado por lá, junto com o Pix. ' +
       'Se esse horário já tiver pedido, a gente combina outro contigo.</p>';
     feito.hidden = false; form.hidden = true;
     cart = {}; extra.hora = null; pintar();
@@ -665,14 +643,25 @@ textarea.campo{min-height:70px;resize:vertical}
   sheet.addEventListener('click', function(e){ if (e.target === sheet) sheet.close(); });
   $('#cta-fluxo').addEventListener('click', function(){
     if (qtd() && aberto) abrirFolha();
-    else document.getElementById('destaque').scrollIntoView({ behavior:'smooth', block:'start' });
+    else document.getElementById('semana').scrollIntoView({ behavior:'smooth', block:'start' });
   });
 
   if (!aberto) {
     bar.classList.add('show', 'fechado');
     bar.querySelector('.bar-in').innerHTML = '<div class="resumo">Pedidos desta semana encerrados.<small>Cardápio novo sai na quinta.</small></div>';
-    $('.fluxo-cta').hidden = true;
+    $('.cta-in').hidden = true;
   }
+  /* navegação: seção ativa e borda quando gruda no topo */
+  var nav = $('#nav'), links = $$('a', nav);
+  var secs = ['semana','salgadas','doce','como'].map(function(id){ return document.getElementById(id); });
+  var ativar = function(){
+    var y = window.scrollY + nav.offsetHeight + 40, atual = 'semana';
+    secs.forEach(function(s){ if (s.offsetTop <= y) atual = s.id === 'como' ? 'doce' : s.id; });
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + atual); });
+    nav.classList.toggle('stuck', nav.getBoundingClientRect().top <= 0.5 && window.scrollY > 10);
+  };
+  window.addEventListener('scroll', ativar, { passive:true }); ativar();
+
   marcar();
   pintar();
   carregarOcupados();
