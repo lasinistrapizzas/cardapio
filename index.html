@@ -71,7 +71,7 @@ a{color:inherit}
 .nav a.on{background:var(--k);color:var(--c)}
 
 hr.d{border:0;border-top:1.5px dashed var(--k);margin:22px 0}
-.meta{display:flex;justify-content:space-between;gap:10px;font-weight:500;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase}
+.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 10px;font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
 
 section{padding-top:52px}
 section:first-of-type{padding-top:30px}
@@ -369,7 +369,7 @@ textarea.campo{min-height:72px;resize:vertical}
     <div class="total"><span>Total</span><span class="price" id="total"></span></div>
     <div class="nota">
       <p><strong>O horário é confirmado no WhatsApp</strong>, junto com a chave Pix. O pedido vale depois do Pix.</p>
-      <p><strong>Retirada:</strong> <span id="end-nota"></span></p>
+      <p><strong>Só retirada, não fazemos entrega.</strong> Tu busca na <span id="end-nota"></span>.</p>
     </div>
    </div>
   </div>
@@ -445,10 +445,10 @@ textarea.campo{min-height:72px;resize:vertical}
   /* textos do fluxo e do rodapé */
   var diasTxt = listaDias();
   $('#passo-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa + '. Pedidos até as ' + C.limite.replace(':00','h') + ' do dia.';
-  $('#passo-end').textContent = C.endereco.linha + '. Na hora marcada, saindo do forno.';
+  $('#passo-end').textContent = 'Não fazemos entrega. Tu busca na ' + C.endereco.linha + ', na hora marcada.';
   $('#periodo-curto').textContent = C.periodoCurto || C.periodo;
   $('#meta-limite').textContent = 'Pedidos até ' + C.limite.replace(':00','h');
-  $('#meta-ret').textContent = 'Retirada ' + faixa.replace(' às ', ' às ');
+  $('#meta-ret').textContent = 'Só retirada, sem entrega';
   $('#mapa').href = C.endereco.mapa;
   $('#rod-end').innerHTML = esc(C.endereco.linha) + '<br>' + esc(C.endereco.cidade);
   $('#rod-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa;
