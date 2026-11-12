@@ -207,6 +207,8 @@ dialog.sheet::backdrop{background:rgba(5,3,2,.6);backdrop-filter:blur(3px);-webk
 .aviso svg{width:18px;flex:none}
 input.campo,textarea.campo{width:100%;font:inherit;font-size:16px;color:var(--k);background:#fff;border:1.5px solid var(--k);border-radius:0;padding:13px 14px}
 textarea.campo{min-height:72px;resize:vertical}
+input.cupom{text-transform:uppercase;letter-spacing:.08em}
+input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 .campo:focus{outline:2px solid var(--t);outline-offset:1px}
 .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:26px;padding-top:16px;border-top:1.5px dashed var(--k)}
 .total>span:first-child{font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
@@ -368,6 +370,11 @@ textarea.campo{min-height:72px;resize:vertical}
       <label for="obs">Observação</label>
       <textarea class="campo" id="obs" maxlength="200" placeholder="Opcional"></textarea>
     </div>
+    <div class="grupo">
+      <label for="cupom">Tem cupom de desconto?</label>
+      <input class="campo cupom" id="cupom" type="text" maxlength="30" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Digita o código aqui">
+      <p class="dica">O desconto entra no valor do Pix que a gente te manda.</p>
+    </div>
     <div class="total"><span>Total</span><span class="price" id="total"></span></div>
     <div class="nota">
       <p><strong>O horário é confirmado no WhatsApp</strong>, junto com a chave Pix. O pedido vale depois do Pix.</p>
@@ -481,7 +488,7 @@ textarea.campo{min-height:72px;resize:vertical}
 
   /* ---------- pedido ---------- */
   var KEY = 'lasinistra-pedido-' + C.dias[0].data;
-  var cart = {}, extra = { dia:null, hora:null, nome:'', obs:'' };
+  var cart = {}, extra = { dia:null, hora:null, nome:'', obs:'', cupom:'' };
   try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s) { cart = s.cart || {}; extra = Object.assign(extra, s.extra || {}); } } catch(e){}
   Object.keys(cart).forEach(function(k){ if (!P[k]) delete cart[k]; });
   if (extra.dia && !dias.some(function(d){ return d.data === extra.dia && d.aberto; })) extra.dia = null;
@@ -596,6 +603,8 @@ textarea.campo{min-height:72px;resize:vertical}
   nome.value = extra.nome; obs.value = extra.obs;
   nome.addEventListener('input', function(){ extra.nome = nome.value; salvar(); checar(); });
   obs.addEventListener('input', function(){ extra.obs = obs.value; salvar(); });
+  var cupom = $('#cupom'); cupom.value = extra.cupom || '';
+  cupom.addEventListener('input', function(){ extra.cupom = cupom.value; salvar(); });
 
   var faltando = function(){
     if (!qtd()) return 'Escolhe pelo menos uma pizza';
@@ -614,6 +623,7 @@ textarea.campo{min-height:72px;resize:vertical}
       '\nRetirada: ' + d.rotulo.toLowerCase() + ', ' + fmtDia(d) +
       '\nHorário preferido: ' + extra.hora +
       '\nNome: ' + extra.nome.trim();
+    if ((extra.cupom || '').trim()) t += '\nCupom: ' + extra.cupom.trim().toUpperCase();
     if (extra.obs.trim()) t += '\nObs: ' + extra.obs.trim();
     return t;
   };
