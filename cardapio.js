@@ -16,11 +16,11 @@ window.CARDAPIO = {
   // Pedidos de cada dia fecham no horário de "limite" daquele dia.
   limite: "18:00",
   // Como os dias aparecem nos textos ("Como funciona" e rodapé)
-  diasTexto: "de sexta a domingo",
+  diasTexto: "sexta e domingo",
   dias: [
     { rotulo: "Sexta",   data: "2026-11-13", aberto: true },
     { rotulo: "Sábado",  data: "2026-11-14", aberto: false,
-      aviso: "Sábado não rola. Acabou a massa. Sexta ou domingo?" },
+      aviso: "Sábado o forno descansa, e a gente também. Bora de sexta ou domingo?" },
     { rotulo: "Domingo", data: "2026-11-15", aberto: true }
   ],
 

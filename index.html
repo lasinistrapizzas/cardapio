@@ -561,6 +561,14 @@ textarea.campo{min-height:72px;resize:vertical}
     });
     checar();
   };
+  /* no computador, passar o mouse num dia fechado já mostra o aviso */
+  diasEl.addEventListener('mouseover', function(e){
+    var c = e.target.closest('.chip.off'); if (!c || !window.matchMedia('(hover:hover)').matches) return;
+    var d = dias.filter(function(x){ return x.data === c.dataset.dia; })[0];
+    if (aviso.classList.contains('show') && aviso.querySelector('span').textContent === (d.aviso || '')) return;
+    aviso.querySelector('span').textContent = d.aviso || 'Esse dia não tem retirada.';
+    aviso.classList.remove('show'); void aviso.offsetWidth; aviso.classList.add('show');
+  });
   diasEl.addEventListener('click', function(e){
     var c = e.target.closest('.chip'); if (!c) return;
     var d = dias.filter(function(x){ return x.data === c.dataset.dia; })[0];
