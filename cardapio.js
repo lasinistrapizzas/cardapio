@@ -15,6 +15,8 @@ window.CARDAPIO = {
   // Dias de retirada. "aberto: false" mostra o aviso e não deixa escolher.
   // Pedidos de cada dia fecham no horário de "limite" daquele dia.
   limite: "18:00",
+  // Quantas pizzas por noite (inclui a doce). Vazio ou 0 esconde o aviso.
+  pizzasPorNoite: 10,
   // Como os dias aparecem nos textos ("Como funciona" e rodapé)
   diasTexto: "sexta e domingo",
   dias: [
