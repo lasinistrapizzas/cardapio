@@ -119,6 +119,8 @@ section:first-of-type{padding-top:30px}
 /* ---------- pizzas da semana ---------- */
 .dq{position:relative;margin-top:8px}
 .dq .rot{display:block;font-family:var(--script);font-weight:400;font-size:clamp(62px,17vw,88px);line-height:.8;color:var(--t);margin:0 0 4px -.04em;white-space:nowrap}
+.fig{margin:0}
+.leg{position:relative;z-index:2;margin:-22px 0 16px;font-size:10.5px;line-height:1.45;letter-spacing:.02em;color:#8e8678;font-style:italic;text-align:right}
 .dq+.dq{margin-top:52px;padding-top:44px;border-top:1.5px dashed var(--k)}
 .dq-1 .foto{width:calc((100vw + 84px) * 1.05);max-width:none;margin-left:calc((100vw + 84px) * -.083)}
 .dq-2 .foto{width:calc((100vw + 84px) * 1.05);max-width:none;margin-left:calc(100% - (100vw + 84px) * 1.05 + (100vw + 84px) * .083)}
@@ -232,6 +234,8 @@ dialog.sheet::backdrop{background:rgba(5,3,2,.6);backdrop-filter:blur(3px);-webk
 .chip.off{background:transparent;color:rgba(23,19,13,.45);border-style:dashed}
 .chip.off small{color:rgba(23,19,13,.45)}
 .chips.espera .chip{opacity:.45}
+.chip.lot{background:transparent;color:rgba(23,19,13,.4);border-style:dashed;cursor:not-allowed}
+.chip.lot small{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(23,19,13,.45)}
 .dica{font-size:13px;color:var(--tx);margin-top:10px}
 .aviso{display:none;align-items:center;gap:12px;margin-top:10px;padding:13px 14px;background:var(--t);color:var(--c);font-weight:500;font-size:13.5px;line-height:1.4}
 .aviso.show{display:flex;animation:pop .35s var(--ease)}
@@ -274,12 +278,16 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   .lb-b{right:calc(var(--u) * -12);top:calc(var(--u) * 39)}
   .lb-d{left:auto;right:calc(var(--u) * 44);top:calc(var(--u) * 51)}
   .dq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:48px;align-items:start}
-  .dq-1 .foto,.dq-2 .foto{width:calc(100% + 40px);max-width:none;margin:0;align-self:center}
+  .dq-1 .foto,.dq-2 .foto{width:calc(100% + 40px);max-width:none;margin:0}
+  .dq .fig{align-self:center}
+  .leg{margin:-10px 0 0}
   .dq-1 .rot{grid-column:1;grid-row:1}
-  .dq-1 .foto{grid-column:2;grid-row:1/3;margin-right:-40px}
+  .dq-1 .fig{grid-column:2;grid-row:1/3}
+  .dq-1 .foto{margin-right:-40px}
   .dq-1 .tx{grid-column:1;grid-row:2}
   .dq-2 .rot{grid-column:2;grid-row:1}
-  .dq-2 .foto{grid-column:1;grid-row:1/3;margin-left:-40px}
+  .dq-2 .fig{grid-column:1;grid-row:1/3}
+  .dq-2 .foto{margin-left:-40px}
   .dq-2 .tx{grid-column:2;grid-row:2}
   .dq .rot{font-size:84px;margin-top:10px}
   .dq h3.dqn{margin-top:6px}
@@ -426,7 +434,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
     </div>
     <div class="total"><span>Total</span><span class="price" id="total"></span></div>
     <div class="nota">
-      <p><strong>O horário é confirmado no WhatsApp</strong>, junto com a chave Pix. O pedido vale depois do Pix.</p>
+      <p id="nota-hora"><strong>O horário é confirmado no WhatsApp</strong>, junto com a chave Pix. O pedido vale depois do Pix.</p>
       <p><strong>Só retirada, não fazemos entrega.</strong> Tu busca na <span id="end-nota"></span>.</p>
     </div>
    </div>
@@ -494,7 +502,8 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   $('#destaques').innerHTML = DQ.map(function(D, i){
     return '<article class="dq dq-' + (i % 2 ? '2' : '1') + '">' +
       (D.rotulo ? '<span class="rot">' + esc(D.rotulo) + '</span>' : '') +
-      fotoHTML(D.foto || D.id, '(min-width: 760px) 440px, 110vw', i === 0) +
+      '<figure class="fig">' + fotoHTML(D.foto || D.id, '(min-width: 760px) 440px, 110vw', i === 0) +
+      (i === 0 && C.legendaFotos ? '<figcaption class="leg">' + [].concat(C.legendaFotos).map(esc).join('<br>') + '</figcaption>' : '') + '</figure>' +
       '<div class="tx"><h3 class="dqn">' + esc(D.nome) + (D.script ? '<span class="ch">' + esc(D.script) + '</span>' : '') + '</h3>' +
       (D.historia ? '<p class="hist">“' + esc(D.historia) + '”</p>' : '') +
       '<p class="desc">' + descHTML(D.descricao) + '</p>' +
@@ -518,13 +527,19 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   $('#periodo-curto').textContent = C.periodoCurto || C.periodo;
   $('#meta-limite').textContent = 'Pedidos até ' + C.limite.replace(':00','h');
   $('#meta-ret').textContent = 'Só retirada, sem entrega';
+  var escF = $('#esc-folha');
+  var escPadrao = API
+    ? 'São ' + C.pizzasPorNoite + ' pizzas por noite.'
+    : 'São ' + C.pizzasPorNoite + ' pizzas por noite. Se esgotar, a gente te avisa no WhatsApp.';
+  var rotuloDe = function(data){ var d = dias.filter(function(x){ return x.data === data; })[0]; return d ? d.rotulo.toLowerCase() : ''; };
   if (C.pizzasPorNoite) {
     var escTop = $('#escassez'); escTop.textContent = 'Só ' + C.pizzasPorNoite + ' pizzas por noite.'; escTop.hidden = false;
-    var escF = $('#esc-folha'); escF.textContent = 'São ' + C.pizzasPorNoite + ' pizzas por noite. Se esgotar, a gente te avisa no WhatsApp.'; escF.hidden = false;
+    escF.textContent = escPadrao; escF.hidden = false;
   }
   $('#mapa').href = C.endereco.mapa;
   $('#rod-end').innerHTML = (C.endereco.linhas || [C.endereco.linha]).map(esc).join('<br>') + '<br>' + esc(C.endereco.cidade);
   $('#rod-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa;
+  if (API) $('#nota-hora').innerHTML = '<strong>O horário fica reservado quando tu envia.</strong> A chave Pix chega no WhatsApp e o pedido vale depois do Pix.';
   $('#end-nota').textContent = C.endereco.linha + ', ' + C.endereco.cidade;
   var w = C.whatsapp.replace(/^55/, '');
   var wa = $('#wa'); wa.href = 'https://wa.me/' + C.whatsapp; wa.querySelector('span').textContent = '(' + w.slice(0,2) + ') ' + w.slice(2, -4) + '-' + w.slice(-4);
@@ -564,13 +579,20 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 
   /* horários ocupados: { "2026-11-13|19h30": true } */
   var urlFeito = null;
-  var ocup = {};
+  var ocup = {}, pz = null, lim = C.pizzasPorNoite || 0;
   var chave = function(dia, hora){ return dia + '|' + hora; };
+  /* quantas pizzas ainda cabem na noite (null = não sabemos) */
+  var restam = function(dia){ return (pz && lim) ? Math.max(0, lim - (pz[dia] || 0)) : null; };
+  var aplicar = function(j){
+    ocup = {}; (j.ocupados || []).forEach(function(k){ ocup[k] = true; });
+    if (j.pizzas) pz = j.pizzas;
+    if (j.limite) lim = j.limite;
+  };
   var carregarOcupados = function(){
     if (!API) return Promise.resolve();
-    return fetch(API + '?acao=ocupados&t=' + Date.now())
+    return fetch(API + '?acao=ocupados&de=' + C.dias[0].data + '&ate=' + C.dias[C.dias.length - 1].data + '&t=' + Date.now())
       .then(function(r){ return r.json(); })
-      .then(function(j){ if (j && j.ok) { ocup = {}; (j.ocupados || []).forEach(function(k){ ocup[k] = true; }); marcar(); } })
+      .then(function(j){ if (j && j.ok) { aplicar(j); marcar(); } })
       .catch(function(){});
   };
 
@@ -622,8 +644,25 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   }).join('');
   horasEl.innerHTML = C.horarios.map(function(h){ return '<button class="chip" type="button" data-hora="' + h + '" aria-pressed="false">' + h + '</button>'; }).join('');
 
+  var avisoDia = function(d){
+    if (d.aberto && restam(d.data) === 0) return 'As pizzas de ' + d.rotulo.toLowerCase() + ' esgotaram. Escolhe outro dia.';
+    return d.aviso || 'Esse dia não tem retirada.';
+  };
   var marcar = function(){
-    $$('.chip', diasEl).forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.dia === extra.dia)); });
+    if (extra.dia && restam(extra.dia) === 0) extra.dia = null;
+    $$('.chip', diasEl).forEach(function(c){
+      var d = dias.filter(function(x){ return x.data === c.dataset.dia; })[0];
+      var esg = d.aberto && restam(d.data) === 0;
+      c.classList.toggle('off', !d.aberto || esg);
+      c.innerHTML = esc(d.rotulo) + '<small>' + (esg ? 'esgotado' : fmtDia(d)) + '</small>';
+      c.setAttribute('aria-pressed', String(c.dataset.dia === extra.dia));
+    });
+    if (C.pizzasPorNoite) {
+      var r = extra.dia ? restam(extra.dia) : null;
+      escF.textContent = (r !== null && r <= 4)
+        ? 'Pra ' + rotuloDe(extra.dia) + ' restam só ' + r + (r === 1 ? ' pizza.' : ' pizzas.')
+        : escPadrao;
+    }
     if (extra.dia && extra.hora && ocup[chave(extra.dia, extra.hora)]) extra.hora = null;
     horasEl.classList.toggle('espera', !extra.dia);
     dica.hidden = !!extra.dia;
@@ -639,15 +678,16 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   diasEl.addEventListener('mouseover', function(e){
     var c = e.target.closest('.chip.off'); if (!c || !window.matchMedia('(hover:hover)').matches) return;
     var d = dias.filter(function(x){ return x.data === c.dataset.dia; })[0];
-    if (aviso.classList.contains('show') && aviso.querySelector('span').textContent === (d.aviso || '')) return;
-    aviso.querySelector('span').textContent = d.aviso || 'Esse dia não tem retirada.';
+    var txt = avisoDia(d);
+    if (aviso.classList.contains('show') && aviso.querySelector('span').textContent === txt) return;
+    aviso.querySelector('span').textContent = txt;
     aviso.classList.remove('show'); void aviso.offsetWidth; aviso.classList.add('show');
   });
   diasEl.addEventListener('click', function(e){
     var c = e.target.closest('.chip'); if (!c) return;
     var d = dias.filter(function(x){ return x.data === c.dataset.dia; })[0];
-    if (!d.aberto) {
-      aviso.querySelector('span').textContent = d.aviso || 'Esse dia não tem retirada.';
+    if (!d.aberto || restam(d.data) === 0) {
+      aviso.querySelector('span').textContent = avisoDia(d);
       aviso.classList.remove('show'); void aviso.offsetWidth; aviso.classList.add('show');
       return;
     }
@@ -672,29 +712,33 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
     if (!extra.dia) return 'Falta o dia';
     if (!extra.hora) return 'Falta o horário';
     if (!extra.nome.trim()) return 'Falta o teu nome';
+    var r = restam(extra.dia);
+    if (r !== null && qtd() > r) return 'Pra ' + rotuloDe(extra.dia) + ' restam só ' + r + (r === 1 ? ' pizza' : ' pizzas') + '. Tira alguma ou escolhe outro dia.';
     return '';
   };
   var checar = function(){ if (urlFeito) return; enviar.setAttribute('aria-disabled', String(!!faltando())); };
 
-  var mensagem = function(){
+  var mensagem = function(codigo){
     var d = dias.filter(function(x){ return x.data === extra.dia; })[0];
     var linhas = Object.keys(cart).map(function(id){ return cart[id] + 'x ' + P[id].nome + ' · ' + brlTxt(cart[id] * P[id].preco); });
-    var t = 'Oi, La Sinistra! Quero fazer um pedido:\n\n' + linhas.join('\n') +
+    var t = 'Oi, La Sinistra! Quero fazer ' + (codigo ? 'o pedido *#' + codigo + '*' : 'um pedido') + ':\n\n' + linhas.join('\n') +
       '\n\nTotal: ' + brlTxt(soma()) +
       '\nDia: ' + d.rotulo.toLowerCase() + ', ' + fmtDia(d) +
-      '\nHorário preferido: ' + extra.hora +
+      (codigo ? '\nHorário: ' : '\nHorário preferido: ') + extra.hora +
       '\nNome: ' + extra.nome.trim();
     if ((extra.cupom || '').trim()) t += '\nCupom: ' + extra.cupom.trim().toUpperCase();
     if (extra.obs.trim()) t += '\nObs: ' + extra.obs.trim();
-    t += '\n\n*Retirada na ' + C.endereco.linha + ', ' + C.endereco.cidade + '*';
+    t += '\n\n*Ah, não esquece, a retirada agora é na ' + C.endereco.linha + '.*';
     return t;
   };
 
-  var concluir = function(url, d, hora){
+  var concluir = function(url, d, hora, codigo){
     urlFeito = url;
+    var quando = esc(d.rotulo.toLowerCase()) + ', ' + fmtDia(d) + ', às ' + esc(hora);
     feito.innerHTML = '<p class="ch">quase lá</p><p>Agora é só enviar a mensagem que abriu no teu WhatsApp.</p>' +
-      '<p>Teu horário (' + esc(d.rotulo.toLowerCase()) + ', ' + fmtDia(d) + ', às ' + esc(hora) + ') é confirmado por lá, junto com o Pix. ' +
-      'Se esse horário já tiver pedido, a gente combina outro contigo.</p>' +
+      (codigo
+        ? '<p>Teu horário (' + quando + ') está reservado. A chave Pix chega por lá e o pedido vale depois do Pix.</p>'
+        : '<p>Teu horário (' + quando + ') é confirmado por lá, junto com o Pix. Se esse horário já tiver pedido, a gente combina outro contigo.</p>') +
       '<p><strong>Retirada:</strong> ' + esc(C.endereco.linha) + '.</p>';
     feito.hidden = false; form.hidden = true;
     cart = {}; extra.hora = null; pintar();
@@ -717,9 +761,8 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 
     ocupado = true; enviar.classList.add('busy'); enviar.lastChild.textContent = 'Reservando o horário…';
     var dados = {
-      dia: extra.dia, hora: hora, nome: extra.nome.trim(), obs: extra.obs.trim(),
-      itens: Object.keys(cart).map(function(id){ return cart[id] + 'x ' + P[id].nome; }).join(', '),
-      total: soma()
+      dia: extra.dia, hora: hora, nome: extra.nome.trim(), obs: extra.obs.trim(), cupom: (extra.cupom || '').trim(),
+      itens: Object.keys(cart).map(function(id){ return { nome: P[id].nome, qtd: cart[id], preco: P[id].preco }; })
     };
     var fim = function(){ ocupado = false; enviar.classList.remove('busy'); if (!urlFeito) enviar.innerHTML = enviarHTML; };
     var ctl = window.AbortController ? new AbortController() : null;
@@ -728,12 +771,21 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
       .then(function(r){ return r.json(); })
       .then(function(j){
         clearTimeout(tmo); fim();
-        if (j && j.ok) { concluir(url, d, hora); return; }
+        if (j && j.ok) {
+          var u = j.codigo ? 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(mensagem(j.codigo)) : url;
+          concluir(u, d, hora, j.codigo); return;
+        }
         if (j && j.lotado) {
-          (j.ocupados || []).forEach(function(k){ ocup[k] = true; });
-          ocup[chave(dados.dia, hora)] = true;
+          aplicar(j); ocup[chave(dados.dia, hora)] = true;
           marcar();
           falta.textContent = 'Alguém pegou as ' + hora + ' agora há pouco. Escolhe outro horário.';
+          return;
+        }
+        if (j && j.semPizza) {
+          aplicar(j); marcar();
+          falta.textContent = j.restam
+            ? 'Pra ' + rotuloDe(dados.dia) + ' restam só ' + j.restam + (j.restam === 1 ? ' pizza' : ' pizzas') + '. Tira alguma ou escolhe outro dia.'
+            : 'As pizzas de ' + rotuloDe(dados.dia) + ' esgotaram agora há pouco. Escolhe outro dia.';
           return;
         }
         concluir(url, d, hora);
@@ -773,7 +825,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   marcar();
   pintar();
   carregarOcupados();
-  window.__LS = { mensagem: mensagem, cart: function(){ return cart; }, extra: extra, ocup: function(){ return ocup; } };
+  window.__LS = { mensagem: mensagem, cart: function(){ return cart; }, extra: extra, ocup: function(){ return ocup; }, restam: restam };
 })();
 
 </script>

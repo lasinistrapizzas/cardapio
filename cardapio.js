@@ -29,7 +29,7 @@ window.CARDAPIO = {
   horarios: ["19h", "19h15", "19h30", "19h45", "20h", "20h15", "20h30", "20h45", "21h"],
 
   // Bloqueio automático de horários: desligado (vazio).
-  reservas: "",
+  reservas: "https://script.google.com/macros/s/AKfycbxW6cb_vb3eYwEwL03RQz6-5bpDv4Zq67T99XtgQpHo_HT9zDomng-9MF1B3ji6b1Gw/exec",
 
   endereco: {
     linha: "Rua Farroupilha, 536, subsolo, sala 1, junto à Pousada Relicário",
@@ -40,6 +40,9 @@ window.CARDAPIO = {
   },
 
   instagram: "lasinistrapizzas",
+
+  // Legenda embaixo da primeira foto (vazio esconde)
+  legendaFotos: ["Fotos reais das nossas pizzas,", "fotografadas aqui na cozinha."],
 
   // Pizzas da semana. A primeira fica com a foto à direita, a segunda à esquerda.
   // "rotulo" aparece acima da foto; "nome" + "script" abaixo dela.
