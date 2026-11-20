@@ -234,6 +234,7 @@ dialog.sheet::backdrop{background:rgba(5,3,2,.6);backdrop-filter:blur(3px);-webk
 .chip.off{background:transparent;color:rgba(23,19,13,.45);border-style:dashed}
 .chip.off small{color:rgba(23,19,13,.45)}
 .chips.espera .chip{opacity:.45}
+.chip.foi{background:transparent;color:rgba(23,19,13,.3);border-color:rgba(23,19,13,.18);text-decoration:line-through;cursor:not-allowed}
 .chip.lot{background:transparent;color:rgba(23,19,13,.4);border-style:dashed;cursor:not-allowed}
 .chip.lot small{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(23,19,13,.45)}
 .dica{font-size:13px;color:var(--tx);margin-top:10px}
@@ -468,13 +469,21 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   C.doces.forEach(function(p){ reg(p, p.pedido || p.nome); });
 
   /* ---------- janela de pedidos ---------- */
-  var agora = new Date();
-  var limite = function(d){ return new Date(d.data + 'T' + C.limite + ':00-03:00'); };
-  var dias = C.dias.map(function(d){
-    var o = Object.assign({}, d);
-    if (o.aberto && agora >= limite(o)) { o.aberto = false; o.aviso = 'Os pedidos para ' + o.rotulo.toLowerCase() + ' fecharam às ' + C.limite.replace(':00','h') + '.'; }
-    return o;
-  });
+  /* cada horário fecha ANTEC minutos antes; o dia fecha quando o último horário fecha */
+  var ANTEC = (C.antecedencia != null ? C.antecedencia : 15);
+  var fechaEm = function(dia, h){
+    var m = /^(\d{1,2})h(\d{2})?$/.exec(h); if (!m) return new Date(0);
+    return new Date(new Date(dia + 'T' + ('0' + m[1]).slice(-2) + ':' + (m[2] || '00') + ':00-03:00').getTime() - ANTEC * 60000);
+  };
+  var passou = function(dia, h){ return new Date() >= fechaEm(dia, h); };
+  var diaPassou = function(dia){ return passou(dia, C.horarios[C.horarios.length - 1]); };
+  var fecharDias = function(){
+    dias.forEach(function(o){
+      if (o.aberto && diaPassou(o.data)) { o.aberto = false; o.aviso = 'Os horários de ' + o.rotulo.toLowerCase() + ' já encerraram.'; }
+    });
+  };
+  var dias = C.dias.map(function(d){ return Object.assign({}, d); });
+  fecharDias();
   var aberto = dias.some(function(d){ return d.aberto; });
   var fmtDia = function(d){ var p = d.data.split('-'); return p[2] + '/' + p[1]; };
   var listaDias = function(){
@@ -522,10 +531,10 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 
   /* textos do fluxo e do rodapé */
   var diasTxt = listaDias();
-  $('#passo-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa + '. Pedidos até as ' + C.limite.replace(':00','h') + ' do dia.';
+  $('#passo-dias').textContent = diasTxt.charAt(0).toUpperCase() + diasTxt.slice(1) + ', das ' + faixa + '. Pedidos até ' + ANTEC + ' minutos antes do horário de retirada.';
   $('#passo-end').textContent = 'Não fazemos entrega. Tu busca na ' + C.endereco.linha + ', na hora marcada.';
   $('#periodo-curto').textContent = C.periodoCurto || C.periodo;
-  $('#meta-limite').textContent = 'Pedidos até ' + C.limite.replace(':00','h');
+  $('#meta-limite').textContent = 'Pedidos até ' + ANTEC + ' min antes da retirada';
   $('#meta-ret').textContent = 'Só retirada, sem entrega';
   var escF = $('#esc-folha');
   var escPadrao = API
@@ -663,12 +672,14 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
         ? 'Pra ' + rotuloDe(extra.dia) + ' restam só ' + r + (r === 1 ? ' pizza.' : ' pizzas.')
         : escPadrao;
     }
-    if (extra.dia && extra.hora && ocup[chave(extra.dia, extra.hora)]) extra.hora = null;
+    if (extra.dia && extra.hora && (ocup[chave(extra.dia, extra.hora)] || passou(extra.dia, extra.hora))) extra.hora = null;
     horasEl.classList.toggle('espera', !extra.dia);
     dica.hidden = !!extra.dia;
     $$('.chip', horasEl).forEach(function(c){
-      var lot = !!(extra.dia && ocup[chave(extra.dia, c.dataset.hora)]);
+      var foi = !!(extra.dia && passou(extra.dia, c.dataset.hora));
+      var lot = !foi && !!(extra.dia && ocup[chave(extra.dia, c.dataset.hora)]);
       c.classList.toggle('lot', lot);
+      c.classList.toggle('foi', foi);
       c.innerHTML = c.dataset.hora + (lot ? '<small>reservado</small>' : '');
       c.setAttribute('aria-pressed', String(c.dataset.hora === extra.hora));
     });
@@ -697,6 +708,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   horasEl.addEventListener('click', function(e){
     var c = e.target.closest('.chip'); if (!c) return;
     if (!extra.dia) { dica.hidden = false; return; }
+    if (c.classList.contains('foi')) { falta.textContent = 'Esse horário já encerrou. Os pedidos fecham ' + ANTEC + ' minutos antes.'; return; }
     if (c.classList.contains('lot')) { falta.textContent = 'Esse horário já foi reservado. Escolhe outro.'; return; }
     extra.hora = c.dataset.hora; falta.textContent = ''; marcar(); salvar();
   });
@@ -711,6 +723,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
     if (!qtd()) return 'Escolhe pelo menos uma pizza';
     if (!extra.dia) return 'Falta o dia';
     if (!extra.hora) return 'Falta o horário';
+    if (passou(extra.dia, extra.hora)) return 'O horário das ' + extra.hora + ' acabou de encerrar. Escolhe outro.';
     if (!extra.nome.trim()) return 'Falta o teu nome';
     var r = restam(extra.dia);
     if (r !== null && qtd() > r) return 'Pra ' + rotuloDe(extra.dia) + ' restam só ' + r + (r === 1 ? ' pizza' : ' pizzas') + '. Tira alguma ou escolhe outro dia.';
@@ -825,7 +838,15 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   marcar();
   pintar();
   carregarOcupados();
-  window.__LS = { mensagem: mensagem, cart: function(){ return cart; }, extra: extra, ocup: function(){ return ocup; }, restam: restam };
+  /* o relógio anda: a cada 30 s fecha os horários que passaram */
+  setInterval(function(){
+    var antes = extra.hora;
+    fecharDias();
+    if (extra.dia && !dias.some(function(d){ return d.data === extra.dia && d.aberto; })) extra.dia = null;
+    marcar();
+    if (antes && !extra.hora) { falta.textContent = 'O horário das ' + antes + ' acabou de encerrar. Escolhe outro.'; salvar(); }
+  }, 30000);
+  window.__LS = { mensagem: mensagem, cart: function(){ return cart; }, extra: extra, ocup: function(){ return ocup; }, restam: restam, passou: passou };
 })();
 
 </script>
