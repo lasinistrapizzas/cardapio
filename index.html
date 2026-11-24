@@ -158,6 +158,21 @@ section:first-of-type{padding-top:30px}
 .row .dots{flex:1;min-width:16px;border-bottom:1.5px dotted var(--k);align-self:flex-end;margin-bottom:12px}
 .it .desc{font-size:13.5px;line-height:1.6;color:var(--tx);margin-top:6px;padding-right:52px}
 
+/* salgadas com foto: meia pizza saindo pela lateral */
+.base-sal{font-size:13px;line-height:1.55;font-style:italic;color:var(--tx);margin-top:12px}
+.sx{--pw:min(82vw,440px);--edge:calc(50vw - 50%);position:relative;display:flex;align-items:center;min-height:calc(var(--pw) * .98);margin-top:22px}
+.sx .ph{position:absolute;top:50%;transform:translateY(-50%);width:var(--pw)}
+.sx .foto{width:100%;max-width:none;margin:0}
+.sx.l{padding-left:calc(var(--pw) / 2 - var(--edge) + 18px)}
+.sx.l .ph{left:calc(0px - var(--edge) - var(--pw) / 2)}
+.sx.r{padding-right:calc(var(--pw) / 2 - var(--edge) + 18px)}
+.sx.r .ph{right:calc(0px - var(--edge) - var(--pw) / 2)}
+.sx .tx{flex:1;min-width:0}
+.sx .it{padding:0}
+.sx .row{flex-wrap:wrap;row-gap:10px}
+.sx .row .nm{flex-basis:100%}
+.sx .row .dots{display:none}
+.sx .it .desc{padding-right:0}
 .doce{margin-top:6px}
 .doce .foto{width:calc((100vw + 84px) * .85);max-width:none;margin:0 0 0 calc(50% - 50vw - 40px)}
 .doce .it{padding-top:14px}
@@ -266,6 +281,9 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 
 /* ---------- desktop / tablet ---------- */
 @media (min-width:760px){
+  .sx{--pw:440px;--edge:44px;margin-top:8px}
+  #salgadas .sx{clip-path:inset(-40px calc(0px - var(--edge)) -40px calc(0px - var(--edge)))}
+  .sx .it .desc{max-width:46ch}
   .tk{margin-top:-40px}
   .poster{padding-top:56px}
   .big{--u:min(1vw, 11px);height:calc(var(--u) * 62)}
@@ -303,6 +321,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 }
 @media (min-width:1000px){
   #lista-salgadas{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
+  #lista-salgadas.com-fotos{display:block}
 }
 </style>
 </head>
@@ -339,6 +358,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 
     <section id="salgadas" aria-labelledby="t-salgadas">
       <h2 class="sh scr" id="t-salgadas">Salgadas</h2>
+      <p class="base-sal" id="base-sal" hidden></p>
       <div id="lista-salgadas"></div>
     </section>
 
@@ -500,7 +520,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   var descHTML = function(arr){ return arr.map(esc).join(' '); };
 
   /* ---------- render do cardápio ---------- */
-  var IMG = {"bigode": {"w": 1009, "h": 964, "lqip": "data:image/webp;base64,UklGRnwCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCMBAAABkKNt27FH9/t+v//Ytm206lI5GdXTWdWswLbtWQA7q7Rt88Udf/8SImICAEACCLcv2Hns8MrhAgACk0o4Q1vvWk767crcIOQEieJzJGm01tqQvJ4MCQiZ84j/leHk1vznjaAj4PHv5T9O/z83wYG36oO1LqjYDelbTEN3G+CNP0PtyvB+KJBzKQKkrg00vKZ1ZzgS6vwVCW3nxbY/sSYCXB5dtpfandU93ryRb9a60fY8kNRwltqFVewBfMWzv1o7PcW1QkIkNxygmpbmkZAHgK+o9znNVEbzYLxXAEBc/azzNNoYY7Qhd4T9AhNlYk3HKU55ZU6aV2ByEV3eueLQlVt3Lp9ZVBL2YpoilF1c1dDUWJUTHXQwfScYGx8fFx30YEoAVlA4IDIBAACwBgCdASoYABcAPu1urlIppiQiqAgBMB2JbACdMoR0kIG0a2wHPsEYA6uj0kGKR43Yfm7tbHpPXmqGH/kcAAD+z2Hqj8MyPsRO/mLkcYZhhvI7GetGP/U5K9Lq7grQLkZTgCCnawbPt6ImgenAofTW6JYFAJ2Qnr+mkh2OCwryQ2s193YmtXGFkoYCZnEOMW8/dHSdlCMcYPjCiENVYMhQtxlLeUY07a5zD+RPwvv0MDRrAWqDCPO7g48luCjayUKN1GfGB8MJc7dIDkZP/0EACcb2ELdCke+UX+ReErdf+z3tWhjX/iRig++ucUOGMLHPJNj1J6eGV5Ygoq4d1hinlVaSV8pvoyUq77XDM06cStsXDzCavkKAcbvz+hoikmqRdiAwInomDFQkvaE5RD5KQAA="}, "dani": {"w": 1267, "h": 1199, "lqip": "data:image/webp;base64,UklGRnoCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCoBAAABkGPbtmlbc5/9bNu27fe+kTuybf/YRgEYKrL/r4Ai2/Y/a+8ZXJxXhIiYAABwgPJJO84dm1QAQCOwRvK+b/T9cmNVMpTyp1H5kDRixJJ8MQ9K+Wi0veF/S18rLnkqwlGAg8KPFAZpXB4L04ATf5cug//PrUoDq/mfHq350+Go8AfGeKFwe3hIl6V3sVfSwxZTvBk+ronYYIfB8mN31Bya4fg8GJv9gsaTsS+64rGNrifh6ao41UfrxZo/M4rCEPtYJDjr8nhbqnJwiGKCseT5UaVhUE7GIZdGrD/h32Njq2MAICR6+h2SIkbE8tmy7opY5aPCowoXXP5JXzk/pSUvQsG/jowrnLj7xr0LR5f216RoBKsj41LLmhsqi7OjFDyqsOj4xNhwBwEBVlA4ICoBAABQBwCdASoYABcAPu1krE6ppaQiKA1RMB2JbACdMzQ1cIG0A20FJroZ8cA6q45epZxkfeWN083omSFeLBFjd1bs2loAAPrbXL+6WmzLay9d7IMDJwm+Pr1iQ1ug7PlK/hvdJVjz7HdV+Aj1czT52NPyNjJaA3AGl5V7mII3N885hJ3aeozf/ifpWIsPDb1ArZ4kaQKMbuAITaG1pHz8mOx/Q8kd4WP3oVrYTK6523YzQqK46270rCG7a7w2SskjdJu4KzEBegVi4pmRh2nbS7pjyCtsZ+IqkSdhDFknTsdOTSvxLGS2c9pS1a48pBE/g4nalfIN2ao53Yz6BAQwigP4z/fiBO6aH8M3BYXRxbEZXYqvkBsvGvPkcQmemTp16N7K17mtuITV5wAA"}, "doce": {"w": 1280, "h": 1201, "lqip": "data:image/webp;base64,UklGRpACAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCUBAAABkKtt2yFG78w/sc3KZuWcgJPKOQI7ldWl4wE4tVbVVip3S9v2fP//LmdyCBExAQAsG4gtmzjeaCwNBhT+awEtR49dkvx+azoW6l8WgrZJUmsxJO+0wv7LsqOv0hXDv412yVU4ABR2+INetXAGDoAiCr0bl71QwJpxfVDzebZCxANqPxROOqqBhv7McVxgvxF/hi/KA8d5Lm/qwxbNuTyujuqg9ie8UBQZfZ/iS3MhIwR9FOPDmLdtaUpZkxTjTXitMhYIdGZI8SK83F4QDCAweP4HXdHmLyP81FUcYwNAYGjzdZIU0ULeHqlMsPHPoMDy3QsPXZL8dtBakergvyo4Nq++e/3KzUtDNYVxCh6toPCouOSc8rKC9BALfu2g8OiYMIV/AwBWUDggRAEAABAHAJ0BKhgAFwA+7WarTymlo6IoDVEwHYlsAJ0zNDUArrgDcAIYFcBKghnPjaI3TlYf55amhy0nDspxzGQZRMdAAP7Ffpylqr5/FZYDSkx3QeZw4HerM4F0oGP6vbBuYtMtdOp4P/41ELwmubxBKSNer30QE/BWKZ9vjqWUSBm7ZENXgF3ZFi33EVP1voH6EV/oWBOP2YwJ2n3VwQivFMBpVz32jS8W0bzJD53ieJvY6xz3XcsaSUJzXaj0CTOMEPSX12TywzpAk5ZEVjOMkJiTeP0qHEvxWEbJq2VzGJN5sxDuizND1IXEEBPnz2utj5A8YagxEI/5U3GzBijIcgrnz58ytdB+2aX6+jQzvS/u5CN6NspO+Rn7jk8SMifUGDtlhdPHiyGdW9/3S8FmPyf2Dz6temZzR3xltvyGmqTCuSgAAA=="}};
+  var IMG = {"bigode": {"w": 1009, "h": 964, "lqip": "data:image/webp;base64,UklGRnwCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCMBAAABkKNt27FH9/t+v//Ytm206lI5GdXTWdWswLbtWQA7q7Rt88Udf/8SImICAEACCLcv2Hns8MrhAgACk0o4Q1vvWk767crcIOQEieJzJGm01tqQvJ4MCQiZ84j/leHk1vznjaAj4PHv5T9O/z83wYG36oO1LqjYDelbTEN3G+CNP0PtyvB+KJBzKQKkrg00vKZ1ZzgS6vwVCW3nxbY/sSYCXB5dtpfandU93ryRb9a60fY8kNRwltqFVewBfMWzv1o7PcW1QkIkNxygmpbmkZAHgK+o9znNVEbzYLxXAEBc/azzNNoYY7Qhd4T9AhNlYk3HKU55ZU6aV2ByEV3eueLQlVt3Lp9ZVBL2YpoilF1c1dDUWJUTHXQwfScYGx8fFx30YEoAVlA4IDIBAACwBgCdASoYABcAPu1urlIppiQiqAgBMB2JbACdMoR0kIG0a2wHPsEYA6uj0kGKR43Yfm7tbHpPXmqGH/kcAAD+z2Hqj8MyPsRO/mLkcYZhhvI7GetGP/U5K9Lq7grQLkZTgCCnawbPt6ImgenAofTW6JYFAJ2Qnr+mkh2OCwryQ2s193YmtXGFkoYCZnEOMW8/dHSdlCMcYPjCiENVYMhQtxlLeUY07a5zD+RPwvv0MDRrAWqDCPO7g48luCjayUKN1GfGB8MJc7dIDkZP/0EACcb2ELdCke+UX+ReErdf+z3tWhjX/iRig++ucUOGMLHPJNj1J6eGV5Ygoq4d1hinlVaSV8pvoyUq77XDM06cStsXDzCavkKAcbvz+hoikmqRdiAwInomDFQkvaE5RD5KQAA="}, "dani": {"w": 1267, "h": 1199, "lqip": "data:image/webp;base64,UklGRnoCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCoBAAABkGPbtmlbc5/9bNu27fe+kTuybf/YRgEYKrL/r4Ai2/Y/a+8ZXJxXhIiYAABwgPJJO84dm1QAQCOwRvK+b/T9cmNVMpTyp1H5kDRixJJ8MQ9K+Wi0veF/S18rLnkqwlGAg8KPFAZpXB4L04ATf5cug//PrUoDq/mfHq350+Go8AfGeKFwe3hIl6V3sVfSwxZTvBk+ronYYIfB8mN31Bya4fg8GJv9gsaTsS+64rGNrifh6ao41UfrxZo/M4rCEPtYJDjr8nhbqnJwiGKCseT5UaVhUE7GIZdGrD/h32Njq2MAICR6+h2SIkbE8tmy7opY5aPCowoXXP5JXzk/pSUvQsG/jowrnLj7xr0LR5f216RoBKsj41LLmhsqi7OjFDyqsOj4xNhwBwEBVlA4ICoBAABQBwCdASoYABcAPu1krE6ppaQiKA1RMB2JbACdMzQ1cIG0A20FJroZ8cA6q45epZxkfeWN083omSFeLBFjd1bs2loAAPrbXL+6WmzLay9d7IMDJwm+Pr1iQ1ug7PlK/hvdJVjz7HdV+Aj1czT52NPyNjJaA3AGl5V7mII3N885hJ3aeozf/ifpWIsPDb1ArZ4kaQKMbuAITaG1pHz8mOx/Q8kd4WP3oVrYTK6523YzQqK46270rCG7a7w2SskjdJu4KzEBegVi4pmRh2nbS7pjyCtsZ+IqkSdhDFknTsdOTSvxLGS2c9pS1a48pBE/g4nalfIN2ao53Yz6BAQwigP4z/fiBO6aH8M3BYXRxbEZXYqvkBsvGvPkcQmemTp16N7K17mtuITV5wAA"}, "doce": {"w": 1280, "h": 1201, "lqip": "data:image/webp;base64,UklGRpACAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCUBAAABkKtt2yFG78w/sc3KZuWcgJPKOQI7ldWl4wE4tVbVVip3S9v2fP//LmdyCBExAQAsG4gtmzjeaCwNBhT+awEtR49dkvx+azoW6l8WgrZJUmsxJO+0wv7LsqOv0hXDv412yVU4ABR2+INetXAGDoAiCr0bl71QwJpxfVDzebZCxANqPxROOqqBhv7McVxgvxF/hi/KA8d5Lm/qwxbNuTyujuqg9ie8UBQZfZ/iS3MhIwR9FOPDmLdtaUpZkxTjTXitMhYIdGZI8SK83F4QDCAweP4HXdHmLyP81FUcYwNAYGjzdZIU0ULeHqlMsPHPoMDy3QsPXZL8dtBakergvyo4Nq++e/3KzUtDNYVxCh6toPCouOSc8rKC9BALfu2g8OiYMIV/AwBWUDggRAEAABAHAJ0BKhgAFwA+7WarTymlo6IoDVEwHYlsAJ0zNDUArrgDcAIYFcBKghnPjaI3TlYf55amhy0nDspxzGQZRMdAAP7Ffpylqr5/FZYDSkx3QeZw4HerM4F0oGP6vbBuYtMtdOp4P/41ELwmubxBKSNer30QE/BWKZ9vjqWUSBm7ZENXgF3ZFi33EVP1voH6EV/oWBOP2YwJ2n3VwQivFMBpVz32jS8W0bzJD53ieJvY6xz3XcsaSUJzXaj0CTOMEPSX12TywzpAk5ZEVjOMkJiTeP0qHEvxWEbJq2VzGJN5sxDuizND1IXEEBPnz2utj5A8YagxEI/5U3GzBijIcgrnz58ytdB+2aX6+jQzvS/u5CN6NspO+Rn7jk8SMifUGDtlhdPHiyGdW9/3S8FmPyf2Dz6temZzR3xltvyGmqTCuSgAAA=="}, "sal-4queijos": {"w": 1046, "h": 1100, "lqip": "data:image/webp;base64,UklGRsACAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSAMBAAABkKNt27FH9/O8X2xXdrqkclJlA9mA+7R2xqpmAS6ns63WswDbfHEPvv/7ZgkRMQHIKCpRBAhSRohtgpEkKig5cGPnliu/lmAkkwGmHzM2jAEaZ9B6gXTeWhc8jxVB/zHoeU3rGW95vVQEUHS8oWXCXzyXpSJSeJeWiX9xN4xBPz2TB+c6EGE92BS0XIPkPqZP48IpoPYzQyreEHQznecdRfPXdC6cB2pe/wcuAiVP6FOE8K4eoldpU1jugypG6UOi4H90ikKwSuuTOK5CABhsIZ0PgcE7a7nfKP7VrJlnTLhqFPGC1uX7Xzz9k+NHZyORDFCgqmtoZLg+WyBIKopYEUUsAFZQOCCWAQAAUAgAnQEqFwAYAD61UJ9MpySioigKqOAWiWwAnTLjdWaC5V+pbClLJ8/8JugW/Lm+VAOkgHMpPjIT5G3iGO75A5cXMaqmziH/ejAAAP7Do9+GNCxaqwDCH0/h8RCG81e7hMP8x+ybt6P1lS3vGxumpF9PuXSf0caX0gh0NJfFbfHsgwQ5pP7knm+1bbTXAPOl/xIqS0wHCJvf5lxizzPbLYDWhne8f3hBZiFSuOsAjHEPDXF/U0AXF/o7VT7u9+nAWmuZLJRYOLEljVSwnlz1bXCbOQdv8XKNwR+J8MCeGvIdrvm0FeHYr0nrQQmIs8mbbkoOf+UII26Yhd4PHwOrCKM7rx9DUVxc7k9r/f5PalPf6VPeylSzpIlMfT+NswtsL4yJymaFQb9s+nn1EXnlfp/owcwdBX+Vymvw5iJe0+Ek5PL5+f5HID911O169fHDvadSDkvT55rOq8ZT6y2salWe3e+MX+QWz+e4V082Y1//NQvOVtn6mgF6nCtcRKeKOl0bPKtlN9WkpuMDCu1acZCy0C4AAA=="}, "sal-calabresa": {"w": 1037, "h": 1100, "lqip": "data:image/webp;base64,UklGRs4CAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSAMBAAABkKNt27E59/uMzc62WduzgmltroDdpE01K5hUqex0k3S2XVnf+z538CFLiIgJgL8IfGMNQgtg8kqrigSICSNoPHXns6c/bi7lwkhADAa+MPDtJiA+guT3/OVUVZ0lz7dCABiknaBloHr8UgeBiUm/Tsuwv3gjRRCLY/zJ8B4nIZijxyjuEOii0yiWV4A9eozq+DDDXKONpPyQn/qALpLj/fSsJ//B8hDmtNpInm4DW/QiKbuB8o/qIliejDcGy3QulDrbDIFgg/Q0SC2PGwNAMPGCtNYpqZbcTxD8K6g8+MTA70sw8BeY9pWDo3fk56NxCIKNAZBeNjzQmAlBaCMCX4EvAFZQOCCkAQAA8AgAnQEqFwAYAD61TJ9KpyQioagNUOAWiWwAnTLjcDDfcyrbvqA2wHPAfiBrOW8kf7csQPZ84zegAFAUS4pozM/+jUx44Vy1Mc+pTOrQouAA2oEY1ciniJTd9qQcEdeJXGEQqhU3tRNr0cEYSSguGIXiT9hJ/NsAnYULAhIhmapf6q+/DyH7fC1G/LRyv6U5dtiPw4gf9Rftluf/BsHm+/qSguriWt1NmOEh/4EHQmyYYfHlh1tIvJ1GOtWjMOHRnKVWYmmPPiN/r5qYPun9i5jN2k/NGrt6Vo/7XlkxVdu8Rh2nRE8SK4fLhgqoK8xr0CkjRcKh00j0NwtWpxdwO7FNFBbuuVd71HXgP2Vmgh07cEPh2dOzjjCKZ9rcLdmuoU8rv2OnswM8T0xt7O9l/BGbYJ60D+fQQL9KtmVMttHtZM19WP5PNMLziJB29K2iMmyU3oKQYZZ7P/BUUmEN79zfrV88QBn1acu76imBzPVrvuQYekor031gOT55n7JJMHSIr9eGd/5uAA7t7/xit/JoEEBhF7WWfp7PKWC4YUqGYAAA"}, "sal-sinistra": {"w": 1048, "h": 1100, "lqip": "data:image/webp;base64,UklGRgIDAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSP0AAAABkGvbtmlLc+3zbCtkavu9ctU3vLQc2VZ6o1JkW1H9hV2x7dp7rfl4zv2EiJgAzBplYM6MCDEdIHUtrY21JZmAuNkE6E09+Enqzw8vjowDMkOcSzH2nXY4ABFOMHg10szUK3UdIkRYzv/GuN7+d4iTmq+qjO95GRH20DOh2ptCZL0yTULqAEZMmdg4gQP0yZSrcZ0hHStwmD4dy3EqHbQF2JoG45d69AdL5HkOkvOEIYEF7YHDBIPFMs8UHBy200KMYDyeJwAcNvwjQwhqNKXuEMFMh3n3lDONPLlQ5oBDzvw95+4/+cO3awUOc4sAyK7oWtYMJ4gtTgQAHGYHAFZQOCDeAQAAEAkAnQEqFwAYAD61UqJNJySjIigIAOAWiWwAnTKEfJ6CKAc71+IGsm+gB0oyNBCKcmznA+lvYA6NfoABirvDBCyeJzqOQsOCO/psSjq5TuGAAOIesieiSRqhOf2kZxIhX231UfgambdE/rL8msESRH7HnwqpTYHQgt/uUhXXR84WUXBCOmvA9IP+02YHsm7yfWxJAqObjR68ltiVgkotfy3HskevCmd+8ADXf//+jUmNV78hkISV7oRf9twyBSZKzbAKpSG8DzKlvefuhNKjIYb1/XgyjNATAhH8SyyujtP2/TpXlhn3AvySztDjIPgfhGIscz701/thJhDqZdN3UqRHY8yivBUHz/tdQa+lDWktoTMvugTh3x4/xI3wsgTjGdcH/VAf9Fsfcv6hj2ew8JtD/n07erFKP2dvGI6oG5b35NT+OwJvxSM77GSFPzVdItpyQdn3koF72SvW60/+Tb0KZ98Ch2Ohpvpza5z9wYYnpNjSa6qfrfgsSA7Bt8uPmxan268sd5CprXPUAtj/2f8JkrLHayooJIhsvXBuTPWhIY/pXsn8RhOkiBFbp95HgOXFrt2Hqcv2csT9CiQFqIpHWzTA2f3vhv8tOxWv53Pj6P/hAanv1z/AcPgAAA=="}, "sal-toscana": {"w": 1100, "h": 1055, "lqip": "data:image/webp;base64,UklGRu4CAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSAMBAAABkCPbtmora5/zf+aauUbu0gO3BvyPu0ZOChFFB9wJiR1aALG7u8PZZy/kCk2IiAlAqhf86x2yOwGaF/eOlwFesjhg+uIvks/PDwA+zaPvMkkNkdT9hRBJ8NiiVDWSFow3hpDoMPLLAtMD9VYbHETK71OZVclRODgcZmB2jZPwHv1U5gw8gAKPgxbyKK9BUPSYMY/xayPQ8pOWL3YBfcbcRuv4Xx9qgcrnFvOoXRRxOMqQJ3A9vEPf12jZIm/XiMDhEEOmqHECAog0fWCIlmSB3A4HAILVb0iaqqqR71eKQ6K49n03fzLxw9kxOKQKUD40s/PCiR0LnR4OGcUBQIEAEEEiAFZQOCDEAQAAEAkAnQEqGAAXAD61TKBKpyQjIagNUOAWiWwAnS8Ce101HAA2wHPD6ZBvLH+4fQG6YZqno/2A+jT5IAd1DPsKGpGy1UeEVCswoV6UbIvjdD4AAP7nLfsd8IXwYn6FiiOXR8boKlUTn5QSAgfwvakHHe1MF78cQOMQ59vuZzs5s/yvckYHmzQ/ugUDt2NmI0WkrXBNG+kq/MX7lXOZ6lsdPy/c9VqHF8ONZNy7GlnFaIIzBhXHjFi6VILvqa0pANP8MnfiGBoEnmPTZ8nz7Uh4e36YN1AivV0laI6iBOivq1hkH9FQiA3g1+eVbvbGg2XjlkxKqNvrzwKfiPW+tMZXlIWICCEH6K9TACjC6HZEd/5PW5sE5AdW9wVdA/tNZ0TKmPAlQ+STh2W5g9cEtIjvhp+O25AiUns2Mu1yIZkmaePV9J79Lt4K0LiFEqlDPBs75U8aB0m73wmDWV791YdXMJUKRP/NW3hncxoJodNWnLFB4tcYuZ7OfbB77eLRmcD/719s8Zh9OHnFsfsN8UC5X+F9byC3E2tk1kAPBBH9ebij9rWcZx97/tBNel/sZb+rn9zeDaZbani45P2f3UjR2XwAAAA="}};
   var fotoHTML = function(nome, sizes, eager){
     var m = IMG[nome] || { w:1, h:1, lqip:'' };
     var set = function(ext){ return ['480','800','1100'].map(function(w){ return 'img/' + nome + '-' + w + '.' + ext + ' ' + w + 'w'; }).join(', '); };
@@ -519,10 +539,15 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
       '<div class="buy">' + preco(D.preco) + (aberto ? addBtn(D.id, true) : '') + '</div></div></article>';
   }).join('');
 
-  $('#lista-salgadas').innerHTML = C.salgadas.map(function(p){
-    return '<article class="it"><div class="row"><h3 class="nm">' + esc(p.nome) + '</h3><span class="dots" aria-hidden="true"></span>' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div>' +
+  if (C.baseSalgadas) { var bs = $('#base-sal'); bs.textContent = C.baseSalgadas; bs.hidden = false; }
+  $('#lista-salgadas').innerHTML = C.salgadas.map(function(p, i){
+    var item = '<article class="it"><div class="row"><h3 class="nm">' + esc(p.nome) + '</h3><span class="dots" aria-hidden="true"></span>' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div>' +
       '<p class="desc">' + descHTML(p.descricao) + '</p></article>';
+    if (!p.foto || !IMG[p.foto]) return item;
+    /* meia pizza saindo pela lateral, alternando os lados */
+    return '<div class="sx ' + (i % 2 ? 'r' : 'l') + '"><div class="ph">' + fotoHTML(p.foto, '(min-width: 760px) 400px, 80vw') + '</div><div class="tx">' + item + '</div></div>';
   }).join('');
+  if (C.salgadas.some(function(p){ return p.foto && IMG[p.foto]; })) $('#lista-salgadas').classList.add('com-fotos');
   $('#lista-doces').innerHTML = C.doces.map(function(p){
     return '<article class="doce">' + fotoHTML(p.foto || 'doce', '(min-width: 760px) 380px, 94vw') +
       '<div class="it"><div class="row"><h3 class="nm">' + esc(p.pedido || p.nome) + '</h3><span class="dots" aria-hidden="true"></span>' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div>' +

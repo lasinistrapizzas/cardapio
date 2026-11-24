@@ -42,7 +42,6 @@ window.CARDAPIO = {
   instagram: "lasinistrapizzas",
 
   // Legenda embaixo da primeira foto (vazio esconde)
-  legendaFotos: ["Fotos reais das nossas pizzas,", "fotografadas aqui na cozinha."],
 
   // Pizzas da semana. A primeira fica com a foto à direita, a segunda à esquerda.
   // "rotulo" aparece acima da foto; "nome" + "script" abaixo dela.
@@ -63,18 +62,19 @@ window.CARDAPIO = {
       preco: 80 }
   ],
 
+  // Frase que aparece logo abaixo do título "Salgadas"
+  baseSalgadas: "Todas levam molho de tomate pelati e mozzarella de búfala. A 4 Queijos é branca.",
+
+  // Salgadas (foto: img/sal-*.avif / .webp, meia pizza saindo pela lateral)
   salgadas: [
-    { id: "4-queijos", nome: "4 Queijos", preco: 65,
-      descricao: ["Pizza branca, mozzarella de búfala, provolone, queijo cremoso e gorgonzola."] },
-    { id: "calabresa", nome: "Calabresa", preco: 65,
-      descricao: ["Molho de tomate pelati, mozzarella de búfala, calabresa fatiada e cebola roxa.",
-                  "Finalizada com hot honey de limão siciliano."] },
-    { id: "sinistra", nome: "Sinistra", preco: 70,
-      descricao: ["Molho de tomate pelati, mozzarella de búfala, berinjela assada, gorgonzola e tomate seco.",
-                  "Finalizada com cebolinha."] },
-    { id: "toscana", nome: "Toscana", preco: 70,
-      descricao: ["Molho de tomate pelati, mozzarella de búfala, linguiça toscana e cebola roxa.",
-                  "Finalizada com chimichurri de limão siciliano."] }
+    { id: "4-queijos", nome: "4 Queijos", preco: 65, foto: "sal-4queijos",
+      descricao: ["Mozzarella de búfala, provolone, queijo cremoso e gorgonzola."] },
+    { id: "calabresa", nome: "Calabresa", preco: 65, foto: "sal-calabresa",
+      descricao: ["Calabresa, cebola roxa e hot honey de limão siciliano."] },
+    { id: "sinistra", nome: "Sinistra", preco: 70, foto: "sal-sinistra",
+      descricao: ["Berinjela assada, gorgonzola, tomate seco e cebolinha."] },
+    { id: "toscana", nome: "Toscana", preco: 70, foto: "sal-toscana",
+      descricao: ["Linguiça toscana, cebola roxa e chimichurri de limão siciliano."] }
   ],
 
   // Doce (foto: img/doce-*.avif / .webp)
