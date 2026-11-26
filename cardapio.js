@@ -73,8 +73,8 @@ window.CARDAPIO = {
 
   // Doce (foto: img/doce-*.avif / .webp)
   doces: [
-    { id: "cheesecake-frutas-vermelhas", foto: "cheesecake", nome: "Cheesecake de frutas vermelhas", pedido: "Cheesecake de Frutas Vermelhas", preco: 50,
+    { id: "cheesecake-frutas-vermelhas", foto: "cheesecake", nome: "Frutas vermelhas", pedido: "Frutas Vermelhas", preco: 50,
       historia: "Quem prova lembra de cheesecake, e faz sentido: os ingredientes são da mesma família. Mas aqui não tem torta, é pizza do começo ao fim. E a geleia é artesanal, feita aqui na cozinha.",
-      descricao: ["Cream cheese, geleia artesanal de frutas vermelhas, chocolate branco e butter cookies."] }
+      descricao: ["Inspirada no cheesecake: cream cheese, geleia artesanal de frutas vermelhas, chocolate branco e butter cookies."] }
   ]
 };
