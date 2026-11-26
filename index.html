@@ -163,6 +163,7 @@ section:first-of-type{padding-top:30px}
 .sx{--pw:min(88vw,460px);--edge:calc(50vw - 50%);position:relative;display:flex;align-items:center;min-height:calc(var(--pw) * .98);margin-top:22px}
 .sx .ph{position:absolute;top:50%;transform:translateY(-50%);width:var(--pw)}
 .sx .foto{width:100%;max-width:none;margin:0}
+.sx .foto img{filter:drop-shadow(0 10px 14px rgba(40,28,18,.38))}
 .sx.l{padding-left:calc(var(--pw) / 2 - var(--edge) + 18px)}
 .sx.l .ph{left:calc(0px - var(--edge) - var(--pw) / 2)}
 .sx.r{padding-right:calc(var(--pw) / 2 - var(--edge) + 18px)}
@@ -339,16 +340,12 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 .logo-box{position:absolute;left:50%;top:calc(22px + env(safe-area-inset-top));transform:translateX(-50%);width:clamp(132px,38vw,170px);background:var(--k);color:var(--c);padding:14px 16px 12px;z-index:5}
 .logo-box .logo{display:block;width:100%;height:auto;color:var(--c)}
 .plate{position:absolute;width:120vw;aspect-ratio:1;border-radius:50%;left:-10vw;top:clamp(108px,31vw,140px);background:#fff;box-shadow:0 30px 50px rgba(0,0,0,.35),inset 0 0 0 16px #f3ede2;z-index:2}
-.pz-c{position:absolute;width:108vw;left:-4vw;top:clamp(132px,38vw,170px);z-index:3}
+.pz-c{position:absolute;width:117vw;left:-8.5vw;top:calc(clamp(108px,31vw,140px) + 11vw);z-index:3}
 .pz-c img{display:block;width:100%;height:auto}
-.tape{position:absolute;width:86px;height:26px;background:rgba(243,236,221,.8);box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:9;
- clip-path:polygon(0 8%,6% 0,12% 10%,18% 0,24% 8%,30% 0,70% 0,76% 9%,82% 0,88% 10%,94% 0,100% 8%,100% 92%,94% 100%,88% 90%,82% 100%,76% 92%,70% 100%,30% 100%,24% 92%,18% 100%,12% 90%,6% 100%,0 92%)}
-.tape-1{left:20px;bottom:150px;transform:rotate(-18deg)}
 .js .pz-c{opacity:0;transform:translateY(18px) rotate(-6deg);transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)}
 .js .cloth.vis .pz-c{opacity:1;transform:none;transition-delay:.15s}
 #semana.um{position:relative;z-index:12}
 .card-dq{position:relative;margin:-150px 8px 0;background:var(--c);padding:26px 22px 24px;box-shadow:0 14px 30px rgba(0,0,0,.25)}
-.card-dq .tape-2{right:-14px;top:-10px;transform:rotate(32deg)}
 .card-dq .lb{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--t)}
 .card-dq h3.dqn{font-family:var(--sc);font-weight:900;font-size:clamp(36px,10.5vw,50px);line-height:.9;text-transform:uppercase;margin-top:10px}
 .card-dq h3.dqn .ch{display:block;font-family:var(--script);font-weight:400;text-transform:none;font-size:1.8em;line-height:.62;color:var(--t);margin:.02em 0 0 .02em;white-space:nowrap}
@@ -361,8 +358,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
 @media (min-width:760px){
   .cloth{height:620px}
   .plate{width:600px;left:calc(50% - 300px);top:128px}
-  .pz-c{width:560px;left:calc(50% - 280px);top:150px}
-  .tape-1{left:calc(50% - 330px);bottom:170px}
+  .pz-c{width:634px;left:calc(50% - 317px);top:163px}
   .card-dq{max-width:640px;margin:-110px auto 0;padding:34px 40px 32px}
 }
 </style>
@@ -375,8 +371,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   <div class="logo-box"><svg class="logo" viewBox="0 0 91.1 56" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M20.98.13c.21-.14.47-.12.71-.13,0,.75-.27,1.46-.42,2.19-.55,2.56-.85,5.17-.98,7.79-.09,1.96-.15,3.94.05,5.89.11,1.08.19,2.18.52,3.23.11.41.29.82.28,1.26-.47.3-.99-.06-1.25-.46-.77-1.13-1.01-2.53-1.17-3.86-.3-2.73-.21-5.49-.01-8.23.17-2.01.5-4.02,1.18-5.93.27-.63.51-1.35,1.1-1.75Z"/><path d="M23.89,10.3c.78-1.21,1.95-2.31,3.43-2.48.59-.06,1.34-.13,1.77.36-.01.07-.03.22-.05.29-.62.27-1.32.33-1.91.68-1.3.73-1.98,2.2-2.3,3.6-.31,1.53-.51,3.18,0,4.69.17.44.45,1,.99,1.03.59.01.95-.54,1.16-1.01.64-1.5.88-3.14,1.08-4.75.12-.83.24-1.69.66-2.43.22-.4.72-.52,1.13-.4.3.86.02,1.8.03,2.7-.08,2.62-.18,5.47,1.31,7.76-.41.11-.87.26-1.24-.03-1.02-.68-1.37-1.95-1.63-3.09-.28.96-.61,1.97-1.39,2.64-.86.76-2.29.72-3.11-.08-1.08-1-1.32-2.56-1.37-3.96.01-1.91.39-3.88,1.42-5.51Z"/><path d="M4.2,26.9c.87-1.9,2.38-3.45,3.48-5.2.37-.59.7-1.22.91-1.86.41-1.18.27-2.61-1.44-1.83-.49.24-.89.55-1.33.93-1.39,1.25-2.69,3.17-3.72,4.75C.91,25.54-.1,27.61,0,29.85c.12,2.96,1.56,5.63,2.56,8.37,1.43,3.71,1.83,7.66.48,11.46-.42,1.25-1.09,2.67-1.49,3.81-.29.83-.45,1.5-.41,1.91.15,1.12,1.5-.05,1.99-.59,3.23-3.62,4.12-9.2,3.27-13.89-.29-1.63-.82-3.2-1.41-4.74-1.15-3.02-2.29-6.2-.8-9.26h0Z"/><path d="M45.12,26.9c-.87-1.9-2.38-3.45-3.48-5.2-.37-.59-.7-1.22-.91-1.86-.41-1.18-.27-2.61,1.44-1.83.49.24.89.55,1.33.93,1.39,1.25,2.69,3.17,3.72,4.75,1.18,1.85,2.2,3.91,2.09,6.16-.12,2.96-1.56,5.63-2.56,8.37-1.43,3.71-1.83,7.66-.48,11.46.42,1.25,1.09,2.67,1.49,3.81.29.83.45,1.5.41,1.91-.15,1.12-1.5-.05-1.99-.59-3.23-3.62-4.12-9.2-3.27-13.89.29-1.63.82-3.2,1.41-4.74,1.15-3.02,2.29-6.2.8-9.26h0Z"/><path d="M17.29,26.46c.68-.46,1.52-.08,1.97.52,1.31,1.64,1.57,3.81,1.85,5.82.69-1.93,1.42-3.95,2.93-5.41,1.28-1.26,3.51-1.66,5-.54,1.24.94,1.75,2.51,2,3.98.6,3.97-.47,7.96-.06,11.94.13,2.23.8,4.38,1.79,6.37.61.79-.63,1.15-1.22.95-1.5-.38-2.38-1.83-2.95-3.16-1.47-3.72-1.38-7.8-1.07-11.72.03-1.61.27-3.37-.51-4.86-.45-.79-1.62-.67-2.15-.04-1.05,1.14-1.48,2.7-1.9,4.15-.88,3.53-1.56,7.11-2.28,10.68-.43,1.67-.81,3.56-2.22,4.7-.51.49-1.74.54-1.61-.43.09-2.12.56-4.21.71-6.32.43-4.12.44-8.27.12-12.4-.1-1.42-.46-2.82-.38-4.24Z"/><path d="M13.44,23.47c.62-.25,1.6-.02,1.59.66-.06,1.34-1.28,2.59-2.77,3.01-.49.2-.96-.18-.94-.59-.05-1.23.73-2.59,2.12-3.08Z"/><path d="M12.36,29.95c.34-.17.85-.27,1.18,0,.35.5.2,1.11.18,1.66-.4,3.26-.64,6.56-.22,9.83.1,1.01.85,1.93.69,2.96-.43.29-1.01.03-1.37-.22-.78-.6-1.19-1.45-1.5-2.28-.8-2.23-.86-4.6-.63-6.91.13-1.26.2-2.55.67-3.76.19-.48.46-1,1-1.26Z"/><path d="M36.09,23.47c-.62-.25-1.6-.02-1.59.66.06,1.34,1.28,2.59,2.77,3.01.49.2.96-.18.94-.59.05-1.23-.73-2.59-2.12-3.08Z"/><path d="M37.17,29.95c-.34-.17-.85-.27-1.18,0-.35.5-.2,1.11-.18,1.66.4,3.26.64,6.56.22,9.83-.1,1.01-.85,1.93-.69,2.96.43.29,1.01.03,1.37-.22.78-.6,1.19-1.45,1.5-2.28.8-2.23.86-4.6.63-6.91-.13-1.26-.2-2.55-.67-3.76-.19-.48-.46-1-1-1.26Z"/><path d="M77.46,31.28c1.44-2.25,3.62-4.3,6.39-4.61,1.1-.11,2.49-.25,3.3.67-.02.14-.06.41-.08.55-1.16.49-2.46.61-3.55,1.27-2.42,1.36-3.68,4.08-4.27,6.69-.57,2.86-.95,5.91,0,8.73.32.83.84,1.87,1.85,1.92,1.1.03,1.76-1.01,2.16-1.89,1.19-2.8,1.64-5.84,2.01-8.84.22-1.54.44-3.15,1.23-4.52.41-.74,1.33-.97,2.11-.75.56,1.61.03,3.35.05,5.02-.15,4.87-.34,10.17,2.44,14.44-.76.2-1.62.48-2.31-.05-1.9-1.27-2.55-3.64-3.03-5.75-.51,1.78-1.13,3.67-2.59,4.91-1.6,1.42-4.26,1.34-5.79-.15-2-1.86-2.46-4.76-2.55-7.37.03-3.55.73-7.21,2.63-10.26Z"/><path d="M57.99,19.95c.48-.78,1.3-1.21,2.11-1.57.18,2.87-.72,5.66-.93,8.5,1.3-.28,2.62-.5,3.85-1,.71-.27,1.4-.66,2.17-.69.32,1.04-.36,2.03-1.03,2.75-1.43,1.44-3.54,1.66-5.41,2.1-.23,4.04-.59,8.09-.31,12.13.14,1.71.38,3.43,1,5.03.39,1.03,1.19,1.81,1.87,2.65-.82.26-1.72.58-2.55.15-2.22-.98-3.21-3.48-3.67-5.7-.88-4.53-.43-9.16,0-13.71-1.03.42-2.06.83-3.09,1.27-.17-.58-.24-1.23.13-1.75.78-1.19,2.13-1.78,3.36-2.39.5-2.67.97-5.45,2.49-7.76Z"/><path d="M72.77,22c1.34-1.45,4.16-1.68,5.28.15.72,1.29.81,3.08-.16,4.27-.63-.64-1.06-1.47-1.81-1.97-1.4-.45-2.62.78-3.18,1.94-2.48,5.15-1.7,11.14-3.77,16.4-.46,1.12-1.52,2.73-2.93,2.04-.12-1.14.17-2.26.32-3.38.64-4.34,1.01-8.74.75-13.13-.07-2.46-.51-4.9-.59-7.36.75.22,1.64.35,2.11,1.05,1.13,1.47,1.33,3.38,1.59,5.15.56-1.8,1.08-3.73,2.38-5.16Z"/></svg></div>
   <span class="vh" id="periodo-curto"></span>
   <div class="plate" aria-hidden="true"></div>
-  <div class="pz-c" aria-hidden="true"><picture><source type="image/avif" srcset="img/tamaras-480.avif 480w, img/tamaras-800.avif 800w, img/tamaras-1100.avif 1100w" sizes="(min-width: 760px) 540px, 108vw"><img src="img/tamaras-800.webp" srcset="img/tamaras-480.webp 480w, img/tamaras-800.webp 800w, img/tamaras-1100.webp 1100w" sizes="(min-width: 760px) 540px, 108vw" alt="" fetchpriority="high"></picture></div>
-  <i class="tape tape-1" aria-hidden="true"></i>
+  <div class="pz-c" aria-hidden="true"><picture><source type="image/avif" srcset="img/tamaras-480.avif 480w, img/tamaras-800.avif 800w, img/tamaras-1100.avif 1100w" sizes="(min-width: 760px) 640px, 118vw"><img src="img/tamaras-800.webp" srcset="img/tamaras-480.webp 480w, img/tamaras-800.webp 800w, img/tamaras-1100.webp 1100w" sizes="(min-width: 760px) 640px, 118vw" alt="" fetchpriority="high"></picture></div>
   <h1 class="vh">La Sinistra: pizza da semana</h1>
 </header>
 <main class="tk grain">
@@ -569,7 +564,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
     /* uma pizza só: a foto fica na toalha do topo e a pizza vira um cartão */
     var D1 = DQ[0];
     $('#semana').classList.add('um');
-    $('#destaques').innerHTML = '<article class="card-dq"><i class="tape tape-2" aria-hidden="true"></i>' +
+    $('#destaques').innerHTML = '<article class="card-dq">' +
       '<p class="lb">Pizza da semana · ' + esc((C.periodoCurto || '').replace(/^card[aá]pio de /i, '')) + '</p>' +
       '<h3 class="dqn">' + esc(D1.nome) + (D1.script ? '<span class="ch">' + esc(D1.script) + '</span>' : '') + '</h3>' +
       (D1.historia ? '<p class="hist">“' + esc(D1.historia) + '”</p>' : '') +

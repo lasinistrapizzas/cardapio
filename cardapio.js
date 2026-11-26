@@ -12,13 +12,12 @@ window.CARDAPIO = {
   periodo: "Cardápio de 27 e 28 de novembro",
   periodoCurto: "Cardápio de 27 e 28 nov",
 
-  // Dias de retirada. "aberto: false" mostra o aviso e não deixa escolher.
-  // Pedidos de cada dia fecham no horário de "limite" daquele dia.
-  limite: "18:00",
   // Quantas pizzas por noite (inclui a doce). Vazio ou 0 esconde o aviso.
   pizzasPorNoite: 10,
   // Como os dias aparecem nos textos ("Como funciona" e rodapé)
   diasTexto: "sexta e sábado",
+  // Dias de retirada. "aberto: false" mostra o aviso e não deixa escolher.
+  // Cada horário fecha sozinho 15 minutos antes da retirada (não existe horário de corte geral).
   dias: [
     { rotulo: "Sexta",  data: "2026-11-27", aberto: true },
     { rotulo: "Sábado", data: "2026-11-28", aberto: true }
