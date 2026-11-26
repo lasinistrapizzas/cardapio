@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>La Sinistra · Pizzas da semana</title>
+<title>La Sinistra · Pizza da semana</title>
 <meta name="description" content="Pizza napoletana de longa fermentação, feita à mão em Nova Petrópolis. Monta teu pedido e retira com hora marcada.">
 <meta name="theme-color" content="#B8442A">
 <meta property="og:type" content="website">
-<meta property="og:title" content="La Sinistra · Pizzas da semana">
+<meta property="og:title" content="La Sinistra · Pizza da semana">
 <meta property="og:description" content="A pizza do Bigode e a pizza da Dani, de 19 a 21/11. Pede aqui, busca com hora marcada.">
 <meta property="og:image" content="https://lasinistrapizzas.github.io/cardapio/img/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 <link rel="preload" href="fonts/cherolina.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/playfair-display-sc-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" type="image/avif" fetchpriority="high"
-      imagesrcset="img/bigode-480.avif 480w, img/bigode-800.avif 800w, img/bigode-1100.avif 1100w"
+      imagesrcset="img/tamaras-480.avif 480w, img/tamaras-800.avif 800w, img/tamaras-1100.avif 1100w"
       imagesizes="(min-width: 760px) 440px, 80vw">
 <style>
 @font-face{font-family:"DM Mono";src:url(fonts/dm-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -91,14 +91,14 @@ section:first-of-type{padding-top:30px}
 .poster .top{position:relative;z-index:6;display:flex;justify-content:space-between;align-items:flex-end;gap:14px;max-width:880px;margin:0 auto;padding:0 calc(var(--pad) + 10px)}
 .poster .logo{width:clamp(92px,25vw,124px);flex:none;color:var(--c)}
 .poster .pill{border-color:var(--c);color:var(--c);white-space:nowrap;font-size:clamp(10.5px,3.05vw,12px);padding:7px 10px 6px}
-.big{position:relative;max-width:880px;margin:0 auto;height:calc(var(--u) * 132);--u:1vw}
+.big{position:relative;max-width:880px;margin:0 auto;height:calc(var(--u) * 136);--u:1vw}
 .w{position:absolute;left:calc(var(--pad) + 6px);font-family:var(--sc);font-weight:900;text-transform:uppercase;line-height:.8;letter-spacing:-.03em;color:var(--c);white-space:nowrap;font-size:calc(var(--u) * 20);z-index:3}
 .w1{top:calc(var(--u) * 8)}
 .w2{top:calc(var(--u) * 24.5)}
 .w3{top:calc(var(--u) * 41);z-index:5}
 .pz{position:absolute;pointer-events:none}
 .pz img{width:100%;height:auto}
-.pz-b{width:calc(var(--u) * 62);right:calc(var(--u) * -12);top:calc(var(--u) * 22);z-index:4;transform:rotate(-8deg)}
+.pz-b{width:calc(var(--u) * 104);right:calc(var(--u) * -34);top:calc(var(--u) * 44);z-index:4;transform:rotate(-8deg)}
 .pz-d{width:calc(var(--u) * 70);left:calc(var(--u) * -26);top:calc(var(--u) * 66);z-index:4;transform:rotate(10deg)}
 .lb-p{position:absolute;font-family:var(--script);font-size:calc(var(--u) * 15);line-height:.8;color:var(--k);z-index:6;white-space:nowrap}
 .lb-b{right:calc(var(--u) * 5);top:calc(var(--u) * 90)}
@@ -176,6 +176,8 @@ section:first-of-type{padding-top:30px}
 .doce{margin-top:6px}
 .doce .foto{width:calc((100vw + 84px) * .85);max-width:none;margin:0 0 0 calc(50% - 50vw - 40px)}
 .doce .it{padding-top:14px}
+.doce .hist{margin:26px 4px 0}
+.doce .hist + .desc{margin-top:24px}
 
 /* como funciona */
 .passos{list-style:none;display:grid;gap:10px;margin-top:20px;counter-reset:p}
@@ -286,12 +288,12 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   .sx .it .desc{max-width:46ch}
   .tk{margin-top:-40px}
   .poster{padding-top:56px}
-  .big{--u:min(1vw, 11px);height:calc(var(--u) * 62)}
+  .big{--u:min(1vw, 11px);height:calc(var(--u) * 52)}
   .w{font-size:calc(var(--u) * 14);left:calc(var(--pad) + 6px)}
   .w1{top:calc(var(--u) * 5)}
   .w2{top:calc(var(--u) * 16.5)}
   .w3{top:calc(var(--u) * 28)}
-  .pz-b{width:calc(var(--u) * 31);right:calc(var(--u) * -16);top:calc(var(--u) * 6)}
+  .pz-b{width:calc(var(--u) * 50);right:calc(var(--u) * -10);top:calc(var(--u) * 2)}
   .pz-d{width:calc(var(--u) * 26);right:calc(var(--u) * 15);left:auto;top:calc(var(--u) * 30)}
   .lb-p{font-size:calc(var(--u) * 6.5)}
   .lb-b{right:calc(var(--u) * -12);top:calc(var(--u) * 39)}
@@ -312,9 +314,9 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   .dq h3.dqn{margin-top:6px}
   .dq h3.dqn .ch{font-size:1.6em}
   .nav a{font-size:12.5px;flex:1}
-  .doce{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:center}
-  .doce .foto{width:calc(85% + 40px);margin:0 0 0 -40px}
-  .doce .it{padding-top:0}
+  .doce{display:block}
+  .doce .foto{width:560px;max-width:none;margin:0 0 0 -40px}
+  .doce .it{padding-top:18px;max-width:640px}
   .passos{grid-template-columns:1fr 1fr}
   .rod-cols{grid-template-columns:repeat(3,1fr);column-gap:40px}
   dialog.sheet{margin:auto;border-radius:20px}
@@ -323,38 +325,67 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   #lista-salgadas{display:grid;grid-template-columns:1fr 1fr;column-gap:44px}
   #lista-salgadas.com-fotos{display:block}
 }
+
+/* ---------- topo: toalha xadrez + cartão da pizza da semana ---------- */
+.cloth{position:relative;z-index:1;height:clamp(470px,136vw,620px);overflow:hidden;
+ background:linear-gradient(90deg,rgba(184,68,42,.55) 50%,transparent 0) 0 0/40px 40px,linear-gradient(rgba(184,68,42,.55) 50%,transparent 0) 0 0/40px 40px,#f6efe2}
+.cloth::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.08) 0 2px,transparent 2px 5px)}
+.logo-box{position:absolute;left:50%;top:calc(22px + env(safe-area-inset-top));transform:translateX(-50%);width:clamp(132px,38vw,170px);background:var(--k);color:var(--c);padding:14px 16px 12px;z-index:5}
+.logo-box .logo{display:block;width:100%;height:auto;color:var(--c)}
+.plate{position:absolute;width:120vw;aspect-ratio:1;border-radius:50%;left:-10vw;top:clamp(108px,31vw,140px);background:#fff;box-shadow:0 30px 50px rgba(0,0,0,.35),inset 0 0 0 16px #f3ede2;z-index:2}
+.pz-c{position:absolute;width:108vw;left:-4vw;top:clamp(132px,38vw,170px);z-index:3}
+.pz-c img{display:block;width:100%;height:auto}
+.tape{position:absolute;width:86px;height:26px;background:rgba(243,236,221,.8);box-shadow:0 1px 2px rgba(0,0,0,.15);z-index:9;
+ clip-path:polygon(0 8%,6% 0,12% 10%,18% 0,24% 8%,30% 0,70% 0,76% 9%,82% 0,88% 10%,94% 0,100% 8%,100% 92%,94% 100%,88% 90%,82% 100%,76% 92%,70% 100%,30% 100%,24% 92%,18% 100%,12% 90%,6% 100%,0 92%)}
+.tape-1{left:20px;bottom:150px;transform:rotate(-18deg)}
+.js .pz-c{opacity:0;transform:translateY(18px) rotate(-6deg);transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.js .cloth.vis .pz-c{opacity:1;transform:none;transition-delay:.15s}
+#semana.um{position:relative;z-index:12}
+.card-dq{position:relative;margin:-150px 8px 0;background:var(--c);padding:26px 22px 24px;box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.card-dq .tape-2{right:-14px;top:-10px;transform:rotate(32deg)}
+.card-dq .lb{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--t)}
+.card-dq h3.dqn{font-family:var(--sc);font-weight:900;font-size:clamp(36px,10.5vw,50px);line-height:.9;text-transform:uppercase;margin-top:10px}
+.card-dq h3.dqn .ch{display:block;font-family:var(--script);font-weight:400;text-transform:none;font-size:1.8em;line-height:.62;color:var(--t);margin:.02em 0 0 .02em;white-space:nowrap}
+.card-dq .hist{margin:30px 2px 0}
+.card-dq .desc{font-size:14px;line-height:1.6;margin-top:22px}
+.card-dq .buy{border-bottom:0;padding-bottom:0}
+.card-dq .buy .price{font-family:var(--sc);font-weight:900;font-size:40px;letter-spacing:0}
+.card-dq .buy .price small{font-family:var(--mono);font-weight:500;font-size:14px;margin-right:4px}
+.um + .nav{margin-top:26px}
+@media (min-width:760px){
+  .cloth{height:620px}
+  .plate{width:600px;left:calc(50% - 300px);top:128px}
+  .pz-c{width:560px;left:calc(50% - 280px);top:150px}
+  .tape-1{left:calc(50% - 330px);bottom:170px}
+  .card-dq{max-width:640px;margin:-110px auto 0;padding:34px 40px 32px}
+}
 </style>
 </head>
 <body>
 <noscript><p style="padding:24px;background:#F8F5EE;font-family:monospace">Para montar o pedido aqui, ativa o JavaScript. Ou chama a gente direto no <a href="https://wa.me/5551999442176">WhatsApp</a>.</p></noscript>
 
 <div class="page">
-<header class="poster grain" id="poster">
-  <div class="top">
-    <svg class="logo" viewBox="0 0 91.1 56" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M20.98.13c.21-.14.47-.12.71-.13,0,.75-.27,1.46-.42,2.19-.55,2.56-.85,5.17-.98,7.79-.09,1.96-.15,3.94.05,5.89.11,1.08.19,2.18.52,3.23.11.41.29.82.28,1.26-.47.3-.99-.06-1.25-.46-.77-1.13-1.01-2.53-1.17-3.86-.3-2.73-.21-5.49-.01-8.23.17-2.01.5-4.02,1.18-5.93.27-.63.51-1.35,1.1-1.75Z"/><path d="M23.89,10.3c.78-1.21,1.95-2.31,3.43-2.48.59-.06,1.34-.13,1.77.36-.01.07-.03.22-.05.29-.62.27-1.32.33-1.91.68-1.3.73-1.98,2.2-2.3,3.6-.31,1.53-.51,3.18,0,4.69.17.44.45,1,.99,1.03.59.01.95-.54,1.16-1.01.64-1.5.88-3.14,1.08-4.75.12-.83.24-1.69.66-2.43.22-.4.72-.52,1.13-.4.3.86.02,1.8.03,2.7-.08,2.62-.18,5.47,1.31,7.76-.41.11-.87.26-1.24-.03-1.02-.68-1.37-1.95-1.63-3.09-.28.96-.61,1.97-1.39,2.64-.86.76-2.29.72-3.11-.08-1.08-1-1.32-2.56-1.37-3.96.01-1.91.39-3.88,1.42-5.51Z"/><path d="M4.2,26.9c.87-1.9,2.38-3.45,3.48-5.2.37-.59.7-1.22.91-1.86.41-1.18.27-2.61-1.44-1.83-.49.24-.89.55-1.33.93-1.39,1.25-2.69,3.17-3.72,4.75C.91,25.54-.1,27.61,0,29.85c.12,2.96,1.56,5.63,2.56,8.37,1.43,3.71,1.83,7.66.48,11.46-.42,1.25-1.09,2.67-1.49,3.81-.29.83-.45,1.5-.41,1.91.15,1.12,1.5-.05,1.99-.59,3.23-3.62,4.12-9.2,3.27-13.89-.29-1.63-.82-3.2-1.41-4.74-1.15-3.02-2.29-6.2-.8-9.26h0Z"/><path d="M45.12,26.9c-.87-1.9-2.38-3.45-3.48-5.2-.37-.59-.7-1.22-.91-1.86-.41-1.18-.27-2.61,1.44-1.83.49.24.89.55,1.33.93,1.39,1.25,2.69,3.17,3.72,4.75,1.18,1.85,2.2,3.91,2.09,6.16-.12,2.96-1.56,5.63-2.56,8.37-1.43,3.71-1.83,7.66-.48,11.46.42,1.25,1.09,2.67,1.49,3.81.29.83.45,1.5.41,1.91-.15,1.12-1.5-.05-1.99-.59-3.23-3.62-4.12-9.2-3.27-13.89.29-1.63.82-3.2,1.41-4.74,1.15-3.02,2.29-6.2.8-9.26h0Z"/><path d="M17.29,26.46c.68-.46,1.52-.08,1.97.52,1.31,1.64,1.57,3.81,1.85,5.82.69-1.93,1.42-3.95,2.93-5.41,1.28-1.26,3.51-1.66,5-.54,1.24.94,1.75,2.51,2,3.98.6,3.97-.47,7.96-.06,11.94.13,2.23.8,4.38,1.79,6.37.61.79-.63,1.15-1.22.95-1.5-.38-2.38-1.83-2.95-3.16-1.47-3.72-1.38-7.8-1.07-11.72.03-1.61.27-3.37-.51-4.86-.45-.79-1.62-.67-2.15-.04-1.05,1.14-1.48,2.7-1.9,4.15-.88,3.53-1.56,7.11-2.28,10.68-.43,1.67-.81,3.56-2.22,4.7-.51.49-1.74.54-1.61-.43.09-2.12.56-4.21.71-6.32.43-4.12.44-8.27.12-12.4-.1-1.42-.46-2.82-.38-4.24Z"/><path d="M13.44,23.47c.62-.25,1.6-.02,1.59.66-.06,1.34-1.28,2.59-2.77,3.01-.49.2-.96-.18-.94-.59-.05-1.23.73-2.59,2.12-3.08Z"/><path d="M12.36,29.95c.34-.17.85-.27,1.18,0,.35.5.2,1.11.18,1.66-.4,3.26-.64,6.56-.22,9.83.1,1.01.85,1.93.69,2.96-.43.29-1.01.03-1.37-.22-.78-.6-1.19-1.45-1.5-2.28-.8-2.23-.86-4.6-.63-6.91.13-1.26.2-2.55.67-3.76.19-.48.46-1,1-1.26Z"/><path d="M36.09,23.47c-.62-.25-1.6-.02-1.59.66.06,1.34,1.28,2.59,2.77,3.01.49.2.96-.18.94-.59.05-1.23-.73-2.59-2.12-3.08Z"/><path d="M37.17,29.95c-.34-.17-.85-.27-1.18,0-.35.5-.2,1.11-.18,1.66.4,3.26.64,6.56.22,9.83-.1,1.01-.85,1.93-.69,2.96.43.29,1.01.03,1.37-.22.78-.6,1.19-1.45,1.5-2.28.8-2.23.86-4.6.63-6.91-.13-1.26-.2-2.55-.67-3.76-.19-.48-.46-1-1-1.26Z"/><path d="M77.46,31.28c1.44-2.25,3.62-4.3,6.39-4.61,1.1-.11,2.49-.25,3.3.67-.02.14-.06.41-.08.55-1.16.49-2.46.61-3.55,1.27-2.42,1.36-3.68,4.08-4.27,6.69-.57,2.86-.95,5.91,0,8.73.32.83.84,1.87,1.85,1.92,1.1.03,1.76-1.01,2.16-1.89,1.19-2.8,1.64-5.84,2.01-8.84.22-1.54.44-3.15,1.23-4.52.41-.74,1.33-.97,2.11-.75.56,1.61.03,3.35.05,5.02-.15,4.87-.34,10.17,2.44,14.44-.76.2-1.62.48-2.31-.05-1.9-1.27-2.55-3.64-3.03-5.75-.51,1.78-1.13,3.67-2.59,4.91-1.6,1.42-4.26,1.34-5.79-.15-2-1.86-2.46-4.76-2.55-7.37.03-3.55.73-7.21,2.63-10.26Z"/><path d="M57.99,19.95c.48-.78,1.3-1.21,2.11-1.57.18,2.87-.72,5.66-.93,8.5,1.3-.28,2.62-.5,3.85-1,.71-.27,1.4-.66,2.17-.69.32,1.04-.36,2.03-1.03,2.75-1.43,1.44-3.54,1.66-5.41,2.1-.23,4.04-.59,8.09-.31,12.13.14,1.71.38,3.43,1,5.03.39,1.03,1.19,1.81,1.87,2.65-.82.26-1.72.58-2.55.15-2.22-.98-3.21-3.48-3.67-5.7-.88-4.53-.43-9.16,0-13.71-1.03.42-2.06.83-3.09,1.27-.17-.58-.24-1.23.13-1.75.78-1.19,2.13-1.78,3.36-2.39.5-2.67.97-5.45,2.49-7.76Z"/><path d="M72.77,22c1.34-1.45,4.16-1.68,5.28.15.72,1.29.81,3.08-.16,4.27-.63-.64-1.06-1.47-1.81-1.97-1.4-.45-2.62.78-3.18,1.94-2.48,5.15-1.7,11.14-3.77,16.4-.46,1.12-1.52,2.73-2.93,2.04-.12-1.14.17-2.26.32-3.38.64-4.34,1.01-8.74.75-13.13-.07-2.46-.51-4.9-.59-7.36.75.22,1.64.35,2.11,1.05,1.13,1.47,1.33,3.38,1.59,5.15.56-1.8,1.08-3.73,2.38-5.16Z"/></svg>
-    <span class="pill" id="periodo-curto"></span>
-  </div>
-  <div class="big" aria-hidden="true">
-    <span class="w w1">Pizzas</span><span class="w w2">da</span><span class="w w3">semana</span>
-    <div class="pz pz-b"><picture><source type="image/avif" srcset="img/bigode-480.avif 480w, img/bigode-800.avif 800w" sizes="(min-width: 760px) 380px, 70vw"><img src="img/bigode-800.webp" srcset="img/bigode-480.webp 480w, img/bigode-800.webp 800w" sizes="(min-width: 760px) 380px, 70vw" alt="" fetchpriority="high"></picture></div>
-    <div class="pz pz-d"><picture><source type="image/avif" srcset="img/dani-480.avif 480w, img/dani-800.avif 800w" sizes="(min-width: 760px) 340px, 74vw"><img src="img/dani-800.webp" srcset="img/dani-480.webp 480w, img/dani-800.webp 800w" sizes="(min-width: 760px) 340px, 74vw" alt=""></picture></div>
-    <span class="lb-p lb-b">do Bigode</span><span class="lb-p lb-d">da Dani</span>
-  </div>
-  <h1 class="vh">La Sinistra: pizzas da semana</h1>
+<header class="cloth grain" id="poster">
+  <div class="logo-box"><svg class="logo" viewBox="0 0 91.1 56" fill="currentColor" role="img" aria-label="La Sinistra"><path d="M20.98.13c.21-.14.47-.12.71-.13,0,.75-.27,1.46-.42,2.19-.55,2.56-.85,5.17-.98,7.79-.09,1.96-.15,3.94.05,5.89.11,1.08.19,2.18.52,3.23.11.41.29.82.28,1.26-.47.3-.99-.06-1.25-.46-.77-1.13-1.01-2.53-1.17-3.86-.3-2.73-.21-5.49-.01-8.23.17-2.01.5-4.02,1.18-5.93.27-.63.51-1.35,1.1-1.75Z"/><path d="M23.89,10.3c.78-1.21,1.95-2.31,3.43-2.48.59-.06,1.34-.13,1.77.36-.01.07-.03.22-.05.29-.62.27-1.32.33-1.91.68-1.3.73-1.98,2.2-2.3,3.6-.31,1.53-.51,3.18,0,4.69.17.44.45,1,.99,1.03.59.01.95-.54,1.16-1.01.64-1.5.88-3.14,1.08-4.75.12-.83.24-1.69.66-2.43.22-.4.72-.52,1.13-.4.3.86.02,1.8.03,2.7-.08,2.62-.18,5.47,1.31,7.76-.41.11-.87.26-1.24-.03-1.02-.68-1.37-1.95-1.63-3.09-.28.96-.61,1.97-1.39,2.64-.86.76-2.29.72-3.11-.08-1.08-1-1.32-2.56-1.37-3.96.01-1.91.39-3.88,1.42-5.51Z"/><path d="M4.2,26.9c.87-1.9,2.38-3.45,3.48-5.2.37-.59.7-1.22.91-1.86.41-1.18.27-2.61-1.44-1.83-.49.24-.89.55-1.33.93-1.39,1.25-2.69,3.17-3.72,4.75C.91,25.54-.1,27.61,0,29.85c.12,2.96,1.56,5.63,2.56,8.37,1.43,3.71,1.83,7.66.48,11.46-.42,1.25-1.09,2.67-1.49,3.81-.29.83-.45,1.5-.41,1.91.15,1.12,1.5-.05,1.99-.59,3.23-3.62,4.12-9.2,3.27-13.89-.29-1.63-.82-3.2-1.41-4.74-1.15-3.02-2.29-6.2-.8-9.26h0Z"/><path d="M45.12,26.9c-.87-1.9-2.38-3.45-3.48-5.2-.37-.59-.7-1.22-.91-1.86-.41-1.18-.27-2.61,1.44-1.83.49.24.89.55,1.33.93,1.39,1.25,2.69,3.17,3.72,4.75,1.18,1.85,2.2,3.91,2.09,6.16-.12,2.96-1.56,5.63-2.56,8.37-1.43,3.71-1.83,7.66-.48,11.46.42,1.25,1.09,2.67,1.49,3.81.29.83.45,1.5.41,1.91-.15,1.12-1.5-.05-1.99-.59-3.23-3.62-4.12-9.2-3.27-13.89.29-1.63.82-3.2,1.41-4.74,1.15-3.02,2.29-6.2.8-9.26h0Z"/><path d="M17.29,26.46c.68-.46,1.52-.08,1.97.52,1.31,1.64,1.57,3.81,1.85,5.82.69-1.93,1.42-3.95,2.93-5.41,1.28-1.26,3.51-1.66,5-.54,1.24.94,1.75,2.51,2,3.98.6,3.97-.47,7.96-.06,11.94.13,2.23.8,4.38,1.79,6.37.61.79-.63,1.15-1.22.95-1.5-.38-2.38-1.83-2.95-3.16-1.47-3.72-1.38-7.8-1.07-11.72.03-1.61.27-3.37-.51-4.86-.45-.79-1.62-.67-2.15-.04-1.05,1.14-1.48,2.7-1.9,4.15-.88,3.53-1.56,7.11-2.28,10.68-.43,1.67-.81,3.56-2.22,4.7-.51.49-1.74.54-1.61-.43.09-2.12.56-4.21.71-6.32.43-4.12.44-8.27.12-12.4-.1-1.42-.46-2.82-.38-4.24Z"/><path d="M13.44,23.47c.62-.25,1.6-.02,1.59.66-.06,1.34-1.28,2.59-2.77,3.01-.49.2-.96-.18-.94-.59-.05-1.23.73-2.59,2.12-3.08Z"/><path d="M12.36,29.95c.34-.17.85-.27,1.18,0,.35.5.2,1.11.18,1.66-.4,3.26-.64,6.56-.22,9.83.1,1.01.85,1.93.69,2.96-.43.29-1.01.03-1.37-.22-.78-.6-1.19-1.45-1.5-2.28-.8-2.23-.86-4.6-.63-6.91.13-1.26.2-2.55.67-3.76.19-.48.46-1,1-1.26Z"/><path d="M36.09,23.47c-.62-.25-1.6-.02-1.59.66.06,1.34,1.28,2.59,2.77,3.01.49.2.96-.18.94-.59.05-1.23-.73-2.59-2.12-3.08Z"/><path d="M37.17,29.95c-.34-.17-.85-.27-1.18,0-.35.5-.2,1.11-.18,1.66.4,3.26.64,6.56.22,9.83-.1,1.01-.85,1.93-.69,2.96.43.29,1.01.03,1.37-.22.78-.6,1.19-1.45,1.5-2.28.8-2.23.86-4.6.63-6.91-.13-1.26-.2-2.55-.67-3.76-.19-.48-.46-1-1-1.26Z"/><path d="M77.46,31.28c1.44-2.25,3.62-4.3,6.39-4.61,1.1-.11,2.49-.25,3.3.67-.02.14-.06.41-.08.55-1.16.49-2.46.61-3.55,1.27-2.42,1.36-3.68,4.08-4.27,6.69-.57,2.86-.95,5.91,0,8.73.32.83.84,1.87,1.85,1.92,1.1.03,1.76-1.01,2.16-1.89,1.19-2.8,1.64-5.84,2.01-8.84.22-1.54.44-3.15,1.23-4.52.41-.74,1.33-.97,2.11-.75.56,1.61.03,3.35.05,5.02-.15,4.87-.34,10.17,2.44,14.44-.76.2-1.62.48-2.31-.05-1.9-1.27-2.55-3.64-3.03-5.75-.51,1.78-1.13,3.67-2.59,4.91-1.6,1.42-4.26,1.34-5.79-.15-2-1.86-2.46-4.76-2.55-7.37.03-3.55.73-7.21,2.63-10.26Z"/><path d="M57.99,19.95c.48-.78,1.3-1.21,2.11-1.57.18,2.87-.72,5.66-.93,8.5,1.3-.28,2.62-.5,3.85-1,.71-.27,1.4-.66,2.17-.69.32,1.04-.36,2.03-1.03,2.75-1.43,1.44-3.54,1.66-5.41,2.1-.23,4.04-.59,8.09-.31,12.13.14,1.71.38,3.43,1,5.03.39,1.03,1.19,1.81,1.87,2.65-.82.26-1.72.58-2.55.15-2.22-.98-3.21-3.48-3.67-5.7-.88-4.53-.43-9.16,0-13.71-1.03.42-2.06.83-3.09,1.27-.17-.58-.24-1.23.13-1.75.78-1.19,2.13-1.78,3.36-2.39.5-2.67.97-5.45,2.49-7.76Z"/><path d="M72.77,22c1.34-1.45,4.16-1.68,5.28.15.72,1.29.81,3.08-.16,4.27-.63-.64-1.06-1.47-1.81-1.97-1.4-.45-2.62.78-3.18,1.94-2.48,5.15-1.7,11.14-3.77,16.4-.46,1.12-1.52,2.73-2.93,2.04-.12-1.14.17-2.26.32-3.38.64-4.34,1.01-8.74.75-13.13-.07-2.46-.51-4.9-.59-7.36.75.22,1.64.35,2.11,1.05,1.13,1.47,1.33,3.38,1.59,5.15.56-1.8,1.08-3.73,2.38-5.16Z"/></svg></div>
+  <span class="vh" id="periodo-curto"></span>
+  <div class="plate" aria-hidden="true"></div>
+  <div class="pz-c" aria-hidden="true"><picture><source type="image/avif" srcset="img/tamaras-480.avif 480w, img/tamaras-800.avif 800w, img/tamaras-1100.avif 1100w" sizes="(min-width: 760px) 540px, 108vw"><img src="img/tamaras-800.webp" srcset="img/tamaras-480.webp 480w, img/tamaras-800.webp 800w, img/tamaras-1100.webp 1100w" sizes="(min-width: 760px) 540px, 108vw" alt="" fetchpriority="high"></picture></div>
+  <i class="tape tape-1" aria-hidden="true"></i>
+  <h1 class="vh">La Sinistra: pizza da semana</h1>
 </header>
 <main class="tk grain">
+  <section id="semana" aria-labelledby="t-semana">
+    <h2 class="vh" id="t-semana">Pizza da semana</h2>
+    <div id="destaques"></div>
+  </section>
 
   <nav class="nav" id="nav" aria-label="Seções do cardápio">
-    <a href="#semana" class="on">Pizzas da semana</a><a href="#salgadas">Salgadas</a><a href="#doce">Doce</a>
+    <a href="#semana" class="on">Pizza da semana</a><a href="#salgadas">Salgadas</a><a href="#doce">Doce</a>
   </nav>
 
   <div class="in">
     <hr class="d"><div class="meta"><span id="meta-limite"></span><span id="meta-ret"></span></div><p class="escassez" id="escassez" hidden></p><hr class="d">
 
-    <section id="semana" aria-labelledby="t-semana">
-      <h2 class="vh" id="t-semana">Pizzas da semana</h2>
-      <div id="destaques"></div>
-    </section>
 
     <section id="salgadas" aria-labelledby="t-salgadas">
       <h2 class="sh scr" id="t-salgadas">Salgadas</h2>
@@ -520,7 +551,7 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   var descHTML = function(arr){ return arr.map(esc).join(' '); };
 
   /* ---------- render do cardápio ---------- */
-  var IMG = {"bigode": {"w": 1009, "h": 964, "lqip": "data:image/webp;base64,UklGRnwCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCMBAAABkKNt27FH9/t+v//Ytm206lI5GdXTWdWswLbtWQA7q7Rt88Udf/8SImICAEACCLcv2Hns8MrhAgACk0o4Q1vvWk767crcIOQEieJzJGm01tqQvJ4MCQiZ84j/leHk1vznjaAj4PHv5T9O/z83wYG36oO1LqjYDelbTEN3G+CNP0PtyvB+KJBzKQKkrg00vKZ1ZzgS6vwVCW3nxbY/sSYCXB5dtpfandU93ryRb9a60fY8kNRwltqFVewBfMWzv1o7PcW1QkIkNxygmpbmkZAHgK+o9znNVEbzYLxXAEBc/azzNNoYY7Qhd4T9AhNlYk3HKU55ZU6aV2ByEV3eueLQlVt3Lp9ZVBL2YpoilF1c1dDUWJUTHXQwfScYGx8fFx30YEoAVlA4IDIBAACwBgCdASoYABcAPu1urlIppiQiqAgBMB2JbACdMoR0kIG0a2wHPsEYA6uj0kGKR43Yfm7tbHpPXmqGH/kcAAD+z2Hqj8MyPsRO/mLkcYZhhvI7GetGP/U5K9Lq7grQLkZTgCCnawbPt6ImgenAofTW6JYFAJ2Qnr+mkh2OCwryQ2s193YmtXGFkoYCZnEOMW8/dHSdlCMcYPjCiENVYMhQtxlLeUY07a5zD+RPwvv0MDRrAWqDCPO7g48luCjayUKN1GfGB8MJc7dIDkZP/0EACcb2ELdCke+UX+ReErdf+z3tWhjX/iRig++ucUOGMLHPJNj1J6eGV5Ygoq4d1hinlVaSV8pvoyUq77XDM06cStsXDzCavkKAcbvz+hoikmqRdiAwInomDFQkvaE5RD5KQAA="}, "dani": {"w": 1267, "h": 1199, "lqip": "data:image/webp;base64,UklGRnoCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCoBAAABkGPbtmlbc5/9bNu27fe+kTuybf/YRgEYKrL/r4Ai2/Y/a+8ZXJxXhIiYAABwgPJJO84dm1QAQCOwRvK+b/T9cmNVMpTyp1H5kDRixJJ8MQ9K+Wi0veF/S18rLnkqwlGAg8KPFAZpXB4L04ATf5cug//PrUoDq/mfHq350+Go8AfGeKFwe3hIl6V3sVfSwxZTvBk+ronYYIfB8mN31Bya4fg8GJv9gsaTsS+64rGNrifh6ao41UfrxZo/M4rCEPtYJDjr8nhbqnJwiGKCseT5UaVhUE7GIZdGrD/h32Njq2MAICR6+h2SIkbE8tmy7opY5aPCowoXXP5JXzk/pSUvQsG/jowrnLj7xr0LR5f216RoBKsj41LLmhsqi7OjFDyqsOj4xNhwBwEBVlA4ICoBAABQBwCdASoYABcAPu1krE6ppaQiKA1RMB2JbACdMzQ1cIG0A20FJroZ8cA6q45epZxkfeWN083omSFeLBFjd1bs2loAAPrbXL+6WmzLay9d7IMDJwm+Pr1iQ1ug7PlK/hvdJVjz7HdV+Aj1czT52NPyNjJaA3AGl5V7mII3N885hJ3aeozf/ifpWIsPDb1ArZ4kaQKMbuAITaG1pHz8mOx/Q8kd4WP3oVrYTK6523YzQqK46270rCG7a7w2SskjdJu4KzEBegVi4pmRh2nbS7pjyCtsZ+IqkSdhDFknTsdOTSvxLGS2c9pS1a48pBE/g4nalfIN2ao53Yz6BAQwigP4z/fiBO6aH8M3BYXRxbEZXYqvkBsvGvPkcQmemTp16N7K17mtuITV5wAA"}, "doce": {"w": 1280, "h": 1201, "lqip": "data:image/webp;base64,UklGRpACAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCUBAAABkKtt2yFG78w/sc3KZuWcgJPKOQI7ldWl4wE4tVbVVip3S9v2fP//LmdyCBExAQAsG4gtmzjeaCwNBhT+awEtR49dkvx+azoW6l8WgrZJUmsxJO+0wv7LsqOv0hXDv412yVU4ABR2+INetXAGDoAiCr0bl71QwJpxfVDzebZCxANqPxROOqqBhv7McVxgvxF/hi/KA8d5Lm/qwxbNuTyujuqg9ie8UBQZfZ/iS3MhIwR9FOPDmLdtaUpZkxTjTXitMhYIdGZI8SK83F4QDCAweP4HXdHmLyP81FUcYwNAYGjzdZIU0ULeHqlMsPHPoMDy3QsPXZL8dtBakergvyo4Nq++e/3KzUtDNYVxCh6toPCouOSc8rKC9BALfu2g8OiYMIV/AwBWUDggRAEAABAHAJ0BKhgAFwA+7WarTymlo6IoDVEwHYlsAJ0zNDUArrgDcAIYFcBKghnPjaI3TlYf55amhy0nDspxzGQZRMdAAP7Ffpylqr5/FZYDSkx3QeZw4HerM4F0oGP6vbBuYtMtdOp4P/41ELwmubxBKSNer30QE/BWKZ9vjqWUSBm7ZENXgF3ZFi33EVP1voH6EV/oWBOP2YwJ2n3VwQivFMBpVz32jS8W0bzJD53ieJvY6xz3XcsaSUJzXaj0CTOMEPSX12TywzpAk5ZEVjOMkJiTeP0qHEvxWEbJq2VzGJN5sxDuizND1IXEEBPnz2utj5A8YagxEI/5U3GzBijIcgrnz58ytdB+2aX6+jQzvS/u5CN6NspO+Rn7jk8SMifUGDtlhdPHiyGdW9/3S8FmPyf2Dz6temZzR3xltvyGmqTCuSgAAA=="}, "sal-4queijos": {"w": 1046, "h": 1100, "lqip": "data:image/webp;base64,UklGRsACAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSAMBAAABkKNt27FH9/O8X2xXdrqkclJlA9mA+7R2xqpmAS6ns63WswDbfHEPvv/7ZgkRMQHIKCpRBAhSRohtgpEkKig5cGPnliu/lmAkkwGmHzM2jAEaZ9B6gXTeWhc8jxVB/zHoeU3rGW95vVQEUHS8oWXCXzyXpSJSeJeWiX9xN4xBPz2TB+c6EGE92BS0XIPkPqZP48IpoPYzQyreEHQznecdRfPXdC6cB2pe/wcuAiVP6FOE8K4eoldpU1jugypG6UOi4H90ikKwSuuTOK5CABhsIZ0PgcE7a7nfKP7VrJlnTLhqFPGC1uX7Xzz9k+NHZyORDFCgqmtoZLg+WyBIKopYEUUsAFZQOCCWAQAAUAgAnQEqFwAYAD61UJ9MpySioigKqOAWiWwAnTLjdWaC5V+pbClLJ8/8JugW/Lm+VAOkgHMpPjIT5G3iGO75A5cXMaqmziH/ejAAAP7Do9+GNCxaqwDCH0/h8RCG81e7hMP8x+ybt6P1lS3vGxumpF9PuXSf0caX0gh0NJfFbfHsgwQ5pP7knm+1bbTXAPOl/xIqS0wHCJvf5lxizzPbLYDWhne8f3hBZiFSuOsAjHEPDXF/U0AXF/o7VT7u9+nAWmuZLJRYOLEljVSwnlz1bXCbOQdv8XKNwR+J8MCeGvIdrvm0FeHYr0nrQQmIs8mbbkoOf+UII26Yhd4PHwOrCKM7rx9DUVxc7k9r/f5PalPf6VPeylSzpIlMfT+NswtsL4yJymaFQb9s+nn1EXnlfp/owcwdBX+Vymvw5iJe0+Ek5PL5+f5HID911O169fHDvadSDkvT55rOq8ZT6y2salWe3e+MX+QWz+e4V082Y1//NQvOVtn6mgF6nCtcRKeKOl0bPKtlN9WkpuMDCu1acZCy0C4AAA=="}, "sal-calabresa": {"w": 1037, "h": 1100, "lqip": "data:image/webp;base64,UklGRs4CAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSAMBAAABkKNt27E59/uMzc62WduzgmltroDdpE01K5hUqex0k3S2XVnf+z538CFLiIgJgL8IfGMNQgtg8kqrigSICSNoPHXns6c/bi7lwkhADAa+MPDtJiA+guT3/OVUVZ0lz7dCABiknaBloHr8UgeBiUm/Tsuwv3gjRRCLY/zJ8B4nIZijxyjuEOii0yiWV4A9eozq+DDDXKONpPyQn/qALpLj/fSsJ//B8hDmtNpInm4DW/QiKbuB8o/qIliejDcGy3QulDrbDIFgg/Q0SC2PGwNAMPGCtNYpqZbcTxD8K6g8+MTA70sw8BeY9pWDo3fk56NxCIKNAZBeNjzQmAlBaCMCX4EvAFZQOCCkAQAA8AgAnQEqFwAYAD61TJ9KpyQioagNUOAWiWwAnTLjcDDfcyrbvqA2wHPAfiBrOW8kf7csQPZ84zegAFAUS4pozM/+jUx44Vy1Mc+pTOrQouAA2oEY1ciniJTd9qQcEdeJXGEQqhU3tRNr0cEYSSguGIXiT9hJ/NsAnYULAhIhmapf6q+/DyH7fC1G/LRyv6U5dtiPw4gf9Rftluf/BsHm+/qSguriWt1NmOEh/4EHQmyYYfHlh1tIvJ1GOtWjMOHRnKVWYmmPPiN/r5qYPun9i5jN2k/NGrt6Vo/7XlkxVdu8Rh2nRE8SK4fLhgqoK8xr0CkjRcKh00j0NwtWpxdwO7FNFBbuuVd71HXgP2Vmgh07cEPh2dOzjjCKZ9rcLdmuoU8rv2OnswM8T0xt7O9l/BGbYJ60D+fQQL9KtmVMttHtZM19WP5PNMLziJB29K2iMmyU3oKQYZZ7P/BUUmEN79zfrV88QBn1acu76imBzPVrvuQYekor031gOT55n7JJMHSIr9eGd/5uAA7t7/xit/JoEEBhF7WWfp7PKWC4YUqGYAAA"}, "sal-sinistra": {"w": 1048, "h": 1100, "lqip": "data:image/webp;base64,UklGRgIDAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSP0AAAABkGvbtmlLc+3zbCtkavu9ctU3vLQc2VZ6o1JkW1H9hV2x7dp7rfl4zv2EiJgAzBplYM6MCDEdIHUtrY21JZmAuNkE6E09+Enqzw8vjowDMkOcSzH2nXY4ABFOMHg10szUK3UdIkRYzv/GuN7+d4iTmq+qjO95GRH20DOh2ptCZL0yTULqAEZMmdg4gQP0yZSrcZ0hHStwmD4dy3EqHbQF2JoG45d69AdL5HkOkvOEIYEF7YHDBIPFMs8UHBy200KMYDyeJwAcNvwjQwhqNKXuEMFMh3n3lDONPLlQ5oBDzvw95+4/+cO3awUOc4sAyK7oWtYMJ4gtTgQAHGYHAFZQOCDeAQAAEAkAnQEqFwAYAD61UqJNJySjIigIAOAWiWwAnTKEfJ6CKAc71+IGsm+gB0oyNBCKcmznA+lvYA6NfoABirvDBCyeJzqOQsOCO/psSjq5TuGAAOIesieiSRqhOf2kZxIhX231UfgambdE/rL8msESRH7HnwqpTYHQgt/uUhXXR84WUXBCOmvA9IP+02YHsm7yfWxJAqObjR68ltiVgkotfy3HskevCmd+8ADXf//+jUmNV78hkISV7oRf9twyBSZKzbAKpSG8DzKlvefuhNKjIYb1/XgyjNATAhH8SyyujtP2/TpXlhn3AvySztDjIPgfhGIscz701/thJhDqZdN3UqRHY8yivBUHz/tdQa+lDWktoTMvugTh3x4/xI3wsgTjGdcH/VAf9Fsfcv6hj2ew8JtD/n07erFKP2dvGI6oG5b35NT+OwJvxSM77GSFPzVdItpyQdn3koF72SvW60/+Tb0KZ98Ch2Ohpvpza5z9wYYnpNjSa6qfrfgsSA7Bt8uPmxan268sd5CprXPUAtj/2f8JkrLHayooJIhsvXBuTPWhIY/pXsn8RhOkiBFbp95HgOXFrt2Hqcv2csT9CiQFqIpHWzTA2f3vhv8tOxWv53Pj6P/hAanv1z/AcPgAAA=="}, "sal-toscana": {"w": 1100, "h": 1055, "lqip": "data:image/webp;base64,UklGRu4CAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSAMBAAABkCPbtmora5/zf+aauUbu0gO3BvyPu0ZOChFFB9wJiR1aALG7u8PZZy/kCk2IiAlAqhf86x2yOwGaF/eOlwFesjhg+uIvks/PDwA+zaPvMkkNkdT9hRBJ8NiiVDWSFow3hpDoMPLLAtMD9VYbHETK71OZVclRODgcZmB2jZPwHv1U5gw8gAKPgxbyKK9BUPSYMY/xayPQ8pOWL3YBfcbcRuv4Xx9qgcrnFvOoXRRxOMqQJ3A9vEPf12jZIm/XiMDhEEOmqHECAog0fWCIlmSB3A4HAILVb0iaqqqR71eKQ6K49n03fzLxw9kxOKQKUD40s/PCiR0LnR4OGcUBQIEAEEEiAFZQOCDEAQAAEAkAnQEqGAAXAD61TKBKpyQjIagNUOAWiWwAnS8Ce101HAA2wHPD6ZBvLH+4fQG6YZqno/2A+jT5IAd1DPsKGpGy1UeEVCswoV6UbIvjdD4AAP7nLfsd8IXwYn6FiiOXR8boKlUTn5QSAgfwvakHHe1MF78cQOMQ59vuZzs5s/yvckYHmzQ/ugUDt2NmI0WkrXBNG+kq/MX7lXOZ6lsdPy/c9VqHF8ONZNy7GlnFaIIzBhXHjFi6VILvqa0pANP8MnfiGBoEnmPTZ8nz7Uh4e36YN1AivV0laI6iBOivq1hkH9FQiA3g1+eVbvbGg2XjlkxKqNvrzwKfiPW+tMZXlIWICCEH6K9TACjC6HZEd/5PW5sE5AdW9wVdA/tNZ0TKmPAlQ+STh2W5g9cEtIjvhp+O25AiUns2Mu1yIZkmaePV9J79Lt4K0LiFEqlDPBs75U8aB0m73wmDWV791YdXMJUKRP/NW3hncxoJodNWnLFB4tcYuZ7OfbB77eLRmcD/719s8Zh9OHnFsfsN8UC5X+F9byC3E2tk1kAPBBH9ebij9rWcZx97/tBNel/sZb+rn9zeDaZbani45P2f3UjR2XwAAAA="}};
+  var IMG = {"bigode": {"w": 1009, "h": 964, "lqip": "data:image/webp;base64,UklGRnwCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCMBAAABkKNt27FH9/t+v//Ytm206lI5GdXTWdWswLbtWQA7q7Rt88Udf/8SImICAEACCLcv2Hns8MrhAgACk0o4Q1vvWk767crcIOQEieJzJGm01tqQvJ4MCQiZ84j/leHk1vznjaAj4PHv5T9O/z83wYG36oO1LqjYDelbTEN3G+CNP0PtyvB+KJBzKQKkrg00vKZ1ZzgS6vwVCW3nxbY/sSYCXB5dtpfandU93ryRb9a60fY8kNRwltqFVewBfMWzv1o7PcW1QkIkNxygmpbmkZAHgK+o9znNVEbzYLxXAEBc/azzNNoYY7Qhd4T9AhNlYk3HKU55ZU6aV2ByEV3eueLQlVt3Lp9ZVBL2YpoilF1c1dDUWJUTHXQwfScYGx8fFx30YEoAVlA4IDIBAACwBgCdASoYABcAPu1urlIppiQiqAgBMB2JbACdMoR0kIG0a2wHPsEYA6uj0kGKR43Yfm7tbHpPXmqGH/kcAAD+z2Hqj8MyPsRO/mLkcYZhhvI7GetGP/U5K9Lq7grQLkZTgCCnawbPt6ImgenAofTW6JYFAJ2Qnr+mkh2OCwryQ2s193YmtXGFkoYCZnEOMW8/dHSdlCMcYPjCiENVYMhQtxlLeUY07a5zD+RPwvv0MDRrAWqDCPO7g48luCjayUKN1GfGB8MJc7dIDkZP/0EACcb2ELdCke+UX+ReErdf+z3tWhjX/iRig++ucUOGMLHPJNj1J6eGV5Ygoq4d1hinlVaSV8pvoyUq77XDM06cStsXDzCavkKAcbvz+hoikmqRdiAwInomDFQkvaE5RD5KQAA="}, "dani": {"w": 1267, "h": 1199, "lqip": "data:image/webp;base64,UklGRnoCAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCoBAAABkGPbtmlbc5/9bNu27fe+kTuybf/YRgEYKrL/r4Ai2/Y/a+8ZXJxXhIiYAABwgPJJO84dm1QAQCOwRvK+b/T9cmNVMpTyp1H5kDRixJJ8MQ9K+Wi0veF/S18rLnkqwlGAg8KPFAZpXB4L04ATf5cug//PrUoDq/mfHq350+Go8AfGeKFwe3hIl6V3sVfSwxZTvBk+ronYYIfB8mN31Bya4fg8GJv9gsaTsS+64rGNrifh6ao41UfrxZo/M4rCEPtYJDjr8nhbqnJwiGKCseT5UaVhUE7GIZdGrD/h32Njq2MAICR6+h2SIkbE8tmy7opY5aPCowoXXP5JXzk/pSUvQsG/jowrnLj7xr0LR5f216RoBKsj41LLmhsqi7OjFDyqsOj4xNhwBwEBVlA4ICoBAABQBwCdASoYABcAPu1krE6ppaQiKA1RMB2JbACdMzQ1cIG0A20FJroZ8cA6q45epZxkfeWN083omSFeLBFjd1bs2loAAPrbXL+6WmzLay9d7IMDJwm+Pr1iQ1ug7PlK/hvdJVjz7HdV+Aj1czT52NPyNjJaA3AGl5V7mII3N885hJ3aeozf/ifpWIsPDb1ArZ4kaQKMbuAITaG1pHz8mOx/Q8kd4WP3oVrYTK6523YzQqK46270rCG7a7w2SskjdJu4KzEBegVi4pmRh2nbS7pjyCtsZ+IqkSdhDFknTsdOTSvxLGS2c9pS1a48pBE/g4nalfIN2ao53Yz6BAQwigP4z/fiBO6aH8M3BYXRxbEZXYqvkBsvGvPkcQmemTp16N7K17mtuITV5wAA"}, "doce": {"w": 1280, "h": 1201, "lqip": "data:image/webp;base64,UklGRpACAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSCUBAAABkKtt2yFG78w/sc3KZuWcgJPKOQI7ldWl4wE4tVbVVip3S9v2fP//LmdyCBExAQAsG4gtmzjeaCwNBhT+awEtR49dkvx+azoW6l8WgrZJUmsxJO+0wv7LsqOv0hXDv412yVU4ABR2+INetXAGDoAiCr0bl71QwJpxfVDzebZCxANqPxROOqqBhv7McVxgvxF/hi/KA8d5Lm/qwxbNuTyujuqg9ie8UBQZfZ/iS3MhIwR9FOPDmLdtaUpZkxTjTXitMhYIdGZI8SK83F4QDCAweP4HXdHmLyP81FUcYwNAYGjzdZIU0ULeHqlMsPHPoMDy3QsPXZL8dtBakergvyo4Nq++e/3KzUtDNYVxCh6toPCouOSc8rKC9BALfu2g8OiYMIV/AwBWUDggRAEAABAHAJ0BKhgAFwA+7WarTymlo6IoDVEwHYlsAJ0zNDUArrgDcAIYFcBKghnPjaI3TlYf55amhy0nDspxzGQZRMdAAP7Ffpylqr5/FZYDSkx3QeZw4HerM4F0oGP6vbBuYtMtdOp4P/41ELwmubxBKSNer30QE/BWKZ9vjqWUSBm7ZENXgF3ZFi33EVP1voH6EV/oWBOP2YwJ2n3VwQivFMBpVz32jS8W0bzJD53ieJvY6xz3XcsaSUJzXaj0CTOMEPSX12TywzpAk5ZEVjOMkJiTeP0qHEvxWEbJq2VzGJN5sxDuizND1IXEEBPnz2utj5A8YagxEI/5U3GzBijIcgrnz58ytdB+2aX6+jQzvS/u5CN6NspO+Rn7jk8SMifUGDtlhdPHiyGdW9/3S8FmPyf2Dz6temZzR3xltvyGmqTCuSgAAA=="}, "sal-4queijos": {"w": 1046, "h": 1100, "lqip": "data:image/webp;base64,UklGRsACAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSAMBAAABkKNt27FH9/O8X2xXdrqkclJlA9mA+7R2xqpmAS6ns63WswDbfHEPvv/7ZgkRMQHIKCpRBAhSRohtgpEkKig5cGPnliu/lmAkkwGmHzM2jAEaZ9B6gXTeWhc8jxVB/zHoeU3rGW95vVQEUHS8oWXCXzyXpSJSeJeWiX9xN4xBPz2TB+c6EGE92BS0XIPkPqZP48IpoPYzQyreEHQznecdRfPXdC6cB2pe/wcuAiVP6FOE8K4eoldpU1jugypG6UOi4H90ikKwSuuTOK5CABhsIZ0PgcE7a7nfKP7VrJlnTLhqFPGC1uX7Xzz9k+NHZyORDFCgqmtoZLg+WyBIKopYEUUsAFZQOCCWAQAAUAgAnQEqFwAYAD61UJ9MpySioigKqOAWiWwAnTLjdWaC5V+pbClLJ8/8JugW/Lm+VAOkgHMpPjIT5G3iGO75A5cXMaqmziH/ejAAAP7Do9+GNCxaqwDCH0/h8RCG81e7hMP8x+ybt6P1lS3vGxumpF9PuXSf0caX0gh0NJfFbfHsgwQ5pP7knm+1bbTXAPOl/xIqS0wHCJvf5lxizzPbLYDWhne8f3hBZiFSuOsAjHEPDXF/U0AXF/o7VT7u9+nAWmuZLJRYOLEljVSwnlz1bXCbOQdv8XKNwR+J8MCeGvIdrvm0FeHYr0nrQQmIs8mbbkoOf+UII26Yhd4PHwOrCKM7rx9DUVxc7k9r/f5PalPf6VPeylSzpIlMfT+NswtsL4yJymaFQb9s+nn1EXnlfp/owcwdBX+Vymvw5iJe0+Ek5PL5+f5HID911O169fHDvadSDkvT55rOq8ZT6y2salWe3e+MX+QWz+e4V082Y1//NQvOVtn6mgF6nCtcRKeKOl0bPKtlN9WkpuMDCu1acZCy0C4AAA=="}, "sal-calabresa": {"w": 1037, "h": 1100, "lqip": "data:image/webp;base64,UklGRs4CAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSAMBAAABkKNt27E59/uMzc62WduzgmltroDdpE01K5hUqex0k3S2XVnf+z538CFLiIgJgL8IfGMNQgtg8kqrigSICSNoPHXns6c/bi7lwkhADAa+MPDtJiA+guT3/OVUVZ0lz7dCABiknaBloHr8UgeBiUm/Tsuwv3gjRRCLY/zJ8B4nIZijxyjuEOii0yiWV4A9eozq+DDDXKONpPyQn/qALpLj/fSsJ//B8hDmtNpInm4DW/QiKbuB8o/qIliejDcGy3QulDrbDIFgg/Q0SC2PGwNAMPGCtNYpqZbcTxD8K6g8+MTA70sw8BeY9pWDo3fk56NxCIKNAZBeNjzQmAlBaCMCX4EvAFZQOCCkAQAA8AgAnQEqFwAYAD61TJ9KpyQioagNUOAWiWwAnTLjcDDfcyrbvqA2wHPAfiBrOW8kf7csQPZ84zegAFAUS4pozM/+jUx44Vy1Mc+pTOrQouAA2oEY1ciniJTd9qQcEdeJXGEQqhU3tRNr0cEYSSguGIXiT9hJ/NsAnYULAhIhmapf6q+/DyH7fC1G/LRyv6U5dtiPw4gf9Rftluf/BsHm+/qSguriWt1NmOEh/4EHQmyYYfHlh1tIvJ1GOtWjMOHRnKVWYmmPPiN/r5qYPun9i5jN2k/NGrt6Vo/7XlkxVdu8Rh2nRE8SK4fLhgqoK8xr0CkjRcKh00j0NwtWpxdwO7FNFBbuuVd71HXgP2Vmgh07cEPh2dOzjjCKZ9rcLdmuoU8rv2OnswM8T0xt7O9l/BGbYJ60D+fQQL9KtmVMttHtZM19WP5PNMLziJB29K2iMmyU3oKQYZZ7P/BUUmEN79zfrV88QBn1acu76imBzPVrvuQYekor031gOT55n7JJMHSIr9eGd/5uAA7t7/xit/JoEEBhF7WWfp7PKWC4YUqGYAAA"}, "sal-sinistra": {"w": 1048, "h": 1100, "lqip": "data:image/webp;base64,UklGRgIDAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSP0AAAABkGvbtmlLc+3zbCtkavu9ctU3vLQc2VZ6o1JkW1H9hV2x7dp7rfl4zv2EiJgAzBplYM6MCDEdIHUtrY21JZmAuNkE6E09+Enqzw8vjowDMkOcSzH2nXY4ABFOMHg10szUK3UdIkRYzv/GuN7+d4iTmq+qjO95GRH20DOh2ptCZL0yTULqAEZMmdg4gQP0yZSrcZ0hHStwmD4dy3EqHbQF2JoG45d69AdL5HkOkvOEIYEF7YHDBIPFMs8UHBy200KMYDyeJwAcNvwjQwhqNKXuEMFMh3n3lDONPLlQ5oBDzvw95+4/+cO3awUOc4sAyK7oWtYMJ4gtTgQAHGYHAFZQOCDeAQAAEAkAnQEqFwAYAD61UqJNJySjIigIAOAWiWwAnTKEfJ6CKAc71+IGsm+gB0oyNBCKcmznA+lvYA6NfoABirvDBCyeJzqOQsOCO/psSjq5TuGAAOIesieiSRqhOf2kZxIhX231UfgambdE/rL8msESRH7HnwqpTYHQgt/uUhXXR84WUXBCOmvA9IP+02YHsm7yfWxJAqObjR68ltiVgkotfy3HskevCmd+8ADXf//+jUmNV78hkISV7oRf9twyBSZKzbAKpSG8DzKlvefuhNKjIYb1/XgyjNATAhH8SyyujtP2/TpXlhn3AvySztDjIPgfhGIscz701/thJhDqZdN3UqRHY8yivBUHz/tdQa+lDWktoTMvugTh3x4/xI3wsgTjGdcH/VAf9Fsfcv6hj2ew8JtD/n07erFKP2dvGI6oG5b35NT+OwJvxSM77GSFPzVdItpyQdn3koF72SvW60/+Tb0KZ98Ch2Ohpvpza5z9wYYnpNjSa6qfrfgsSA7Bt8uPmxan268sd5CprXPUAtj/2f8JkrLHayooJIhsvXBuTPWhIY/pXsn8RhOkiBFbp95HgOXFrt2Hqcv2csT9CiQFqIpHWzTA2f3vhv8tOxWv53Pj6P/hAanv1z/AcPgAAA=="}, "sal-toscana": {"w": 1100, "h": 1055, "lqip": "data:image/webp;base64,UklGRu4CAABXRUJQVlA4WAoAAAAQAAAAFwAAFgAAQUxQSAMBAAABkCPbtmora5/zf+aauUbu0gO3BvyPu0ZOChFFB9wJiR1aALG7u8PZZy/kCk2IiAlAqhf86x2yOwGaF/eOlwFesjhg+uIvks/PDwA+zaPvMkkNkdT9hRBJ8NiiVDWSFow3hpDoMPLLAtMD9VYbHETK71OZVclRODgcZmB2jZPwHv1U5gw8gAKPgxbyKK9BUPSYMY/xayPQ8pOWL3YBfcbcRuv4Xx9qgcrnFvOoXRRxOMqQJ3A9vEPf12jZIm/XiMDhEEOmqHECAog0fWCIlmSB3A4HAILVb0iaqqqR71eKQ6K49n03fzLxw9kxOKQKUD40s/PCiR0LnR4OGcUBQIEAEEEiAFZQOCDEAQAAEAkAnQEqGAAXAD61TKBKpyQjIagNUOAWiWwAnS8Ce101HAA2wHPD6ZBvLH+4fQG6YZqno/2A+jT5IAd1DPsKGpGy1UeEVCswoV6UbIvjdD4AAP7nLfsd8IXwYn6FiiOXR8boKlUTn5QSAgfwvakHHe1MF78cQOMQ59vuZzs5s/yvckYHmzQ/ugUDt2NmI0WkrXBNG+kq/MX7lXOZ6lsdPy/c9VqHF8ONZNy7GlnFaIIzBhXHjFi6VILvqa0pANP8MnfiGBoEnmPTZ8nz7Uh4e36YN1AivV0laI6iBOivq1hkH9FQiA3g1+eVbvbGg2XjlkxKqNvrzwKfiPW+tMZXlIWICCEH6K9TACjC6HZEd/5PW5sE5AdW9wVdA/tNZ0TKmPAlQ+STh2W5g9cEtIjvhp+O25AiUns2Mu1yIZkmaePV9J79Lt4K0LiFEqlDPBs75U8aB0m73wmDWV791YdXMJUKRP/NW3hncxoJodNWnLFB4tcYuZ7OfbB77eLRmcD/719s8Zh9OHnFsfsN8UC5X+F9byC3E2tk1kAPBBH9ebij9rWcZx97/tBNel/sZb+rn9zeDaZbani45P2f3UjR2XwAAAA="}, "tamaras": {"w": 1100, "h": 920, "lqip": "data:image/webp;base64,UklGRpICAABXRUJQVlA4WAoAAAAQAAAAFwAAEwAAQUxQSOwAAAABkKNt27FH9/u8cZ0FsMwK7N7qUtoq1VqVvYJUxgrMToNqOs+Le/BhCxExAfhfA0WdE3MjFWmARkSNlGVHkv5hMBE6TKP4lnTWOpKXFUhQAYK237QMdIa2BQGCKuctw63ncJIoKGR8p2NUbzkCQQJGaRjd2Z85EMGBtzFouaUECZd0sfy+EqQ9xzOchEbKfTzLLmiFE2/jeFZCNCZpYji+pEMpZHx2LprxexBA0EUTyRvW/QdJu6CJ4ByXtACAQu4XGh/gDP1EiiBQUPtG0jvnyfdmCEIFWTtf+f9Dfw40IgqS8xraF9ZaMwBBIFZQOCCAAQAAkAcAnQEqGAAUAD61UKBMJySjIigKqOAWiWwAnTKEe06CKNXbl6AH6AdZwvwLgbzoCupOtjlLVCHcIeL2lGA+RMCTpBRYAOGR3SglH1n55b9PSDC+ap+kH1VxuyClqF6Lo3PdR1Ho6s86MyxCEY6s1pu0lntgn0ErY7vyrCuWkJ5M7NseJekXuFbjZhSOo+cDukQHVB7zWM+69LPfgKunC7M1rtgiOcFieGLBezuNrPNZ5y9+kLFcbc3yDSXeCkgwgJEXrzvCaiF+PEaU9fbJTt30bMuKa6NO9RT/SM//lAYp2uqn1AMI5Sw2r24xPy7CH9BDkDtQpsZxCyJm1bJcZ/c/tV5uZchNl+mAKTPinXgUaZe/w63/Zv9QZRKVZrH10n4vw33+VcomFvwFvBM+gW8ZVqllV5+UJxK2joVOlgIJc/2MV5hi3sI6tieDmv/P/LRtM+uLMDhsPQbIY/4g8Ivf/LD67HybeOLm6XZ4wgBc6UIkwUeffot5Oj1Z3AAA"}, "cheesecake": {"w": 1013, "h": 1072, "lqip": "data:image/webp;base64,UklGRtQCAABXRUJQVlA4WAoAAAAQAAAAFgAAFwAAQUxQSP8AAAABkGNb27E9130/v43yL80B2GZtdH+p9H8d27bNKpVnkVRO6QdX8CJDiIgJQKQak/GvIrlBvGoCASpaxjYP7lmbrwVMjMCsfWT01yuVUPlHpOgJGby11jryyxaIAFC5w5+B0cGRp40IDBb4i0nDL15RFSl/G3wi8hcPQrFMx5TBsgc4Gmwa2rAV8pQuHU8i6zV9KscbyHxBl8ryFvD4v+wFDtGmCr4fGPI+jeebcmjOK7oUlldhFFO0PlGwnILC6C7S+RAVvOVhVQAmf8s7ksH9S/JhueJfIw2bz74w8sfLlTIjETCC0ubpHWcvHVntKIMRxKsCMBkKqCKlqFFVQTQAVlA4IK4BAAAQCQCdASoXABgAPrVQoEynJKMiKAqo4BaJbACdMoR7ToLmbgmdQkL8FaCgBIt/9H6e+bb6P9gf9U+pn6Ff6zBaFnm6IVvJc8148MRvkVcG9HAA/mT2TVBojbeyKVaxGvby5VbcnzyDSakCVj4L4L5arADW8MHJYfASrRE4aNy3ek21tcRKA/yNzK1J07g5XQTlIDqjcUXpFGG9wE2+jK/HXF8JL0D86pLc8qYoEOYL0zCzepkCRf4QsCnTvYvIK7L5rpbfnHk89Po9tqOOQpfyh0farA92Ix0Q7lTdo1DIGvj5wM/fuAHs4l6XVlzh2Eij8XyfppUHxpqBT7Pwz5Z7lIkaRnrf5by98wu05F1F5OK0A+KaD5zVg/wcfdzCFmQuAYsWYIjOsIlM5bbwbx3tBIw58XZVWNT84+aSK1dbrpWlsSbYN/P7UO646T8WH80K9qWpF8E6ICAVAkr45EW25Zye0nxzFvt3vf0AxYO7czFwDEKrvRC3X6E/3Qv5oEurizMbcn+uNoJ+CvH7khtoqQr+utvLQCen5SNXhNflY7LnFS6+CoApNyPbuWAA"}};
   var fotoHTML = function(nome, sizes, eager){
     var m = IMG[nome] || { w:1, h:1, lqip:'' };
     var set = function(ext){ return ['480','800','1100'].map(function(w){ return 'img/' + nome + '-' + w + '.' + ext + ' ' + w + 'w'; }).join(', '); };
@@ -528,6 +559,17 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
       '<source type="image/avif" srcset="' + set('avif') + '" sizes="' + sizes + '">' +
       '<img src="img/' + nome + '-800.webp" srcset="' + set('webp') + '" sizes="' + sizes + '" width="' + m.w + '" height="' + m.h + '" alt="" ' + (eager ? '' : 'loading="lazy" ') + 'decoding="async"></picture></div>';
   };
+  if (DQ.length === 1 && C.topo === 'toalha') {
+    /* uma pizza só: a foto fica na toalha do topo e a pizza vira um cartão */
+    var D1 = DQ[0];
+    $('#semana').classList.add('um');
+    $('#destaques').innerHTML = '<article class="card-dq"><i class="tape tape-2" aria-hidden="true"></i>' +
+      '<p class="lb">Pizza da semana · ' + esc((C.periodoCurto || '').replace(/^card[aá]pio de /i, '')) + '</p>' +
+      '<h3 class="dqn">' + esc(D1.nome) + (D1.script ? '<span class="ch">' + esc(D1.script) + '</span>' : '') + '</h3>' +
+      (D1.historia ? '<p class="hist">“' + esc(D1.historia) + '”</p>' : '') +
+      '<p class="desc">' + descHTML(D1.descricao) + '</p>' +
+      '<div class="buy">' + preco(D1.preco) + (aberto ? addBtn(D1.id, true) : '') + '</div></article>';
+  } else
   $('#destaques').innerHTML = DQ.map(function(D, i){
     return '<article class="dq dq-' + (i % 2 ? '2' : '1') + '">' +
       (D.rotulo ? '<span class="rot">' + esc(D.rotulo) + '</span>' : '') +
@@ -549,8 +591,9 @@ input.cupom::placeholder{text-transform:none;letter-spacing:.02em}
   }).join('');
   if (C.salgadas.some(function(p){ return p.foto && IMG[p.foto]; })) $('#lista-salgadas').classList.add('com-fotos');
   $('#lista-doces').innerHTML = C.doces.map(function(p){
-    return '<article class="doce">' + fotoHTML(p.foto || 'doce', '(min-width: 760px) 380px, 94vw') +
+    return '<article class="doce">' + fotoHTML(p.foto || 'doce', '(min-width: 760px) 560px, 94vw') +
       '<div class="it"><div class="row"><h3 class="nm">' + esc(p.pedido || p.nome) + '</h3><span class="dots" aria-hidden="true"></span>' + preco(p.preco) + (aberto ? addBtn(p.id) : '') + '</div>' +
+      (p.historia ? '<p class="hist">“' + esc(p.historia) + '”</p>' : '') +
       '<p class="desc">' + descHTML(p.descricao) + '</p></div></article>';
   }).join('');
 
